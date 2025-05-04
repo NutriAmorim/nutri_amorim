@@ -1,0 +1,352 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>Nutri Amorim</title>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <!-- Menu -->
+    <div class="menu-icon">
+      <div class="bar bar1"></div>
+      <div class="bar bar2"></div>
+      <div class="bar bar3"></div>
+    </div>
+
+    <!-- Barra de Pesquisa -->
+    <div class="search-box">
+      <input type="text" placeholder="Pesquisar...">
+    </div>
+
+    <!-- Botões de Login e Sair -->
+    <div class="auth-button">
+      {% if user.is_authenticated %}
+        <!-- Botão de sair se o usuário estiver logado -->
+        <a href="{% url 'logout' %}">
+          <button>Sair</button>
+        </a>
+      {% else %}
+        <!-- Botão de login se o usuário não estiver logado -->
+        <a href="{% url 'login' %}">
+          <button>Entrar / Criar Conta</button>
+        </a>
+      {% endif %}
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
+
+<!-- Subtopbar -->
+<div class="subtopbar">
+  <!-- Marcas à esquerda -->
+  <div class="dropdown-left">
+    <button class="dropbtn">Marcas</button>
+    <div class="dropdown-content">
+      <a href="#">Marca 1</a>
+      <a href="#">Marca 2</a>
+      <a href="#">Marca 3</a>
+      <!-- Adicione mais marcas -->
+    </div>
+  </div>
+
+   <!-- Botões centrais com ícones -->
+<ul class="subtopbar-links">
+  <li>
+    <a href="{% url 'way_protein' %}">
+      <img src="{% static 'img/whey.png' %}" alt="Way Protein" class="menu-icon"> Way Protein
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'creatinas' %}">
+      <img src="{% static 'img/dosadores.png' %}" alt="Creatinas" class="menu-icon"> Creatinas
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'pre_treino' %}">
+      <img src="{% static 'img/creatinas.png' %}" alt="Pré Treino" class="menu-icon"> Pré Treino
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'emagrecedores' %}">
+      <img src="{% static 'img/vitaminas.png' %}" alt="Emagrecedores" class="menu-icon"> Emagrecedores
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'acessorios' %}">
+      <img src="{% static 'img/acesorios.png' %}" alt="Acessórios" class="menu-icon"> Acessórios
+    </a>
+  </li>
+</ul>
+  
+  <!-- Categorias à direita -->
+  <div class="dropdown-right">
+    <button class="dropbtn">Categorias</button>
+    <div class="dropdown-content">
+      <a href="{% url 'way_protein' %}">Way Protein</a>
+      <a href="{% url 'pre_treino' %}">Pré Treino</a>
+      <a href="{% url 'emagrecedores' %}">Emagrecedores</a>
+      <a href="{% url 'acessorios' %}">Acessórios</a>
+      <a href="{% url 'bcaa' %}">Bcaa</a>
+      <a href="{% url 'albumina' %}">Albumina</a>
+      <a href="{% url 'aumento_testosterona' %}">Aumento da Testosterona</a>
+      <a href="{% url 'bebidas' %}">Bebidas</a>
+      <a href="{% url 'ciclistas' %}">Ciclistas</a>
+      <a href="{% url 'coffee' %}">Coffee</a>
+      <a href="{% url 'colageno' %}">Colágeno</a>
+      <a href="{% url 'dose_unica' %}">Dose Única</a>
+      <a href="{% url 'melatonina' %}">Melatonina</a>
+      <a href="{% url 'omega_3' %}">Omega 3</a>
+      <a href="{% url 'forca_energia' %}">Força e Energia</a>
+      <a href="{% url 'vitaminas' %}">Vitaminas</a>
+      <a href="{% url 'aumentar_massa_muscular' %}">Aumentar Massa Muscular</a>
+      <a href="{% url 'aminoacidos' %}">Aminoácidos</a>
+      <a href="{% url 'articulacoes_saudaveis' %}">Articulações Saudáveis</a>
+      <a href="{% url 'barras_de_proteinas' %}">Barras de Proteínas</a>
+      <a href="{% url 'antioxidantes' %}">Antioxidantes</a>
+      <a href="{% url 'carboidratos' %}">Carboidratos</a>
+      <a href="{% url 'glutaminas' %}">Glutaminas</a>
+      <a href="{% url 'pastas_de_amendoim' %}">Pastas de Amendoim</a>
+      <a href="{% url 'caldas_e_molhos' %}">Caldas e Molhos</a>
+      <a href="{% url 'snacks_doces' %}">Snacks e Doces</a>
+      <a href="{% url 'combos' %}">Combos</a>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar -->
+  <div id="sidebar" class="sidebar">
+      <div class="logo-container">
+        <img src="{% static 'img/imagem_nutri.png' %}" alt="Logo Nutri Amorim" class="logo-img">
+      </div>
+      <ul>
+        <li class="sidebar-auth">
+          {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}"><button>Sair</button></a>
+          {% else %}
+            <a href="{% url 'login' %}"><button>Entrar / Criar Conta</button></a>
+          {% endif %}
+        </li>
+        <li><a href="{% url 'home' %}" class="inicio-link">Início</a></li>
+      <!-- As outras abas seguem aqui -->
+        <li>
+          <a class="toggle">Ofertas Naturais</a>
+          <ul class="submenu">
+            <li><a href="{% url 'produtos' %}">Produtos</a></li>
+            <li><a href="{% url 'carrinho' %}">Carrinho</a></li>
+            <li><a href="{% url 'finalizar_compra' %}">Finalizar Compra</a></li>
+          </ul>
+        </li>
+
+        <li>
+        <a class="toggle">Performance Esportiva</a>
+        <ul class="submenu">
+            <li><a href="{% url 'nutricao_para_atletas' %}">🍽️ Nutrição para Atletas</a></li>
+            <li><a href="{% url 'suplementacao_esportiva' %}">💪 Suplementação Esportiva</a></li>
+            <li><a href="{% url 'protocolo_de_treino' %}">📈 Protocolo de Treino</a></li>
+            <li><a href="{% url 'recuperacao_muscular' %}">🛌 Recuperação Muscular</a></li>
+          </ul>
+        </li>
+
+        <li>
+        <a class="toggle">Nutrição Funcional</a>
+        <ul class="submenu">
+          <li><a href="{% url 'alimentacao_alcalina' %}">🥦 Alimentação Alcalina</a></li>
+          <li><a href="{% url 'fitoterapia' %}">🌿 Fitoterapia</a></li>
+          <li><a href="{% url 'protocolos_antiinflamatorios' %}">🔥 Protocolos Anti-inflamatórios</a></li>
+          <li><a href="{% url 'alimentos_funcionais' %}">🥗 Alimentos Funcionais</a></li>
+        </ul>
+      </li>
+    
+      <li>
+        <a class="toggle">Objetivos</a>
+        <ul class="submenu">
+          <li><a href="{% url 'massa_magra' %}">🏋️‍♀️ Massa Magra</a></li>
+          <li><a href="{% url 'definicao_muscular' %}">💪 Definição Muscular</a></li>
+          <li><a href="{% url 'emagrecimento_saudavel' %}">⚖️ Emagrecimento Saudável</a></li>
+          <li><a href="{% url 'energia_disposicao' %}">⚡ Energia e Disposição</a></li>
+        </ul>
+      </li>
+    
+      <li>
+        <a class="toggle">Receitas Medicinais</a>
+        <ul class="submenu">
+          <li><a href="{% url 'informativo' %}">📰 Informativo</a></li>
+          <li><a href="{% url 'entenda_doencas_e_causas' %}">🔍 Entenda Doenças e Causas</a></li>
+          <li><a href="{% url 'guia_de_ervas_medicinais' %}">🌿 Guia de Ervas</a></li>
+          <li><a href="{% url 'doencas_comuns_e_solucoes_naturais' %}">🩺 Doenças e Soluções</a></li>
+          <li><a href="{% url 'receitas_para_imunidade' %}">🛡️ Imunidade Natural</a></li>
+        </ul>
+      </li>
+    
+      <li>
+        <a class="toggle">Pesquisas Científicas</a>
+        <ul class="submenu">
+          <li><a href="{% url 'comprovacao_cientifica' %}">🔬 Comprovação Científica</a></li>
+          <li><a href="{% url 'remedios_naturais_que_a_ciencia_comprova' %}">🌱 Remédios Naturais</a></li>
+        </ul>
+      </li>
+    
+      <li>
+        <a class="toggle">Consultas</a>
+        <ul class="submenu">
+          <li><a href="{% url 'agendamento_online' %}">📅 Agendamento Online</a></li>
+          <li><a href="{% url 'avaliacao_fisica' %}">📏 Avaliação Física</a></li>
+          <li><a href="{% url 'planos_alimentares' %}">📋 Planos Alimentares</a></li>
+        </ul>
+      </li>
+    
+      <li><a href="{% url 'sobre_mim' %}">👤 Sobre Mim</a></li>
+      <li><a href="{% url 'conheca_nosso_trabalho' %}">🧑‍🤝‍🧑 Nosso Trabalho</a></li>
+      <li><a href="{% url 'normas_e_regulamento' %}">📑 Normas</a></li>
+      <li><a href="{% url 'conhecimento_na_pratica' %}">🧠 Conhecimento na Prática</a></li>
+    </ul>
+   </div>
+
+<!-- Conteúdo principal -->
+<div class="content">
+  {% block content %}
+  {% endblock %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggles = document.querySelectorAll('.toggle'); // Botões de alternância de submenu
+    const submenuState = JSON.parse(localStorage.getItem('openSubmenus')) || []; // Estado salvo no localStorage
+
+    // Inicializa o estado das sub-abas baseado no localStorage
+    toggles.forEach((toggle, index) => {
+      const submenu = toggle.nextElementSibling;
+      if (submenuState.includes(index)) {
+        submenu.classList.add('show'); // Abre as sub-abas que estavam abertas
+        toggle.classList.remove('closed'); // Ícone de aba aberta
+      } else {
+        submenu.classList.remove('show'); // Fecha as sub-abas que estavam fechadas
+        toggle.classList.add('closed');   // Ícone de aba fechada
+      }
+
+      toggle.addEventListener('click', () => {
+        const isOpen = submenu.classList.contains('show');
+        
+        // Atualiza o estado da sub-aba
+        if (isOpen) {
+          submenu.classList.remove('show');
+          toggle.classList.add('closed'); // Muda o ícone para fechado
+        } else {
+          submenu.classList.add('show');
+          toggle.classList.remove('closed'); // Muda o ícone para aberto
+        }
+
+        // Atualiza o estado no localStorage
+        updateSubmenuState();
+      });
+    });
+
+    // Função para atualizar o estado das abas no localStorage
+    function updateSubmenuState() {
+      const openSubmenus = [];
+      toggles.forEach((toggle, index) => {
+        const submenu = toggle.nextElementSibling;
+        if (submenu.classList.contains('show')) {
+          openSubmenus.push(index);
+        }
+      });
+      localStorage.setItem('openSubmenus', JSON.stringify(openSubmenus));
+    }
+
+    // Script para mostrar/ocultar a sidebar ao clicar no menu hambúrguer
+    const menuIcon = document.querySelector('.menu-icon'); // Ícone do menu hambúrguer
+    const sidebar = document.querySelector('.sidebar'); // Sidebar a ser exibida/ocultada
+
+    if (menuIcon && sidebar) {
+      menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle('open');  // Anima o ícone de hambúrguer
+        sidebar.classList.toggle('show');   // Exibe ou esconde a sidebar
+      });
+    }
+
+    // Função para ajustar a visibilidade da sidebar conforme o tamanho da tela
+    function adjustSidebarForScreenSize() {
+      const screenWidth = window.innerWidth;
+
+      if (screenWidth <= 1600) { // Para telas 
+        // No mobile/tablet, a sidebar deve estar escondida por padrão
+        sidebar.classList.remove('show');
+        menuIcon.classList.remove('open');
+      } else { // Para telas grandes (desktops)
+        // Para desktops, a sidebar pode ser fixada, sem necessidade de animação
+        sidebar.classList.add('show');
+        menuIcon.classList.add('open');
+      }
+    }
+
+    // Ajusta a sidebar quando a tela for redimensionada
+    window.addEventListener('resize', adjustSidebarForScreenSize);
+    
+    // Chama a função para configurar a visibilidade inicial da sidebar
+    adjustSidebarForScreenSize();
+
+    // Seleciona o ícone do carrinho e o dropdown
+const cartIcon = document.querySelector('.cart-icon');
+const cartDropdown = document.getElementById('cartDropdown');
+
+// Função para mostrar a aba quando passar o mouse sobre o ícone
+cartIcon.addEventListener('mouseover', () => {
+  cartDropdown.classList.add('show'); // Mostra a aba
+});
+
+// Função para esconder a aba quando o mouse sair do ícone ou da aba
+cartIcon.addEventListener('mouseout', () => {
+  cartDropdown.classList.remove('show'); // Esconde a aba
+});
+
+// Se o usuário passar o mouse sobre a própria aba do carrinho, a aba deve continuar visível
+cartDropdown.addEventListener('mouseover', () => {
+  cartDropdown.classList.add('show'); // Mostra a aba
+});
+
+cartDropdown.addEventListener('mouseout', () => {
+  cartDropdown.classList.remove('show'); // Esconde a aba
+});
+
+// Função para redirecionar o usuário para a página de produtos
+function irAsCompras() {
+  window.location.href = '/produtos'; // Substitua pelo link da sua página de produtos
+}
+});
+
+document.addEventListener("click", function (event) {
+    // Fecha dropdowns se clicar fora
+    const isButton = event.target.classList.contains("dropbtn");
+    if (!isButton) {
+      document.querySelectorAll(".dropdown-content").forEach(dropdown => {
+        dropdown.style.display = "none";
+      });
+    }
+  });
+
+  document.querySelectorAll(".dropbtn").forEach(button => {
+    button.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const dropdown = this.nextElementSibling;
+      const isOpen = dropdown.style.display === "block";
+
+      // Fecha todos
+      document.querySelectorAll(".dropdown-content").forEach(d => d.style.display = "none");
+
+      // Abre se não estava aberto
+      if (!isOpen) {
+        dropdown.style.display = "block";
+      }
+    });
+  });
+
+</script>

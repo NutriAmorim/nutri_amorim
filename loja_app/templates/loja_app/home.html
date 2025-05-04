@@ -1,0 +1,138 @@
+{% extends 'loja_app/base.html' %}
+{% load static %}
+
+{% block title %}Página Inicial{% endblock %}
+
+{% block content %}
+
+<div class="banner-rotativo">
+  <div class="slides">
+    <div class="slide ativo">
+      <img src="{% static 'img/banner_nutri.png' %}" alt="Banner 1">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri1.png' %}" alt="Banner 2">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri2.png' %}" alt="Banner 3">
+    </div>
+    <div class="slide">
+      <img src="{% static 'img/banner_nutri3.png' %}" alt="Banner 4">
+    </div>
+  </div>
+</div>
+
+<!-- Botões -->
+<button class="botao-banner botao-anterior">&#10094;</button>
+<button class="botao-banner botao-proximo">&#10095;</button>
+
+ <div class="indicadores">
+   <span class="indicador ativo"></span>
+   <span class="indicador"></span>
+   <span class="indicador"></span>
+   <span class="indicador"></span>
+ </div>
+</div>
+
+<script>
+  let slideIndex = 0;
+  const slides = document.querySelector('.slides');
+  const indicators = document.querySelectorAll('.indicador');
+  const totalSlides = document.querySelectorAll('.slide').length;
+
+  function showSlide(index) {
+    if (index >= totalSlides) slideIndex = 0;
+    if (index < 0) slideIndex = totalSlides - 1;
+    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+    indicators.forEach((dot, i) => {
+      dot.classList.toggle('ativo', i === slideIndex);
+    });
+  }
+
+  document.querySelector('.botao-proximo').addEventListener('click', () => {
+    slideIndex++;
+    showSlide(slideIndex);
+  });
+
+  document.querySelector('.botao-anterior').addEventListener('click', () => {
+    slideIndex--;
+    showSlide(slideIndex);
+  });
+
+  indicators.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      slideIndex = i;
+      showSlide(slideIndex);
+    });
+  });
+
+  // Auto-slide
+  setInterval(() => {
+    slideIndex++;
+    showSlide(slideIndex);
+  }, 5000); // troca a cada 5 segundos
+
+  // Iniciar na primeira imagem
+  showSlide(slideIndex);
+</script>
+
+<h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
+<p class="descricao-principal">
+  Transforme sua saúde através da nutrição alcalina, funcional e esportiva, aliada ao poder da fitoterapia.
+</p>
+
+<div class="imagens-container">
+  
+  <!-- Seção Dieta Alcalina -->
+  <div class="imagem-section">
+    <h2 class="subtitulo">Dieta Alcalina</h2>
+    <img src="{% static 'img/dieta_alcalina_IA.png' %}" alt="Dieta Alcalina" class="imagem-grande" loading="lazy" />
+    <p class="texto-justificado">
+      A Nutrição Alcalina baseia-se na ideia de que uma alimentação rica em alimentos alcalinizantes, como frutas, vegetais e legumes, pode contribuir para o equilíbrio do pH corporal, promovendo saúde e bem-estar...
+    </p>
+
+    <h3 class="subsubtitulo">Alimentos Alcalinizantes e Acidificantes</h3>
+    <p class="texto-justificado">
+      Os alimentos considerados alcalinizantes incluem frutas, vegetais, legumes e oleaginosas...
+    </p>
+
+    <h3 class="subsubtitulo">Benefícios Potenciais</h3>
+    <p class="texto-justificado">
+      A Nutrição Alcalina pode trazer benefícios como a redução de inflamações, melhora na saúde óssea...
+    </p>
+  </div>
+
+  <!-- Seção Nutrição Esportiva -->
+  <div class="imagem-section">
+    <h2 class="subtitulo">Nutrição Esportiva</h2>
+    <img src="{% static 'img/nutricao_esportiva2_IA.png' %}" alt="Nutrição Esportiva" class="imagem-grande" loading="lazy" />
+    <p class="destaque">Objetivo da Nutrição Esportiva</p>
+    <p class="texto-justificado">
+      A Nutrição Esportiva tem como objetivo potencializar o desempenho físico, otimizar a recuperação muscular...
+    </p>
+
+    <h3 class="subsubtitulo">Alimentos Essenciais para o Desempenho</h3>
+    <p class="texto-justificado">
+      Para alcançar resultados excepcionais, a dieta de um atleta ou modelo deve ser composta por alimentos que favoreçam a construção muscular...
+    </p>
+
+    <h3 class="subsubtitulo">Benefícios da Nutrição Esportiva</h3>
+    <p class="texto-justificado">
+      A Nutrição Esportiva contribui significativamente para a melhoria do desempenho atlético...
+    </p>
+  </div>
+
+  <!-- Seção Nutrição Funcional -->
+  <div class="imagem-section">
+    <h2 class="subtitulo">Nutrição Funcional</h2>
+    <img src="{% static 'img/nutricao_funcional1_IA.png' %}" alt="Nutrição Funcional" class="imagem-grande" loading="lazy" />
+    <p class="texto-justificado">
+      A <strong>Nutrição Funcional</strong> é uma abordagem da alimentação que visa promover o equilíbrio do organismo e prevenir doenças...
+    </p>
+    <p class="texto-justificado">
+      Com o uso de alimentos funcionais, que são ricos em compostos bioativos, é possível promover a saúde de forma preventiva e eficaz...
+    </p>
+  </div>
+</div>
+
+{% endblock %}

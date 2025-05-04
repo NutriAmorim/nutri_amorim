@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #728f7f;
+            margin-bottom: 1em;
+        }
+
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 0.8em;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #728f7f;
+            color: white;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #728f7f;
+        }
+
+        .message {
+            color: red;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .button {
+            width: 100%; /* Garantindo que todos os botões tenham a mesma largura */
+            padding: 0.8em;
+            background-color: #728f7f;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #728f7f;
+        }
+
+        /* Remover o sublinhado nos botões dentro de links */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Login</h1>
+        
+        {% if messages %}
+            <div class="message">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Username..." name="username" required>
+            <input type="password" placeholder="Senha..." name="senha" required>
+            <input type="submit" value="Logar">
+        </form>
+
+        <!-- Botão para criar conta -->
+        <a href="{% url 'cadastro' %}">
+            <button class="button">Criar Conta</button>
+        </a>
+
+        <!-- Botão de voltar ao início -->
+        <a href="{% url 'home' %}">
+            <button class="button">Voltar ao Início</button>
+        </a>
+    </div>
+
+</body>
+</html>
