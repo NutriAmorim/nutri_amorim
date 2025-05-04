@@ -1,0 +1,113 @@
+{% extends 'base.html' %}  {# Este arquivo herda o layout base definido no base.html #}
+
+{% block content %}  {# Início do bloco de conteúdo que será inserido no template base #}
+  <h1 style="text-align: center; margin-bottom: 40px;">Normas e Regulamentos</h1>
+
+  <!-- BLOCO 1 - PDF: Código de Ética do Nutricionista -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Código de Ética do Nutricionista</h3>
+    
+    <!-- Mostra o PDF na tela com margens personalizadas -->
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/codigo-de-etica-do-nutricionista.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <!-- Botão de Download -->
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/codigo-de-etica-do-nutricionista.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 - PDF: Guia Alimentar da População Brasileira -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Guia Alimentar da População Brasileira</h3>
+    
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/ebook-guia-alimentar-da-população-brasileira.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/ebook-guia-alimentar-da-população-brasileira.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+
+  <!-- BLOCO 3 - PDF: Exercício Ilegal da Profissão -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Exercício Ilegal da Profissão</h3>
+    
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/exercicio-ilegal-da-profissao.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/exercicio-ilegal-da-profissao.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+
+  <!-- BLOCO 4 - PDF: Tabela de Honorários 2024 -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Tabela de Honorários 2024</h3>
+    
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/tabela-de-honorarios-2024.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/tabela-de-honorarios-2024.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+{% endblock %}  {# Fim do bloco de conteúdo #}
+
+{% block extra_styles %}
+  <style>
+    /* Estilo para o botão de download */
+    .btn-download {
+      display: inline-block;
+      padding: 20px 40px !important;
+      margin: 20px 0;
+      background-color: #A8D08D !important;
+      color: black !important;
+      text-align: center;
+      text-decoration: none !important;
+      border-radius: 30px;
+      font-weight: bold;
+      border: none;
+      font-size: 22px !important;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-download:hover {
+      background-color: #8CCF74 !important;
+      transform: scale(1.1);
+    }
+
+    h3 {
+      margin-bottom: 20px;
+    }
+  </style>
+{% endblock %}

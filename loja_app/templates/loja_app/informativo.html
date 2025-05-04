@@ -1,0 +1,94 @@
+{% extends 'base.html' %}  {# Este arquivo herda o layout base definido no base.html #}
+
+{% block content %}  {# Início do bloco de conteúdo que será inserido no template base #}
+  <h1 style="text-align: center; margin-bottom: 40px;">Receitas Medicinais E-books</h1>
+
+  <!-- BLOCO 1 - PDF: Abcesso - Definição e Causas -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Abcesso - Definição e Causas</h3>
+    
+    <!-- Mostra o PDF na tela com margens personalizadas -->
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/Abcesso-Definicao-e-Causas.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <!-- Botão de Download -->
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/Abcesso-Definicao-e-Causas.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+
+  <!-- BLOCO 2 - PDF: Ácidos e Álcalis -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Ácidos e Álcalis: Uma Introdução</h3>
+    
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/Acidos-e-Alcalis-Uma-Introducao.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/Acidos-e-Alcalis-Uma-Introducao.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+
+  <!-- BLOCO 3 - PDF: Frutas que Combatem o Ácido Úrico -->
+  <div style="margin-bottom: 40px;">
+    <h3 style="color: #5FA052; text-align: center;">Frutas que Combatem o Ácido Úrico</h3>
+    
+    <div style="padding-left: 2cm; padding-right: 1.5cm;">
+      <embed src="/static/pdf/Frutas-que-Combatem-o-Acido-Urico.pdf"
+             width="100%"
+             height="500px"
+             type="application/pdf"
+             style="margin-bottom: 20px; display: block;">
+    </div>
+    
+    <div style="text-align: center;">
+      <button class="btn-download" onclick="window.location.href='/static/pdf/Frutas-que-Combatem-o-Acido-Urico.pdf'">
+        Faça o Download do E-book
+      </button>
+    </div>
+  </div>
+{% endblock %}  {# Fim do bloco de conteúdo #}
+
+{% block extra_styles %}
+  <style>
+/* Estilo para o botão de download */
+.btn-download {
+  display: inline-block;             /* Mostra o botão em linha com outros elementos */
+  padding: 20px 40px !important;     /* Ajuste do espaçamento interno (botão maior e proporcional) */
+  margin: 20px 0;                    /* Margem externa maior acima e abaixo */
+  background-color: #A8D08D !important;  /* Cor de fundo do botão */
+  color: black !important;           /* Cor do texto do botão */
+  text-align: center;                /* Centraliza o texto */
+  text-decoration: none !important;  /* Remove sublinhado */
+  border-radius: 30px;               /* Bordas arredondadas */
+  font-weight: bold;                 /* Texto em negrito */
+  border: none;                      /* Remove borda padrão */
+  font-size: 22px !important;        /* Ajuste do tamanho da fonte */
+  cursor: pointer;                  /* Cursor de clique */
+  transition: background-color 0.3s ease, transform 0.2s ease;  /* Efeitos suaves ao passar o mouse */
+}
+
+.btn-download:hover {
+  background-color: #8CCF74 !important;  /* Cor ao passar o mouse */
+  transform: scale(1.1);                  /* Aumentei o tamanho no hover */
+}
+
+h3 {
+  margin-bottom: 20px;  /* Espaço abaixo dos títulos */
+}
+ </style>
+{% endblock %}

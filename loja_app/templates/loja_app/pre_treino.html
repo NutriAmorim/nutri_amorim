@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pre Treino - Loja Nutri</title>
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+
+    <main>
+        <h1>Pre Treino Loja Nutri</h1>
+
+        {% comment %} Lista de Produtos {% endcomment %}
+        <section class="produtos-container">
+            <!-- Produto 1 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook1.jpg' %}" alt="Abcesso - Definição e Causas" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Abcesso - Definição e Causas</h2>
+                    <p><strong>Preço:</strong> R$ 19,90</p>
+                    <p>Este ebook aborda as principais causas e definições sobre abcessos e suas implicações na saúde.</p>
+                    <a href="{% static 'pdf/Abcesso-Definicao-e-Causas.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Abcesso - Definição e Causas', 19.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 2 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook2.jpg' %}" alt="Ácidos e Alcalis - Uma Introdução" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Ácidos e Alcalis - Uma Introdução</h2>
+                    <p><strong>Preço:</strong> R$ 24,90</p>
+                    <p>Entenda os conceitos básicos de ácidos e alcalis e sua importância na alimentação.</p>
+                    <a href="{% static 'pdf/Acidos-e-Alcalis-Uma-Introducao.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 24.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 3 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook3.jpg' %}" alt="Código de Ética do Nutricionista" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Código de Ética do Nutricionista</h2>
+                    <p><strong>Preço:</strong> R$ 15,90</p>
+                    <p>Este ebook detalha o código de ética que rege a profissão de nutricionista.</p>
+                    <a href="{% static 'pdf/codigo-de-etica-do-nutricionista.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Código de Ética do Nutricionista', 15.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 4 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook4.jpg' %}" alt="Guia Alimentar da População Brasileira" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Guia Alimentar da População Brasileira</h2>
+                    <p><strong>Preço:</strong> R$ 39,90</p>
+                    <p>Conheça as diretrizes alimentares para uma vida saudável e balanceada.</p>
+                    <a href="{% static 'pdf/ebook-guia-alimentar-da-populacao-brasileira.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Guia Alimentar da População Brasileira', 39.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 5 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook5.jpg' %}" alt="Exercício Ilegal da Profissão" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Exercício Ilegal da Profissão</h2>
+                    <p><strong>Preço:</strong> R$ 29,90</p>
+                    <p>Este ebook discute as implicações do exercício ilegal da profissão de nutricionista.</p>
+                    <a href="{% static 'pdf/exercicio-ilegal-da-profissao.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Exercício Ilegal da Profissão', 29.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 6 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook6.jpg' %}" alt="Frutas que Combatem o Ácido Úrico" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Frutas que Combatem o Ácido Úrico</h2>
+                    <p><strong>Preço:</strong> R$ 19,90</p>
+                    <p>Aprenda sobre as frutas que ajudam a combater o ácido úrico e promovem a saúde.</p>
+                    <a href="{% static 'pdf/Frutas-que-Combatem-o-Acido-Urico.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Frutas que Combatem o Ácido Úrico', 19.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+
+            <!-- Produto 7 -->
+            <article class="produto-item">
+                <img src="{% static 'img/ebook7.jpg' %}" alt="Tabela de Honorários 2024" class="produto-imagem">
+                <div class="produto-info">
+                    <h2>Tabela de Honorários 2024</h2>
+                    <p><strong>Preço:</strong> R$ 9,90</p>
+                    <p>Este ebook traz a tabela de honorários atualizada para profissionais de nutrição em 2024.</p>
+                    <a href="{% static 'pdf/tabela-de-honorarios-2024.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                    <button onclick="adicionarAoCarrinho('Tabela de Honorários 2024', 9.90)">Adicionar ao Carrinho</button>
+                </div>
+            </article>
+        </section>
+
+        <script>
+            function adicionarAoCarrinho(produto, preco) {
+                alert(`${produto} foi adicionado ao carrinho! Preço: R$ ${preco.toFixed(2)}`);
+            }
+        </script>
+    </main>
+{% endblock %}

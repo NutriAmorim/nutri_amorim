@@ -1,0 +1,999 @@
+/* Centraliza título e define cor */
+.titulo-principal {
+  color: #728f7f;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 0px;
+}
+
+.descricao-principal {
+  text-align: center;  /* Centraliza o texto */
+  margin: 0 20px;      /* Adiciona margens laterais para espaçamento (ajuste conforme necessário) */
+  font-size: 18px;     /* Ajuste o tamanho da fonte, se necessário */
+  color: #000000;      /* Cor do texto */
+  max-width: 100%;      /* Limita a largura máxima para que o texto não ocupe toda a tela */
+  margin-left: auto;   /* Centraliza o conteúdo dentro do contêiner */
+  margin-right: auto;  /* Centraliza o conteúdo dentro do contêiner */
+}
+
+/* Seções de conteúdo */
+.imagem-section {
+  text-align: center; /* Ajustado para centralizar o conteúdo */
+  padding: 20px;
+}
+
+/* Subtítulos */
+.subtitulo {
+  color: #728f7f;
+  font-size: 32px;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: bold;
+  margin-bottom: 10px; /* Espaçamento inferior */
+}
+
+.subsubtitulo {
+  color: #728f7f;
+  font-size: 24px;
+  text-align: center;  /* Centraliza o texto */
+  margin-top: 20px;  /* Espaçamento superior */
+  margin-bottom: 10px;  /* Espaçamento inferior */
+  font-weight: bold;
+  width: 100%;  /* Garante que o texto ocupe toda a largura disponível */
+  display: block;  /* Faz o título se comportar como um bloco, ajudando na centralização */
+}
+
+/* Contêiner de Imagens */
+.imagens-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Parágrafos */
+.texto-justificado {
+  text-align: justify;
+  margin: 20px auto;
+  max-width: 900px; /* controla largura máxima da leitura */
+  padding: 0 20px; /* espaço interno para não colar nas bordas */
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Destaque */
+.destaque {
+  color: #728f7f;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Imagens */
+.imagem-grande {
+  display: block;
+  margin: 0 auto;
+  max-width: 90%; /* Diminuir o tamanho da imagem */
+  height: auto;
+  border-radius: 20px; /* Bordas mais arredondadas */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Estilos para o corpo da página */
+body {
+  font-family: Arial, sans-serif; /* Define a fonte do corpo da página como Arial, com uma alternativa sans-serif */
+  margin: 0; /* Remove a margem padrão do navegador, evitando espaços desnecessários ao redor da página */
+  padding: 0; /* Remove o padding padrão, garantindo que não haja espaços extras ao redor do conteúdo */
+  box-sizing: border-box; /* Faz com que padding e bordas sejam incluídos nas dimensões totais dos elementos */
+  display: block; /* Garante que o corpo da página seja tratado como um bloco */
+  justify-content: center; /* Centraliza os itens no eixo horizontal */
+  align-items: center; /* Centraliza os itens no eixo vertical (usado quando o body é flex container) */
+  min-height: 100vh; /* Define a altura mínima da página como 100% da altura da janela de visualização (viewport) */
+  background-color: #f4f4f4; /* Define a cor de fundo da página como um cinza claro */
+  overflow-x: hidden; /* Remove a rolagem horizontal da página */
+}
+
+.banner-rotativo {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%; /* 4 imagens */
+  height: 100%;
+}
+
+.slide {
+  flex: 1 0 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.botao-banner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.4);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.botao-anterior {
+  left: 10px;
+}
+
+.botao-proximo {
+  right: 10px;
+}
+
+/* Indicadores (bolinhas) */
+.indicadores {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.indicador {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.indicador.ativo {
+  background-color: #fff;
+}
+/* Efeito de troca automática */
+@keyframes slideBanner {
+  0% { transform: translateX(0%); }
+  20% { transform: translateX(0%); }
+
+  25% { transform: translateX(-100%); }
+  45% { transform: translateX(-100%); }
+
+  50% { transform: translateX(-200%); }
+  70% { transform: translateX(-200%); }
+
+  75% { transform: translateX(-300%); }
+  95% { transform: translateX(-300%); }
+
+  100% { transform: translateX(0%); }
+}
+
+
+/* Topbar */
+.topbar {
+  background-color: #728f7f; /* Cor verde suave */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.topbar .logo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.topbar .search-box {
+  flex: 1; /* A barra de pesquisa vai ocupar o espaço restante */
+  display: flex;
+  margin: 0 20px;
+  justify-content: center; /* Centraliza o input dentro da search-box */
+  margin-right: 10px; /* Espaço entre a barra de pesquisa e o botão */
+  margin-right: 10px; /* Margem direita */
+}
+
+
+.topbar .search-box input {
+  width: 50%;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 24px;
+}
+
+.topbar .auth-button button {
+  background-color: white;
+  color: #728f7f; /* Cor verde suave */
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Estilo da topbar */
+.topbar {
+  background-color: #728f7f; /* Define a cor de fundo da topbar (verde acinzentado) */
+  padding: 10px 20px;        /* Espaçamento interno: 10px acima/abaixo, 20px esquerda/direita */
+  color: white;              /* Cor do texto na topbar: branco */
+  font-size: 18px;           /* Tamanho da fonte do texto: 18 pixels */
+  display: flex;             /* Usa flexbox para organizar os elementos da topbar */
+  justify-content: space-between; /* Espaça os itens para ocuparem extremos (esquerda e direita) */
+  align-items: center;       /* Alinha os itens verticalmente ao centro */
+}
+
+/* Subtopbar principal */
+.subtopbar {
+  background-color: #dae6df;  /* Cor de fundo da subtopbar */
+  height: auto;  /* Altura ajustada automaticamente com base no conteúdo */
+  width: 100%;  /* Largura ocupa toda a largura da página */
+  display: flex;  /* Utiliza o layout flexbox para organizar os itens */
+  justify-content: center;  /* Centraliza os itens horizontalmente */
+  align-items: center;  /* Alinha os itens verticalmente no centro */
+  border-bottom: 2px solid #ccc;  /* Adiciona uma borda inferior de 2px, cor cinza clara */
+  margin-top: 100px;  /* Espaço de 90px acima da subtopbar */
+  padding: 10px 0;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
+  gap: 10px;  /* Espaço de 20px entre os itens dentro da subtopbar */
+  z-index: 999;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
+  position: relative;  /* Define a posição relativa para possibilitar o posicionamento absoluto de elementos filhos */
+}
+
+/* Lista de botões */
+.subtopbar-links {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-subtopbar li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.menu-subtopbar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+.subtopbar-menu li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.subtopbar-menu .icon {          /* Seleciona os elementos com a classe 'icon' dentro de '.subtopbar-menu' */
+  width: 32px;                  /* Define a largura da imagem ou ícone como 22 pixels */
+  height: 32px;                 /* Define a altura da imagem ou ícone como 22 pixels */
+  margin-right: 7px;            /* Adiciona um espaço de 8 pixels à direita (entre o ícone e o texto, por exemplo) */
+  object-fit: contain;          /* Faz a imagem se ajustar ao tamanho definido sem cortar ou distorcer */
+}
+
+.menu-icon {
+  width: 32px !important;
+  height: 32px !important;
+  object-fit: contain;
+}
+
+/* Botões padrão e dropdown */
+.subtopbar-links a,
+.dropbtn {
+  display: flex;   /* Exibe o conteúdo em linha (ícone + texto) */
+  align-items: center;  /* Alinha verticalmente ícone e texto ao centro */
+  gap: 7px; /* Espaço entre o ícone e o texto */
+  color: black;  /* Cor do texto */
+  padding: 12px 24px;  /* Espaçamento interno (vertical 10px, horizontal 16px) */
+  font-size: 14px;  /* Tamanho da fonte do texto */
+  font-weight: bold;  /* Deixa o texto em negrito */
+  text-decoration: none;  /* Remove sublinhado de links */
+  border: none;   /* Remove a borda padrão do botão */
+  border-radius: 4px;  /* Arredonda os cantos do botão */
+  cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
+  transition: background-color 0.3s ease,  /* Animação suave da cor de fundo ao passar o mouse */
+              transform 0.2s ease;         /* Animação de leve elevação ao passar o mouse */
+}
+
+/* Hover moderno */
+.subtopbar-links a:hover,
+.dropbtn:hover {
+  background-color: whitesmoke; /* Cor de fundo dos botões */
+  transform: scale(1.03);
+}
+
+/* Dropdown */
+.dropdown-left,
+.dropdown-right {
+  position: relative;
+}
+
+/* Conteúdo do menu suspenso */
+.dropdown-content {
+  display: none; /* Esconde o menu até que seja ativado com JavaScript ou :hover */
+  position: absolute; /* Posiciona em relação ao botão pai */
+  top: 100%; /* Coloca logo abaixo do botão */
+  left: 0; /* Alinha à esquerda do botão */
+  background-color: white; /* Fundo branco */
+  min-width: 220px; /* Largura mínima */
+  max-height: 300px; /* Altura máxima */
+  overflow-y: auto; /* Se tiver muitos itens, ativa rolagem vertical */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra suave ao redor */
+  z-index: 1000; /* Garante que fique acima de outros elementos */
+  flex-direction: column; /* (não afeta sem display: flex) organiza em coluna */
+  border-radius: 4px; /* Cantos arredondados */
+}
+
+.dropdown-content a {
+  padding: 10px 16px; /* Espaçamento interno de cada item */
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: black; /* Cor do texto */
+  display: block; /* Cada link ocupa uma linha inteira */
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1; /* Fundo muda ao passar o mouse (efeito hover) */
+}
+
+/* Ativação do dropdown */
+.dropdown-left.active .dropdown-content,
+.dropdown-right.active .dropdown-content {
+  display: block;
+}
+
+.sidebar-auth button {
+  background-color: white;
+  color: #728f7f;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 70%; /* Ou outro valor que você quiser */
+  margin: 0 auto; /* Essa linha centraliza o botão */
+  display: block; /* Botão como bloco pra aceitar margin auto */
+  text-align: center;
+}
+
+.sidebar-auth button:hover {
+  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+}
+
+.sidebar {
+  width: 280px !important;
+  background-color: #728f7f;
+  color: white;
+  padding: 20px 0;
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: -100vh;/* Inicialmente fora da tela */
+  left: -280px; /* Fora da tela inicialmente */
+  transition: top 0.3s ease;/* Suaviza a transição */
+  z-index: 999;
+  overflow-y: auto;
+  
+  /* NOVO: Organização interna */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+/* Quando estiver visível */
+.sidebar.show {
+  top: 60px; /* Desce abaixo da topbar (que tem 60px de altura) */
+}
+
+.sidebar ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  display: block;
+  cursor: pointer;
+  margin-left: 5px; /* Espaço à esquerda */
+  margin-right: 15px; /* Espaço à direita */
+}
+.inicio-link {
+  margin-left: 20px; /* Só o "Início" vai andar mais para a direita */
+}
+
+
+/* Hover em links */
+.sidebar a:hover {
+  text-decoration: underline;
+}
+
+/* Submenu oculto por padrão */
+.sidebar ul ul {
+  padding-left: 15px;
+  display: none;
+}
+
+/* Quando o submenu estiver visível */
+.sidebar ul ul.show {
+  display: block;
+}
+
+.toggle::after {
+  content: " ▼";
+  font-size: 12px;
+}
+
+.toggle.closed::after {
+  content: " ▶";
+}
+
+/* Main content */
+.content {
+  margin-left: 280px;
+  margin-top: 80px;
+  padding: 20px;
+}
+/* Regras de Mídia */
+
+/* Para telas menores que 768px (dispositivos móveis) */
+@media (max-width: 768px) {
+  body {
+    background-color: white;/* Exemplo de mudança para dispositivos móveis */
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    width: 280px; /* Tamanho fixo para todos os dispositivos */
+    left: -220px;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
+  .menu-icon {
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
+    margin-top: 25px; /* Adiciona uma margem superior */
+  }
+
+  /* Exibe a sidebar-auth apenas em dispositivos móveis */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em dispositivos móveis */
+  }
+
+  /* Esconde o botão da topbar em dispositivos móveis */
+  .topbar .auth-button {
+    display: none;
+  }
+
+  .subtopbar {
+    display: none; /* Remove a subtopbar no mobile */
+  }
+
+}
+
+/* Para telas entre 768px e 1024px (tablets) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .content {
+    margin-left: 0; /* Remove o espaço à esquerda */
+  }
+
+  body {
+    background-color: white; /* Exemplo de mudança para tablets */
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* Exibe o ícone de hambúrguer apenas em tablets */
+  .menu-icon {
+    display: block; /* Exibe o ícone de hambúrguer no mobile */
+  }
+
+  /* Exibe a sidebar-auth apenas em tablets */
+  .sidebar-auth {
+    display: block; /* Mostra os botões em tablets */
+  }
+
+  /* Esconde o botão da topbar em tablets */
+  .topbar .auth-button {
+    display: none;
+  }
+/* Ajuste para a largura da sidebar em tablets */
+  .sidebar {
+    width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .cart-card {
+    display: none; /* Oculta o card "Meu Carrinho" no mobile */
+  }
+
+}
+
+/* Para telas maiores que 1024px (desktops) */
+@media (min-width: 1025px) {  
+  body {
+    background-color: white; /* Exemplo de mudança para desktops */
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Esconde a sidebar inicialmente no desktop */
+  .sidebar {
+    position: fixed;
+    top: 80px;
+    left: -280px; /* Inicialmente fora da tela */
+    height: calc(100vh - 60px);
+    width: 280px;
+    transition: left 0.3s ease; /* Suaviza a animação de entrada */
+    z-index: 2; /* Coloca atrás da topbar inicialmente */
+  }
+
+  /* Exibe o botão da topbar apenas em desktops */
+  .topbar .auth-button {
+    display: block;
+  }
+
+  /* Esconde a sidebar-auth em desktops */
+  .sidebar-auth {
+    display: none;
+  }
+      
+  /* Quando a sidebar estiver visível (aberta), ela fica com left: 0 */
+  .sidebar.show {
+    left: 0;  /* Sidebar entra na tela */
+    z-index: 999; /* Coloca a sidebar sobre a topbar */
+  }
+ 
+  .content {
+    margin-left: 0;
+  }
+
+  .banner {
+    margin-top: 0; /* Garantir que o banner fique sem margem superior em telas menores */
+  }
+}
+
+/* Estilização padrão para todos os títulos das páginas */
+h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
+  color: #728f7f; /* Verde padrão */
+  font-weight: bold;
+}
+
+/* Estilo padrão para textos */
+p, .texto-justificado, .descricao-principal {
+  color: #000000; /* Preto padrão */
+}
+
+/* Espaçamento entre filtros do menu na sidebar */
+.sidebar ul ul li {
+  margin-bottom: 10px; /* Espaço entre itens */
+  
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.card {
+  background-color: #f5f5f5;
+  border-left: 5px solid #728f7f; /* verde-mata */
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #728f7f;
+  font-size: 1.3rem;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.btn-download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  background-color: #728f7f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-download:hover {
+  background-color: #728f7f;
+}
+
+/* Menu hambúrguer */
+.menu-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bar {
+  height: 4px;
+  width: 100%;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 2px;
+}
+
+.menu-icon.open .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar2 {
+  opacity: 0;
+}
+
+.menu-icon.open .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Mostrar o botão de hambúrguer apenas em telas pequenas */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+    width: 30px;     /* Defina a largura fixa para o botão */
+    height: 30px;    /* Defina a altura fixa para o botão */
+    position: absolute; /* Para posicionar corretamente */
+    top: 10px;       /* Alinhe o botão no topo, se necessário */
+    left: 10px;      /* Alinhe o botão à esquerda, se necessário */
+    z-index: 1000;   /* Certifique-se de que o botão está acima da sidebar */
+  }
+
+  /* Garantir que as barras do botão não se sobreponham */
+  .menu-icon .bar {
+    width: 100%;      /* Garantir que as barras ocupem 100% da largura */
+    height: 4px;      /* Defina uma altura para as barras */
+    margin: 4px 0;    /* Adiciona espaçamento entre as barras */
+    background-color: #fff; /* A cor das barras do hambúrguer */
+    transition: 0.3s ease; /* Adiciona transição suave */
+  }
+}
+  .logo-img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain; /* mantém a proporção e evita distorção */
+    margin: 10px auto;   /* centraliza verticalmente e adiciona espaço */
+    display: block;
+}
+
+  .logo-nome {
+    text-align: center;
+    color: white; /* ou a cor que preferir */
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+}
+
+.toggle {
+    display: block;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #2d2d2d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.toggle:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+
+.submenu li a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 8px 15px;
+    display: block;
+}
+
+.submenu li a:hover {
+    text-decoration: none; /* Garante que não haverá sublinhado */
+    background-color: transparent;
+    color: white; /* A cor do texto permanece branca */
+}
+.sidebar a {
+  text-decoration: none !important; /* Remove sublinhado de todos os links da sidebar */
+  color: white; /* Mantém a cor branca */
+}
+
+.sidebar a:hover {
+  text-decoration: none !important; /* Garante que não sublinhe no hover também */
+  background-color: transparent; /* Sem fundo ao passar o mouse */
+  color: white; /* Mantém branco ao passar o mouse */
+}
+
+.produtos {
+  grid-template-columns: 1fr; /* 1 produto por linha em telas pequenas */
+}
+/* Responsividade da Sidebar */
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas médias */
+  }
+}
+
+@media (max-width: 992px) {
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas menores */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px !important; /* Ajuste ainda menor para tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 280px !important; /* Sidebar ocupa toda a largura para dispositivos móveis */
+    position: fixed; /* Ajusta a posição para ser não fixa */
+  }
+}
+
+/* Estilo para o link "Início" */
+.sidebar a:first-child {
+  font-weight: bold; /* Torna o texto em negrito */
+}
+
+/* Estilo da aba (popup) */
+.cart-dropdown {
+  display: none; /* Inicialmente oculta */
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background-color: #f0efef;
+  border: 1px solid #ccc;
+  padding: 15px;
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 100;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.cart-dropdown.show {
+  display: block; /* Exibe a aba quando a classe 'show' é adicionada */
+}
+
+.cart-dropdown button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #728f7f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-dropdown button:hover {
+  background-color: #728f7f;
+}
+
+.pagina-produtos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px; /* Largura máxima ajustada */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.produtos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centraliza os itens horizontalmente */
+  gap: 20px;
+}
+
+.produto-item {
+  background-color: #f9f9f9; /* Fundo mais claro para o produto */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 250px; /* Aumentei a largura para 300px */
+  height: 420px; /* Ajuste a altura conforme necessário */
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Animação suave ao passar o mouse */
+}
+
+.produto-item:hover {
+  transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+}
+
+/* Imagem do produto */
+.produto-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.produto-item h3 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.produto-item p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.produto-item button {
+  background-color: #91cf9f; /* Cor de fundo mais chamativa */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.produto-item button:hover {
+  background-color: #218838; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilo do botão "Ir às Compras" */
+.acoes-carrinho a button {
+  background-color: red; /* Cor de fundo vermelha */
+  color: white; /* Cor do texto branca */
+  border: none; /* Remove a borda */
+  padding: 10px 20px; /* Espaçamento dentro do botão */
+  margin: 10px; /* Espaço ao redor do botão */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Indica que o botão é clicável */
+}
+
+.acoes-carrinho a button:hover {
+  background-color: darkred; /* Cor do fundo ao passar o mouse */
+}
+
+/* Estilos para o botão "Continuar Comprando" */
+.btn-continuar {
+  background-color: #5cb85c;
+  color: white;
+}
+
+/* Estilos para o botão "Finalizar Compra" */
+.btn-finalizar {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+/* Adicionando uma regra global para garantir que a página ocupe 100% da altura */
+html, body {
+  height: 100%;
+  margin: 0; /* Remove as margens padrão */
+  padding: 0; /* Remove os preenchimentos padrões */
+}
+
+#content {
+  min-height: 100vh; /* Garante que o conteúdo ocupe 100% da altura da tela */
+  padding: 20px;
+  box-sizing: border-box; /* Inclui o padding no cálculo da altura */
+}
+
+/* Estilo para a página "Sobre Mim" */
+.sobre-mim {
+  width: 100%; /* Página ocupa toda a largura */
+  min-height: 100vh; /* Garantir que ocupe toda a altura da tela */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+.sobre-mim h1 {
+  text-align: center;
+  color: #728f7f;
+}
+
+.sobre-mim .perfil {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 5px solid #728f7f;
+  margin: 20px auto;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Adicionando um pouco de espaçamento aos textos */
+.sobre-mim p {
+  text-align: left;
+  margin-bottom: 20px; /* Espaço entre os parágrafos */
+}
+
+.sobre-mim h3 {
+  color: #728f7f;
+}
