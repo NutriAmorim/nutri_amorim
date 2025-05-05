@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'loja_app',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -68,12 +69,8 @@ WSGI_APPLICATION = 'loja_nutri.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'default_db_name'),
-        'USER': os.getenv('DB_USER', 'default_db_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'default_db_password'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
