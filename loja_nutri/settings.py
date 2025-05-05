@@ -14,7 +14,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default_secret_key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['nutri-amorim.onrender.com','nutriamorim.com.br', 'www.nutriamorim.com.br']
+ALLOWED_HOSTS = ['nutri-amorim.onrender.com','nutriamorim.com.br', 'www.nutriamorim.com.br', '127.0.0.1']
 
 
 # Application definition
