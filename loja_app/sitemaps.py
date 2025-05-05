@@ -1,14 +1,12 @@
-# loja_app/sitemaps.py
 from django.contrib.sitemaps import Sitemap
-from .models import Produto  # Supondo que você tenha um modelo Produto
-from django.urls import reverse
+from .models import Produto
 
 class ProdutoSitemap(Sitemap):
-    def items(self):
-        return Produto.objects.all()  # Ou outro modelo relevante
+    changefreq = "weekly"
+    priority = 0.9
 
-    def lastmod(self, obj):
-        return obj.modified  # Modificado recentemente, ou outro campo relevante
+    def items(self):
+        return Produto.objects.all()
 
     def location(self, obj):
-        return reverse('produto_detail', args=[obj.pk])  # Ajuste conforme necessário
+        return f"/produto/{obj.slug}/"
