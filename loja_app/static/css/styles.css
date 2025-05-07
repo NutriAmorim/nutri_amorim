@@ -882,7 +882,6 @@ main {
   border: 1px solid #ddd;
   border-radius: 20px;
   width: 250px;
-  height: auto;
   text-align: center;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -890,6 +889,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse */
 }
 
 /* Efeito ao passar o mouse */
@@ -911,11 +911,13 @@ main {
   margin: 8px 0;
   font-size: 1.2rem;
   color: #333;
+  word-wrap: break-word; /* Quebra palavras longas */
 }
 
 .produto-item p {
   font-size: 0.95rem;
   color: #666;
+  word-wrap: break-word; /* Evita estouro de palavras */
 }
 
 /* Botões */
@@ -929,6 +931,21 @@ main {
   margin: 5px;
   transition: background-color 0.3s ease;
   width: 100%; /* Botão ocupa toda a largura */
+}
+
+/* Botões */
+.produto-item a, .produto-item button {
+  background-color: #91cf9f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px 0;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove sublinhado do link */
+  display: block;
+  width: 100%; /* Garante que o botão ocupe toda a largura */
 }
 
 .produto-item button:hover {
