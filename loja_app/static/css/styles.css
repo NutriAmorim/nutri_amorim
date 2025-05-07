@@ -865,28 +865,37 @@ main {
   padding: 20px;
 }
 
+/* Container dos produtos */
 .produtos-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centraliza os itens horizontalmente */
+  justify-content: center; /* Centraliza os produtos dentro do container */
   gap: 20px;
+  margin: 0 auto; /* Centraliza o próprio container na página */
+  max-width: 1200px; /* Limita a largura para centralizar */
+  padding: 20px; /* Espaçamento interno */
 }
 
+/* Estilo do produto */
 .produto-item {
-  background-color: #f9f9f9; /* Fundo mais claro para o produto */
+  background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 20px;
-  width: 250px; /* Aumentei a largura para 300px */
-  height: 420px; /* Ajuste a altura conforme necessário */
+  width: 250px;
+  height: auto;
   text-align: center;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease; /* Animação suave ao passar o mouse */
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+/* Efeito ao passar o mouse */
 .produto-item:hover {
-  transform: translateY(-10px); /* Efeito de elevação ao passar o mouse */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Sombra mais forte ao passar o mouse */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Imagem do produto */
@@ -897,58 +906,71 @@ main {
   margin-bottom: 10px;
 }
 
-.produto-item h3 {
-  margin: 10px 0;
-  font-size: 1.1rem;
+/* Título e descrição */
+.produto-item h2 {
+  margin: 8px 0;
+  font-size: 1.2rem;
   color: #333;
 }
 
 .produto-item p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #666;
 }
 
+/* Botões */
 .produto-item button {
-  background-color: #91cf9f; /* Cor de fundo mais chamativa */
+  background-color: #91cf9f;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: background-color 0.3s ease; /* Transição suave */
+  margin: 5px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Botão ocupa toda a largura */
 }
 
 .produto-item button:hover {
-  background-color: #218838; /* Cor mais escura ao passar o mouse */
+  background-color: #218838;
 }
 
-/* Estilo do botão "Ir às Compras" */
-.acoes-carrinho a button {
-  background-color: red; /* Cor de fundo vermelha */
-  color: white; /* Cor do texto branca */
-  border: none; /* Remove a borda */
-  padding: 10px 20px; /* Espaçamento dentro do botão */
-  margin: 10px; /* Espaço ao redor do botão */
-  border-radius: 5px; /* Bordas arredondadas */
-  font-size: 16px; /* Tamanho da fonte */
-  cursor: pointer; /* Indica que o botão é clicável */
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .produtos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .produto-item {
+    width: 90%; /* Ocupa quase toda a largura da tela */
+    margin: 10px 0;
+  }
+
+  .produto-item button {
+    width: 100%; /* Botões totalmente responsivos */
+  }
 }
 
-.acoes-carrinho a button:hover {
-  background-color: darkred; /* Cor do fundo ao passar o mouse */
+.produto-item button:hover {
+  background-color: #218838;
 }
 
-/* Estilos para o botão "Continuar Comprando" */
-.btn-continuar {
-  background-color: #5cb85c;
-  color: white;
-}
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .produtos-container {
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Estilos para o botão "Finalizar Compra" */
-.btn-finalizar {
-  background-color: #f0ad4e;
-  color: white;
+  .produto-item {
+    width: 90%; /* Ocupa quase toda a largura da tela */
+    margin: 10px 0;
+  }
+
+  .produto-item button {
+    width: 100%; /* Botões totalmente responsivos */
+  }
 }
 
 /* Adicionando uma regra global para garantir que a página ocupe 100% da altura */
