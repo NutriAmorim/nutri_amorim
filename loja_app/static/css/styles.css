@@ -865,6 +865,14 @@ main {
   padding: 20px;
 }
 
+/* Garante que o conteúdo não ultrapasse o contêiner */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
 /* Container dos produtos */
 .produtos-container {
   display: flex;
