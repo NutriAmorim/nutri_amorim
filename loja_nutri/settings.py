@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -69,11 +70,14 @@ WSGI_APPLICATION = 'loja_nutri.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', 'nutri_site_db'),  # Nome do banco
+        'USER': os.getenv('DB_USER', 'nutri_site_db_user'),  # Nome de usuário
+        'PASSWORD': os.getenv('DB_PASSWORD', 'lzRUFtWMCQBUtXyTcv1lz0xRiAXGqspz'),  # Senha
+        'HOST': os.getenv('DB_HOST', 'dpg-d0bvrbpr0fns73dtoukg-a.oregon-postgres.render.com'),  # Host
+        'PORT': os.getenv('DB_PORT', '5432'),  # Porta
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
