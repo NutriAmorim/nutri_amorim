@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" />
   <title>Nutri Amorim</title>
 </head>
 <body>
@@ -294,28 +295,6 @@
     // Chama a função para configurar a visibilidade inicial da sidebar
     adjustSidebarForScreenSize();
 
-    // Seleciona o ícone do carrinho e o dropdown
-const cartIcon = document.querySelector('.cart-icon');
-const cartDropdown = document.getElementById('cartDropdown');
-
-// Função para mostrar a aba quando passar o mouse sobre o ícone
-cartIcon.addEventListener('mouseover', () => {
-  cartDropdown.classList.add('show'); // Mostra a aba
-});
-
-// Função para esconder a aba quando o mouse sair do ícone ou da aba
-cartIcon.addEventListener('mouseout', () => {
-  cartDropdown.classList.remove('show'); // Esconde a aba
-});
-
-// Se o usuário passar o mouse sobre a própria aba do carrinho, a aba deve continuar visível
-cartDropdown.addEventListener('mouseover', () => {
-  cartDropdown.classList.add('show'); // Mostra a aba
-});
-
-cartDropdown.addEventListener('mouseout', () => {
-  cartDropdown.classList.remove('show'); // Esconde a aba
-});
 
 // Função para redirecionar o usuário para a página de produtos
 function irAsCompras() {

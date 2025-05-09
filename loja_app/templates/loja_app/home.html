@@ -22,58 +22,74 @@
   </div>
 </div>
 
-<!-- Botões -->
-<button class="botao-banner botao-anterior">&#10094;</button>
-<button class="botao-banner botao-proximo">&#10095;</button>
+<div class="controle-banner">
+  <button class="botao-banner botao-anterior">&#10094;</button>
+  <button class="botao-banner botao-proximo">&#10095;</button>
 
- <div class="indicadores">
-   <span class="indicador ativo"></span>
-   <span class="indicador"></span>
-   <span class="indicador"></span>
-   <span class="indicador"></span>
- </div>
+  <!-- Indicadores -->
+  <div class="indicadores">
+    <span class="indicador ativo"></span>
+    <span class="indicador"></span>
+    <span class="indicador"></span>
+    <span class="indicador"></span>
+  </div>
 </div>
 
 <script>
-  let slideIndex = 0;
-  const slides = document.querySelector('.slides');
-  const indicators = document.querySelectorAll('.indicador');
-  const totalSlides = document.querySelectorAll('.slide').length;
+  document.addEventListener('DOMContentLoaded', function() {
+    let slideIndex = 0;
+    const slides = document.querySelector('.slides');
+    const indicators = document.querySelectorAll('.indicador');
+    const totalSlides = document.querySelectorAll('.slide').length;
 
-  function showSlide(index) {
-    if (index >= totalSlides) slideIndex = 0;
-    if (index < 0) slideIndex = totalSlides - 1;
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-    indicators.forEach((dot, i) => {
-      dot.classList.toggle('ativo', i === slideIndex);
-    });
-  }
+    function showSlide(index) {
+      if (index >= totalSlides) slideIndex = 0;
+      if (index < 0) slideIndex = totalSlides - 1;
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+      indicators.forEach((dot, i) => {
+        dot.classList.toggle('ativo', i === slideIndex);
+      });
+    }
 
-  document.querySelector('.botao-proximo').addEventListener('click', () => {
-    slideIndex++;
+    function setupEventListeners() {
+      const botaoProximo = document.querySelector('.botao-proximo');
+      const botaoAnterior = document.querySelector('.botao-anterior');
+
+      // Verificar se os botões existem antes de adicionar o EventListener
+      if (botaoProximo) {
+        botaoProximo.addEventListener('click', () => {
+          slideIndex++;
+          showSlide(slideIndex);
+        });
+      }
+
+      if (botaoAnterior) {
+        botaoAnterior.addEventListener('click', () => {
+          slideIndex--;
+          showSlide(slideIndex);
+        });
+      }
+
+      indicators.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          slideIndex = i;
+          showSlide(slideIndex);
+        });
+      });
+
+      // Auto-slide (troca a cada 5 segundos)
+      setInterval(() => {
+        slideIndex++;
+        showSlide(slideIndex);
+      }, 5000);
+    }
+
+    // Garantir que os botões estejam prontos antes de configurar os eventos
+    setupEventListeners();
+
+    // Iniciar na primeira imagem
     showSlide(slideIndex);
   });
-
-  document.querySelector('.botao-anterior').addEventListener('click', () => {
-    slideIndex--;
-    showSlide(slideIndex);
-  });
-
-  indicators.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      slideIndex = i;
-      showSlide(slideIndex);
-    });
-  });
-
-  // Auto-slide
-  setInterval(() => {
-    slideIndex++;
-    showSlide(slideIndex);
-  }, 5000); // troca a cada 5 segundos
-
-  // Iniciar na primeira imagem
-  showSlide(slideIndex);
 </script>
 
 <h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
@@ -86,7 +102,7 @@
   <!-- Seção Dieta Alcalina -->
   <div class="imagem-section">
     <h2 class="subtitulo">Dieta Alcalina</h2>
-    <img src="{% static 'img/dieta_alcalina_IA.png' %}" alt="Dieta Alcalina" class="imagem-grande" loading="lazy" />
+    <img src="{% static 'img/dieta_alcalina_IA.png' %}" alt="Dieta Alcalina" class="imagem-grande" />
     <p class="texto-justificado">
       A Nutrição Alcalina baseia-se na ideia de que uma alimentação rica em alimentos alcalinizantes, como frutas, vegetais e legumes, pode contribuir para o equilíbrio do pH corporal, promovendo saúde e bem-estar...
     </p>
@@ -105,7 +121,7 @@
   <!-- Seção Nutrição Esportiva -->
   <div class="imagem-section">
     <h2 class="subtitulo">Nutrição Esportiva</h2>
-    <img src="{% static 'img/nutricao_esportiva2_IA.png' %}" alt="Nutrição Esportiva" class="imagem-grande" loading="lazy" />
+    <img src="{% static 'img/nutricao_esportiva2_IA.png' %}" alt="Nutrição Esportiva" class="imagem-grande" />
     <p class="destaque">Objetivo da Nutrição Esportiva</p>
     <p class="texto-justificado">
       A Nutrição Esportiva tem como objetivo potencializar o desempenho físico, otimizar a recuperação muscular...
@@ -125,7 +141,7 @@
   <!-- Seção Nutrição Funcional -->
   <div class="imagem-section">
     <h2 class="subtitulo">Nutrição Funcional</h2>
-    <img src="{% static 'img/nutricao_funcional1_IA.png' %}" alt="Nutrição Funcional" class="imagem-grande" loading="lazy" />
+    <img src="{% static 'img/nutricao_funcional1_IA.png' %}" alt="Nutrição Funcional" class="imagem-grande" />
     <p class="texto-justificado">
       A <strong>Nutrição Funcional</strong> é uma abordagem da alimentação que visa promover o equilíbrio do organismo e prevenir doenças...
     </p>
