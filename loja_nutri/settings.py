@@ -21,6 +21,7 @@ ALLOWED_HOSTS = ['nutri-amorim.onrender.com','nutriamorim.com.br', 'www.nutriamo
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sitemaps',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,7 +30,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'loja_app',
-    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

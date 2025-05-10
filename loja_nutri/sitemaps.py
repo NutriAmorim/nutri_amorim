@@ -6,13 +6,19 @@ class StaticViewSitemap(Sitemap):
     changefreq = 'daily'
 
     def items(self):
+        # Utilize os nomes das rotas exatamente como definidos no arquivo urls.py
         return [
-            'home',                    # Página inicial do app principal
-            'usuarios:login',          # Página de login (namespace: usuarios)
-            'usuarios:logout',         # Página de logout (namespace: usuarios)
-            'sobre_mim',               # Página "Sobre Mim"
-            'conheca_nosso_trabalho',   # Página "Conheça Nosso Trabalho"
+            'home',             # Página inicial
+            'login',            # Página de login
+            'cadastro',         # Página de cadastro
+            'painel',           # Página de painel
+            'logout',           # Página de logout
+            'plataforma',       # Página de plataforma
         ]
 
     def location(self, item):
-        return reverse(item)
+        try:
+            return reverse(item)
+        except Exception as e:
+            print(f"Erro ao reverter a URL para o item '{item}': {e}")
+            return '/'
