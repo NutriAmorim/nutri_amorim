@@ -93,10 +93,10 @@ body {
 }
 
 .banner-rotativo {
-  position: relative;
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
+  width: 100%;        /* Largura total da tela */
+  height: 450px;      /* Altura fixa para desktop */
+  max-width: 1920px;  /* Limite máximo de largura */
+  object-fit: cover;  /* Garante o preenchimento sem distorção */
 }
 
 .slides {
@@ -494,6 +494,12 @@ body {
     width: 100%;  /* O conteúdo ocupa 100% da largura disponível */
     padding-left: 0;  /* Garante que não haja padding extra */
   }
+
+  .banner-rotativo {
+    width: 100%;    /* Largura total da tela */
+    height: 150px;   /* Altura reduzida para mobile */
+  }
+
 }
 
   /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
@@ -570,7 +576,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
   }
-  
+
   /* Esconde a sidebar inicialmente no desktop */
   .sidebar {
     position: fixed;
@@ -600,10 +606,6 @@ body {
  
   .content {
     margin-left: 0;
-  }
-
-  .banner {
-    margin-top: 0; /* Garantir que o banner fique sem margem superior em telas menores */
   }
 }
 
