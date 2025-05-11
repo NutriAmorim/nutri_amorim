@@ -466,7 +466,7 @@ body {
   body {
     margin: 0; /* Remove qualquer margem padrão do body */
     padding: 0; /* Remove qualquer padding padrão do body */
-    background-color: gray; /* Exemplo de mudança para dispositivos móveis */
+    background-color: whitesmoke; /* Exemplo de mudança para dispositivos móveis */
   }
 
   /* Remove margens e padding da .container */
