@@ -462,33 +462,41 @@ body {
   margin-top: 80px;
   padding: 20px;
 }
-/* Regras de Mídia */
 
 /* Para telas menores que 768px (dispositivos móveis) */
 @media (max-width: 768px) {
   body {
-    background-color: white;/* Exemplo de mudança para dispositivos móveis */
+    margin: 0; /* Remove qualquer margem padrão do body */
+    padding: 0; /* Remove qualquer padding padrão do body */
+    background-color: gray; /* Exemplo de mudança para dispositivos móveis */
   }
 
+  /* Remove margens e padding da .container */
   .container {
-    max-width: 100%;
-    padding: 10px;
+    width: 100%;  /* Ocupa 100% da largura da tela */
+    margin: 0;  /* Remove qualquer margem extra */
+    padding: 0;  /* Remove qualquer padding extra */
+    box-sizing: border-box;  /* Garante que padding e border não aumentem o tamanho total */
   }
 
+  /* Sidebar */
   .sidebar {
     position: fixed;
-    width: 280px; /* Tamanho fixo para todos os dispositivos */
-    left: -220px;
+    width: 280px; /* Largura fixa da sidebar */
+    left: -220px;  /* Sidebar escondida inicialmente */
     transition: left 0.3s ease;
   }
 
   .sidebar.show {
-    left: 0;
+    left: 0;  /* Sidebar visível quando a classe "show" for adicionada */
   }
 
   .content {
-    margin-left: 0;
+    margin-left: 0;  /* Remove qualquer margem esquerda da sidebar */
+    width: 100%;  /* O conteúdo ocupa 100% da largura disponível */
+    padding-left: 0;  /* Garante que não haja padding extra */
   }
+}
 
   /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
   .menu-icon {
@@ -509,8 +517,6 @@ body {
   .subtopbar {
     display: none; /* Remove a subtopbar no mobile */
   }
-
-}
 
 /* Para telas entre 768px e 1024px (tablets) */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -777,9 +783,6 @@ p, .texto-justificado, .descricao-principal {
   color: white; /* Mantém branco ao passar o mouse */
 }
 
-.produtos {
-  grid-template-columns: 1fr; /* 1 produto por linha em telas pequenas */
-}
 /* Responsividade da Sidebar */
 @media (max-width: 1200px) {
   .sidebar {
