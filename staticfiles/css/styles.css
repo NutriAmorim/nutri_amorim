@@ -1,9 +1,9 @@
 /* Centraliza título e define cor */
 .titulo-principal {
-  color: #728f7f;
-  text-align: center;
-  margin: 0 auto;
-  margin-top: 0px;
+  color: #728f7f;        /* Define a cor do texto usando um código hexadecimal. */
+  text-align: center;    /* Centraliza o texto horizontalmente dentro de seu contêiner. */
+  margin: 0 auto;        /* Define as margens superior/inferior como 0 e as laterais para auto, centralizando o bloco. */
+  margin-top: 0px;       /* Remove qualquer margem superior, deixando o topo encostado. */
 }
 
 .descricao-principal {
@@ -18,64 +18,64 @@
 
 /* Seções de conteúdo */
 .imagem-section {
-  text-align: center; /* Ajustado para centralizar o conteúdo */
-  padding: 20px;
+  text-align: center; /* Centraliza o conteúdo de texto dentro do elemento. */
+  padding: 20px;      /* Adiciona um espaço interno (acolchoamento) de 20 pixels ao redor do conteúdo. */
 }
 
 /* Subtítulos */
 .subtitulo {
-  color: #728f7f;
-  font-size: 32px;
-  text-align: center;
-  margin: 0 auto;
-  font-weight: bold;
-  margin-bottom: 10px; /* Espaçamento inferior */
+  color: #728f7f;       /* Define a cor do texto usando um código hexadecimal. */
+  font-size: 32px;      /* Define o tamanho da fonte como 32 pixels. */
+  text-align: center;   /* Centraliza o texto horizontalmente dentro de seu contêiner. */
+  margin: 0 auto;       /* Define as margens superior/inferior como 0 e as laterais para auto, centralizando o bloco. */
+  font-weight: bold;    /* Define a espessura da fonte como negrito. */
+  margin-bottom: 10px;  /* Adiciona um espaço de 10 pixels abaixo do elemento. */
 }
 
 .subsubtitulo {
-  color: #728f7f;
-  font-size: 24px;
-  text-align: center;  /* Centraliza o texto */
-  margin-top: 20px;  /* Espaçamento superior */
-  margin-bottom: 10px;  /* Espaçamento inferior */
-  font-weight: bold;
-  width: 100%;  /* Garante que o texto ocupe toda a largura disponível */
-  display: block;  /* Faz o título se comportar como um bloco, ajudando na centralização */
+  color: #728f7f;       /* Define a cor do texto usando um código hexadecimal. */
+  font-size: 24px;      /* Define o tamanho da fonte como 24 pixels. */
+  text-align: center;   /* Centraliza o texto horizontalmente dentro de seu contêiner. */
+  margin-top: 20px;     /* Adiciona um espaço de 20 pixels acima do elemento. */
+  margin-bottom: 10px;  /* Adiciona um espaço de 10 pixels abaixo do elemento. */
+  font-weight: bold;    /* Define a espessura da fonte como negrito. */
+  width: 100%;          /* Garante que o elemento ocupe toda a largura do contêiner. */
+  display: block;       /* Faz o elemento se comportar como um bloco, garantindo quebra de linha. */
 }
 
 /* Contêiner de Imagens */
 .imagens-container {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  padding: 20px;
+  display: flex;            /* Define um contêiner flexível para organizar os elementos filhos. */
+  flex-direction: column;   /* Organiza os elementos filhos na vertical, formando uma coluna. */
+  gap: 50px;                /* Adiciona um espaçamento de 50 pixels entre os elementos filhos. */
+  padding: 20px;            /* Adiciona um espaço interno (acolchoamento) de 20 pixels ao redor do contêiner. */
 }
 
 /* Parágrafos */
 .texto-justificado {
-  text-align: justify;
-  margin: 20px auto;
-  max-width: 900px; /* controla largura máxima da leitura */
-  padding: 0 20px; /* espaço interno para não colar nas bordas */
-  line-height: 1.6;
-  color: #333;
+  text-align: justify;   /* Alinha o texto dos dois lados, ajustando o espaçamento entre palavras. */
+  margin: 20px auto;     /* Define 20 pixels de margem acima e abaixo, centralizando o bloco horizontalmente. */
+  max-width: 900px;      /* Limita a largura máxima do bloco a 900 pixels para melhor leitura. */
+  padding: 0 20px;       /* Adiciona 20 pixels de espaço interno (acolchoamento) nas laterais, evitando que o texto grude nas bordas. */
+  line-height: 1.6;      /* Aumenta o espaçamento entre as linhas para melhorar a legibilidade. */
+  color: #333;           /* Define a cor do texto como um tom de cinza escuro (#333). */
 }
 
 /* Destaque */
 .destaque {
-  color: #728f7f;
-  font-weight: bold;
-  text-align: center;
+  color: #728f7f;       /* Define a cor do texto como um tom de verde (#728f7f). */
+  font-weight: bold;    /* Deixa o texto em negrito para destacá-lo. */
+  text-align: center;   /* Centraliza o texto horizontalmente dentro do contêiner. */
 }
 
 /* Imagens */
 .imagem-grande {
-  display: block;
-  margin: 0 auto;
-  max-width: 90%; /* Diminuir o tamanho da imagem */
-  height: auto;
-  border-radius: 20px; /* Bordas mais arredondadas */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  display: block;          /* Faz a imagem se comportar como um bloco, ocupando toda a largura disponível. */
+  margin: 0 auto;          /* Centraliza a imagem horizontalmente dentro do contêiner. */
+  max-width: 90%;          /* Define a largura máxima da imagem como 90% do contêiner, mantendo a proporção. */
+  height: auto;            /* Ajusta a altura automaticamente para manter a proporção da imagem. */
+  border-radius: 20px;     /* Deixa as bordas arredondadas com um raio de 20 pixels. */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve para destacar a imagem. */
 }
 
 /* Estilos para o corpo da página */
@@ -100,129 +100,129 @@ body {
 }
 
 .slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  width: 400%; /* 4 imagens */
-  height: 100%;
+  display: flex;                         /* Define um contêiner flexível para alinhar os elementos filhos em linha. */
+  transition: transform 0.5s ease-in-out; /* Suaviza a transformação (como movimentação ou rotação) com duração de 0,5 segundos. */
+  width: 400%;                           /* Define a largura do contêiner como 400% (útil para carrosséis com 4 imagens). */
+  height: 100%;                          /* Faz o contêiner ocupar toda a altura do elemento pai. */
 }
 
 .slide {
-  flex: 1 0 100%;
-  height: 100%;
+  flex: 1 0 100%;  /* Permite que cada slide ocupe 100% da largura do contêiner flexível. */
+  height: 100%;    /* Garante que o slide ocupe toda a altura disponível. */
 }
 
 .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 100%;       /* A imagem ocupa toda a largura do slide. */
+  height: 100%;      /* A imagem ocupa toda a altura do slide. */
+  object-fit: cover; /* Ajusta a imagem para cobrir todo o espaço, cortando se necessário. */
 }
 
 .botao-banner {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.4);
-  border: none;
-  color: white;
-  font-size: 2rem;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 2;
+  position: absolute;                /* Posiciona o botão de forma fixa dentro do contêiner. */
+  top: 50%;                         /* Centraliza verticalmente o botão. */
+  transform: translateY(-50%);       /* Ajusta para realmente ficar centralizado no eixo Y. */
+  background-color: rgba(0,0,0,0.4); /* Fundo preto semitransparente para destaque. */
+  border: none;                     /* Remove a borda do botão. */
+  color: white;                     /* Define a cor do texto como branca. */
+  font-size: 2rem;                  /* Tamanho da fonte aumentado para visibilidade. */
+  padding: 10px;                    /* Espaçamento interno para melhor toque/clique. */
+  cursor: pointer;                  /* Ícone de ponteiro ao passar o mouse. */
+  z-index: 2;                       /* Garante que o botão fique acima dos slides. */
 }
 
 .botao-anterior {
-  left: 10px;
+  left: 10px; /* Posiciona o botão anterior à esquerda. */
 }
 
 .botao-proximo {
-  right: 10px;
+  right: 10px; /* Posiciona o botão próximo à direita. */
 }
 
 /* Indicadores (bolinhas) */
 .indicadores {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 3;
+  position: absolute;                /* Posicionamento fixo na parte inferior do carrossel. */
+  bottom: 10px;                     /* Distância da parte inferior. */
+  left: 50%;                        /* Centraliza horizontalmente. */
+  transform: translateX(-50%);       /* Ajusta para ficar realmente centralizado no eixo X. */
+  display: flex;                    /* Alinha os indicadores em linha. */
+  gap: 8px;                         /* Espaçamento entre as bolinhas. */
+  z-index: 3;                       /* Fica acima do slide para ser visível. */
 }
 
 .indicador {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
+  width: 12px;                      /* Define a largura da bolinha. */
+  height: 12px;                     /* Define a altura da bolinha. */
+  border-radius: 50%;               /* Torna a bolinha completamente redonda. */
+  background-color: rgba(255, 255, 255, 0.5); /* Cor branca semitransparente. */
+  cursor: pointer;                  /* Ícone de ponteiro ao passar o mouse. */
 }
 
 .indicador.ativo {
-  background-color: #fff;
+  background-color: #fff; /* Cor branca sólida para indicar o slide ativo. */
 }
 
 /* Efeito de troca automática */
 @keyframes slideBanner {
-  0% { transform: translateX(0%); }
-  20% { transform: translateX(0%); }
+  0% { transform: translateX(0%); }    /* Início da animação: a posição é 0% (imagem atual). */
+  20% { transform: translateX(0%); }   /* A posição permanece a mesma entre 0% e 20%. */
 
-  25% { transform: translateX(-100%); }
-  45% { transform: translateX(-100%); }
+  25% { transform: translateX(-100%); } /* Muda a posição para o próximo slide (-100%). */
+  45% { transform: translateX(-100%); } /* A posição permanece até 45%. */
 
-  50% { transform: translateX(-200%); }
-  70% { transform: translateX(-200%); }
+  50% { transform: translateX(-200%); } /* Move para o próximo slide (-200%). */
+  70% { transform: translateX(-200%); } /* Mantém a posição até 70%. */
 
-  75% { transform: translateX(-300%); }
-  95% { transform: translateX(-300%); }
+  75% { transform: translateX(-300%); } /* Move para o próximo slide (-300%). */
+  95% { transform: translateX(-300%); } /* A posição permanece até 95%. */
 
-  100% { transform: translateX(0%); }
+  100% { transform: translateX(0%); }   /* Retorna para o slide inicial (0%). */
 }
 
 /* Topbar */
 .topbar {
-  background-color: #728f7f; /* Cor verde suave */
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 80px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
+  background-color: #728f7f;   /* Cor verde suave para o fundo da topbar. */
+  color: white;                /* Cor do texto da topbar (branco). */
+  padding: 10px 20px;          /* Espaçamento interno (10px em cima/embaixo, 20px nas laterais). */
+  display: flex;               /* Usa flexbox para alinhar os itens dentro da topbar. */
+  align-items: center;         /* Alinha os itens verticalmente no centro. */
+  justify-content: space-between; /* Espaço igual entre os itens (logo e outros componentes). */
+  height: 100px;                /* Define a altura da topbar como 80px. */
+  position: fixed;             /* Fixa a topbar no topo da tela. */
+  top: 0;                      /* Posiciona a topbar no topo da página. */
+  left: 0;                     /* Alinha a topbar ao lado esquerdo. */
+  right: 0;                    /* Alinha a topbar ao lado direito. */
+  z-index: 10;               /* Garante que a topbar fique acima de outros elementos. */
 }
 
 .topbar .logo {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 20px;             /* Define o tamanho da fonte do logo como 20px. */
+  font-weight: bold;           /* Deixa o logo em negrito. */
 }
 
 .topbar .search-box {
-  flex: 1; /* A barra de pesquisa vai ocupar o espaço restante */
-  display: flex;
-  margin: 0 20px;
-  justify-content: center; /* Centraliza o input dentro da search-box */
-  margin-right: 10px; /* Espaço entre a barra de pesquisa e o botão */
+  flex: 1;                     /* Faz com que a barra de pesquisa ocupe o espaço restante. */
+  display: flex;               /* Usa flexbox para alinhar o conteúdo dentro da search-box. */
+  margin: 0 20px;              /* Define margem nas laterais da search-box (20px). */
+  justify-content: center;     /* Centraliza o input dentro da search-box. */
+  margin-right: 10px;          /* Adiciona um pequeno espaço à direita do botão de pesquisa. */
 }
 
 .topbar .search-box input {
-  width: 50%;
-  padding: 8px;
-  border: none;
-  border-radius: 5px;
-  font-size: 24px;
+  width: 50%;                  /* Define a largura do input de pesquisa como 50% da largura disponível. */
+  padding: 8px;                /* Adiciona 8px de espaço interno no input. */
+  border: none;                /* Remove a borda do input. */
+  border-radius: 5px;          /* Deixa os cantos do input arredondados com raio de 5px. */
+  font-size: 24px;             /* Define o tamanho da fonte do input como 24px. */
 }
 
 .topbar .auth-button button {
-  background-color: white;
-  color: #728f7f; /* Cor verde suave */
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: white;     /* Fundo branco para o botão de autenticação. */
+  color: #728f7f;              /* Cor verde suave para o texto do botão. */
+  border: none;                /* Remove a borda do botão. */
+  padding: 8px 12px;           /* Define o espaçamento interno (8px em cima/embaixo, 12px nas laterais). */
+  border-radius: 5px;          /* Arredonda os cantos do botão com raio de 5px. */
+  cursor: pointer;             /* Altera o cursor para um ponteiro ao passar o mouse. */
+  font-weight: bold;           /* Deixa o texto do botão em negrito. */
 }
 
 /* Estilo da topbar */
@@ -239,17 +239,26 @@ body {
 /* Subtopbar principal */
 .subtopbar {
   background-color: #dae6df;  /* Cor de fundo da subtopbar */
-  height: auto;  /* Altura ajustada automaticamente com base no conteúdo */
+  height: 90px;  /* Altura fixa de 60px */
   width: 100%;  /* Largura ocupa toda a largura da página */
   display: flex;  /* Utiliza o layout flexbox para organizar os itens */
+  flex-direction: row;  /* Garante que os itens fiquem dispostos horizontalmente */
   justify-content: center;  /* Centraliza os itens horizontalmente */
   align-items: center;  /* Alinha os itens verticalmente no centro */
   border-bottom: 2px solid #ccc;  /* Adiciona uma borda inferior de 2px, cor cinza clara */
-  margin-top: 100px;  /* Espaço de 90px acima da subtopbar */
+  margin-top: 90px;  /* Espaço de 90px acima da subtopbar */
   padding: 10px 0;  /* Espaçamento interno de 8px nas laterais e 16px no topo e fundo */
   gap: 10px;  /* Espaço de 20px entre os itens dentro da subtopbar */
-  z-index: 999;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
+  z-index: 9;  /* Define a sobreposição da subtopbar, acima de outros elementos com z-index menor */
   position: relative;  /* Define a posição como relativa, para poder manipular com o z-index */
+}
+
+/* Lista de botões */
+.subtopbar-links {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 /* Links da Subtopbar */
@@ -266,21 +275,21 @@ body {
 }
 
 .menu-subtopbar a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #000;
-  font-weight: 500;
+  display: flex;                /* Usa flexbox para alinhar os itens dentro do link. */
+  align-items: center;          /* Alinha o conteúdo verticalmente no centro. */
+  text-decoration: none;        /* Remove o sublinhado do link. */
+  color: #000;                  /* Define a cor do texto como preta. */
+  font-weight: 500;             /* Define o peso da fonte como 500 (semibold). */
 }
 
 .subtopbar-menu li a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  display: flex;                /* Usa flexbox para alinhar os itens dentro do link. */
+  align-items: center;          /* Alinha o conteúdo verticalmente no centro. */
+  text-decoration: none;        /* Remove o sublinhado do link. */
+  color: black;                 /* Define a cor do texto como preta. */
+  font-size: 16px;              /* Define o tamanho da fonte como 16px. */
+  font-weight: 500;             /* Define o peso da fonte como 500 (semibold). */
+  transition: all 0.3s ease;    /* Aplica uma transição suave de 0.3s para todas as propriedades. */
 }
 
 .subtopbar-menu .icon {          /* Seleciona os elementos com a classe 'icon' dentro de '.subtopbar-menu' */
@@ -291,9 +300,9 @@ body {
 }
 
 .menu-icon {
-  width: 32px !important;
-  height: 32px !important;
-  object-fit: contain;
+  width: 32px !important;       /* Define a largura do ícone como 32px, com prioridade. */
+  height: 32px !important;      /* Define a altura do ícone como 32px, com prioridade. */
+  object-fit: contain;          /* Garante que o ícone seja ajustado para se manter dentro do seu container sem distorcer a imagem. */
 }
 
 /* Botões padrão e dropdown */
@@ -317,14 +326,14 @@ body {
 /* Hover moderno */
 .subtopbar-links a:hover,
 .dropbtn:hover {
-  background-color: whitesmoke; /* Cor de fundo dos botões */
-  transform: scale(1.03);
+  background-color: whitesmoke; /* Muda a cor de fundo para "whitesmoke" quando o botão ou link é hovered. */
+  transform: scale(1.03);        /* Aplica um efeito de escala, aumentando o tamanho do item em 3% ao passar o mouse. */
 }
 
 /* Dropdown */
 .dropdown-left,
 .dropdown-right {
-  position: relative;
+  position: relative;            /* Define a posição dos elementos de dropdown como "relative", permitindo o posicionamento de itens dentro deles. */
 }
 
 /* Conteúdo do menu suspenso */
@@ -357,48 +366,48 @@ body {
 /* Ativação do dropdown */
 .dropdown-left.active .dropdown-content,
 .dropdown-right.active .dropdown-content {
-  display: block;
+  display: block; /* Torna o conteúdo do dropdown visível quando a classe "active" é adicionada. */
 }
 
 .sidebar-auth button {
-  background-color: white;
-  color: #728f7f;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  width: 70%; /* Ou outro valor que você quiser */
-  margin: 0 auto; /* Essa linha centraliza o botão */
-  display: block; /* Botão como bloco pra aceitar margin auto */
-  text-align: center;
+  background-color: white;     /* Define a cor de fundo do botão como branca. */
+  color: #728f7f;              /* Define a cor do texto como verde suave. */
+  border: none;                /* Remove a borda do botão. */
+  padding: 8px 12px;           /* Define o preenchimento interno do botão. */
+  border-radius: 5px;          /* Aplica bordas arredondadas no botão. */
+  cursor: pointer;            /* Muda o cursor para indicar que o botão é clicável. */
+  font-weight: bold;           /* Define o texto do botão em negrito. */
+  width: 70%;                  /* Define a largura do botão como 70% do seu container. */
+  margin: 0 auto;              /* Centraliza o botão horizontalmente. */
+  display: block;              /* Define o botão como um bloco para que o margin: auto funcione. */
+  text-align: center;          /* Centraliza o texto dentro do botão. */
 }
 
 .sidebar-auth button:hover {
-  background-color: #e0e0e0; /* Cor de fundo ao passar o mouse */
+  background-color: #e0e0e0;   /* Muda a cor de fundo para um cinza claro quando o botão é hovered. */
 }
 
 .sidebar {
-  width: 280px !important;
-  background-color: #728f7f;
-  color: white;
-  padding: 20px 0;
-  height: calc(100vh - 60px);
-  position: fixed;
-  top: -100vh;/* Inicialmente fora da tela */
-  left: -280px; /* Fora da tela inicialmente */
-  transition: top 0.3s ease;/* Suaviza a transição */
-  z-index: 999;
-  overflow-y: auto;
+  width: 280px !important;      /* Define a largura da sidebar como 280px, com prioridade. */
+  background-color: #728f7f;    /* Define a cor de fundo da sidebar como verde suave. */
+  color: white;                 /* Define a cor do texto como branco. */
+  padding: 20px 0;              /* Adiciona um preenchimento de 20px no topo e no fundo da sidebar. */
+  height: calc(100vh - 60px);    /* A altura da sidebar será 100% da altura da tela, menos 60px. */
+  position: fixed;              /* A sidebar será posicionada de forma fixa na tela. */
+  top: -100vh;                  /* Inicialmente a sidebar ficará fora da tela. */
+  left: -280px;                 /* Inicialmente a sidebar ficará fora da tela (esquerda). */
+  transition: top 0.3s ease;    /* Adiciona uma transição suave ao movimento da sidebar. */
+  z-index: 999;                 /* Coloca a sidebar acima de outros elementos. */
+  overflow-y: auto;             /* Permite rolagem vertical se o conteúdo ultrapassar a altura da sidebar. */
   
   /* NOVO: Organização interna */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: flex;                /* Usa flexbox para organizar os itens dentro da sidebar. */
+  flex-direction: column;       /* Organiza os itens na vertical (em coluna). */
+  justify-content: space-between; /* Espaça uniformemente os itens dentro da sidebar. */
 }
 
 .sidebar.open {
-  left: 0;
+  left: 0;                      /* Quando a sidebar tiver a classe "open", ela será posicionada à esquerda da tela. */
 }
 
 /* Quando estiver visível */
@@ -407,58 +416,58 @@ body {
 }
 
 .sidebar ul {
-  list-style: none;
-  padding-left: 0;
+  list-style: none;        /* Remove os marcadores (bullets) das listas. */
+  padding-left: 0;         /* Remove o preenchimento à esquerda da lista. */
 }
 
 .sidebar li {
-  margin: 10px 0;
+  margin: 10px 0;          /* Adiciona um espaço de 10px acima e abaixo de cada item da lista. */
 }
 
 .sidebar a {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  display: block;
-  cursor: pointer;
-  margin-left: 5px; /* Espaço à esquerda */
-  margin-right: 15px; /* Espaço à direita */
-}
-.inicio-link {
-  margin-left: 20px; /* Só o "Início" vai andar mais para a direita */
+  color: white;            /* Define a cor do texto do link como branca. */
+  text-decoration: none;   /* Remove o sublinhado padrão dos links. */
+  font-size: 16px;         /* Define o tamanho da fonte dos links como 16px. */
+  display: block;          /* Faz com que o link ocupe toda a largura do seu container. */
+  cursor: pointer;        /* Muda o cursor para indicar que o link é clicável. */
+  margin-left: 5px;        /* Adiciona um espaço de 5px à esquerda de cada link. */
+  margin-right: 15px;      /* Adiciona um espaço de 15px à direita de cada link. */
 }
 
+.inicio-link {
+  margin-left: 20px;       /* Move o link "Início" mais para a direita. */
+}
 
 /* Hover em links */
 .sidebar a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Adiciona sublinhado nos links quando o mouse passa por cima. */
 }
 
 /* Submenu oculto por padrão */
 .sidebar ul ul {
-  padding-left: 15px;
-  display: none;
+  padding-left: 15px;         /* Adiciona um espaço à esquerda para o submenu, tornando-o indentado. */
+  display: none;              /* Oculta o submenu por padrão. */
 }
 
 /* Quando o submenu estiver visível */
 .sidebar ul ul.show {
-  display: block;
+  display: block;             /* Exibe o submenu quando a classe "show" é adicionada. */
 }
 
 .toggle::after {
-  content: " ▼";
-  font-size: 12px;
+  content: " ▼";             /* Adiciona o símbolo de seta para baixo (▼) após o texto do item com a classe "toggle". */
+  font-size: 12px;            /* Define o tamanho da fonte da seta como 12px. */
 }
 
 .toggle.closed::after {
-  content: " ▶";
+  content: " ▶";             /* Muda o símbolo para uma seta para a direita (▶) quando o submenu estiver fechado. */
 }
 
 /* Main content */
 .content {
-  margin-left: 280px;
-  margin-top: 80px;
-  padding: 20px;
+  margin-left: 280px;         /* Cria um espaço de 280px à esquerda do conteúdo principal para acomodar a sidebar. */
+  margin-top: 80px;           /* Cria um espaço de 80px no topo do conteúdo principal para não sobrepor a topbar. */
+  padding: 20px;              /* Adiciona um preenchimento de 20px dentro do conteúdo principal. */
 }
 
 /* Para telas menores que 768px (dispositivos móveis) */
@@ -500,27 +509,58 @@ body {
     height: 150px;   /* Altura reduzida para mobile */
   }
 
-}
-
-  /* Exibe o ícone de hambúrguer apenas em dispositivos móveis */
+  /* Menu hambúrguer */
   .menu-icon {
-    display: block; /* Exibe o ícone de hambúrguer no mobile */
-    margin-top: 25px; /* Adiciona uma margem superior */
+    display: block; /* Exibe o botão de hambúrguer em telas menores */
+    width: 30px;     /* Defina a largura fixa para o botão */
+    height: 30px;    /* Defina a altura fixa para o botão */
+    position: absolute; /* Para posicionar corretamente */
+    top: 10px;       /* Alinhe o botão no topo, se necessário */
+    left: 10px;      /* Alinhe o botão à esquerda, se necessário */
+    z-index: 1000;   /* Certifique-se de que o botão está acima da sidebar */
   }
 
-  /* Exibe a sidebar-auth apenas em dispositivos móveis */
-  .sidebar-auth {
-    display: block; /* Mostra os botões em dispositivos móveis */
+  /* Garantir que as barras do botão não se sobreponham */
+  .menu-icon .bar {
+    width: 100%;      /* Garantir que as barras ocupem 100% da largura */
+    height: 4px;      /* Defina uma altura para as barras */
+    margin: 4px 0;    /* Adiciona espaçamento entre as barras */
+    background-color: #fff; /* A cor das barras do hambúrguer */
+    transition: 0.3s ease; /* Adiciona transição suave */
   }
 
-  /* Esconde o botão da topbar em dispositivos móveis */
-  .topbar .auth-button {
-    display: none;
+  /* Animações quando o menu estiver aberto */
+  .menu-icon.open .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);  /* Rotaciona a primeira barra em 45 graus para formar uma "X". */
   }
 
-  .subtopbar {
-    display: none; /* Remove a subtopbar no mobile */
+  .menu-icon.open .bar2 {
+    opacity: 0;                /* Torna a segunda barra invisível. */
   }
+
+  .menu-icon.open .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px); /* Rotaciona a terceira barra em 45 graus para formar a outra parte do "X". */
+  }
+
+  .sidebar {
+    width: 280px !important; /* Ajuste ainda menor para tablets */
+  }
+
+  .produtos-container {
+    flex-direction: column;  /* Organiza os itens em uma coluna (de cima para baixo). */
+    align-items: center;     /* Centraliza os itens horizontalmente dentro do container. */
+  }
+
+  .produto-item {
+    width: 90%; /* Ocupa quase toda a largura da tela */
+    margin: 10px 0;
+  }
+
+  .produto-item button {
+    width: 100%; /* Botões totalmente responsivos */
+  }
+
+}
 
 /* Para telas entre 768px e 1024px (tablets) */
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -551,7 +591,8 @@ body {
   .topbar .auth-button {
     display: none;
   }
-/* Ajuste para a largura da sidebar em tablets */
+
+  /* Ajuste para a largura da sidebar em tablets */
   .sidebar {
     width: 280px !important; /* Ajuste a largura da sidebar conforme necessário */
   }
@@ -564,6 +605,22 @@ body {
     display: none; /* Oculta o card "Meu Carrinho" no mobile */
   }
 
+  .sidebar {
+    width: 280px !important; /* Menor largura para telas menores */
+  }
+
+   .topbar {
+    padding: 10px 10px; /* Menor espaçamento nas laterais da topbar */
+  }
+
+  .search-box input {
+    width: 80%; /* Aumenta o tamanho da barra de pesquisa */
+  }
+
+  .topbar .auth-button button {
+    padding: 6px 8px; /* Menor tamanho do botão de login/cadastro */
+  }
+
 }
 
 /* Para telas maiores que 1024px (desktops) */
@@ -573,8 +630,8 @@ body {
   }
 
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px;  /* Define a largura máxima do container para 1200px. O conteúdo não ultrapassará esse limite. */
+    margin: 0 auto;     /* Centraliza o container horizontalmente na página, definindo margens automáticas nas laterais. */
   }
 
   /* Esconde a sidebar inicialmente no desktop */
@@ -607,104 +664,8 @@ body {
   .content {
     margin-left: 0;
   }
-}
 
-/* Estilização padrão para todos os títulos das páginas */
-h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
-  color: #728f7f; /* Verde padrão */
-  font-weight: bold;
-}
-
-/* Estilo padrão para textos */
-p, .texto-justificado, .descricao-principal {
-  color: #000000; /* Preto padrão */
-}
-
-/* Espaçamento entre filtros do menu na sidebar */
-.sidebar ul ul li {
-  margin-bottom: 10px; /* Espaço entre itens */
-  
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-  padding: 1rem;
-}
-
-.card {
-  background-color: #f5f5f5;
-  border-left: 5px solid #728f7f; /* verde-mata */
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-  transform: scale(1.02);
-}
-
-.card h2 {
-  margin-top: 0;
-  color: #728f7f;
-  font-size: 1.3rem;
-}
-
-.card p {
-  font-size: 1rem;
-  color: #333;
-}
-
-.btn-download {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.6rem 1rem;
-  background-color: #728f7f;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-}
-
-.btn-download:hover {
-  background-color: #728f7f;
-}
-
-/* Menu hambúrguer */
-.menu-icon {
-  cursor: pointer;
-  width: 30px;
-  height: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.bar {
-  height: 4px;
-  width: 100%;
-  background-color: white;
-  transition: 0.4s;
-  border-radius: 2px;
-}
-
-.menu-icon.open .bar1 {
-  transform: rotate(-45deg) translate(-5px, 6px);
-}
-
-.menu-icon.open .bar2 {
-  opacity: 0;
-}
-
-.menu-icon.open .bar3 {
-  transform: rotate(45deg) translate(-5px, -6px);
-}
-
-/* Mostrar o botão de hambúrguer apenas em telas pequenas */
-@media (max-width: 768px) {
+   /* Menu hambúrguer */
   .menu-icon {
     display: block; /* Exibe o botão de hambúrguer em telas menores */
     width: 30px;     /* Defina a largura fixa para o botão */
@@ -723,54 +684,150 @@ p, .texto-justificado, .descricao-principal {
     background-color: #fff; /* A cor das barras do hambúrguer */
     transition: 0.3s ease; /* Adiciona transição suave */
   }
-}
-  .logo-img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain; /* mantém a proporção e evita distorção */
-    margin: 10px auto;   /* centraliza verticalmente e adiciona espaço */
-    display: block;
-}
 
-  .logo-nome {
-    text-align: center;
-    color: white; /* ou a cor que preferir */
-    font-size: 14px;
-    margin-bottom: 10px;
+  /* Animações quando o menu estiver aberto */
+  .menu-icon.open .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);  /* Rotaciona a primeira barra em 45 graus para formar uma "X". */
   }
 
-  .submenu {
-    display: none;
-    list-style: none;
-    padding-left: 20px;
+  .menu-icon.open .bar2 {
+    opacity: 0;                /* Torna a segunda barra invisível. */
+  }
+
+  .menu-icon.open .bar3 {
+    transform: rotate(45deg) translate(-5px, -6px); /* Rotaciona a terceira barra em 45 graus para formar a outra parte do "X". */
+  }
+
+   .sidebar {
+    width: 280px !important; /* Menor largura para telas médias */
+  }
+
 }
 
+  /* Estilização padrão para todos os títulos das páginas */
+h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
+  color: #728f7f; /* Verde padrão */
+  font-weight: bold;
+}
+
+/* Estilo padrão para textos */
+p, .texto-justificado, .descricao-principal {
+  color: #000000; /* Preto padrão */
+}
+
+/* Espaçamento entre filtros do menu na sidebar */
+.sidebar ul ul li {
+  margin-bottom: 10px; /* Espaço entre itens */
+  
+}
+
+/* Estilo para o container de cards */
+.card-container {
+  display: grid; /* Usa grid layout para os cards */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas ajustáveis com um mínimo de 280px e ocupação de 1 fração */
+  gap: 1.5rem; /* Espaço entre os cards */
+  margin-top: 1.5rem; /* Espaço superior para o container */
+  padding: 1rem; /* Espaço interno do container */
+}
+
+/* Estilo para cada card */
+.card {
+  background-color: #f5f5f5; /* Cor de fundo do card */
+  border-left: 5px solid #728f7f; /* Borda verde-mata à esquerda */
+  padding: 1rem; /* Espaço interno do card */
+  border-radius: 12px; /* Bordas arredondadas */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* Sombra suave ao redor do card */
+  transition: transform 0.2s ease-in-out; /* Efeito suave de transição ao passar o mouse */
+}
+
+/* Efeito de transformação ao passar o mouse no card */
+.card:hover {
+  transform: scale(1.02); /* Aumenta ligeiramente o card */
+}
+
+/* Estilo para o título dentro do card */
+.card h2 {
+  margin-top: 0; /* Remove margem superior */
+  color: #728f7f; /* Cor verde-mata */
+  font-size: 1.3rem; /* Tamanho de fonte para o título */
+}
+
+/* Estilo para o parágrafo dentro do card */
+.card p {
+  font-size: 1rem; /* Tamanho de fonte do parágrafo */
+  color: #333; /* Cor escura para o texto */
+}
+
+/* Estilo do botão de download */
+.btn-download {
+  display: inline-block; /* Exibe o botão como um bloco inline */
+  margin-top: 1rem; /* Espaço superior */
+  padding: 0.6rem 1rem; /* Espaço interno do botão */
+  background-color: #728f7f; /* Cor de fundo verde-mata */
+  color: #fff; /* Cor do texto branco */
+  text-decoration: none; /* Remove o sublinhado */
+  border-radius: 8px; /* Bordas arredondadas */
+  transition: background-color 0.2s ease; /* Efeito de transição ao passar o mouse */
+}
+
+/* Efeito do botão de download ao passar o mouse */
+.btn-download:hover {
+  background-color: #728f7f; /* Cor de fundo não muda, apenas mantem ao passar o mouse */
+}
+
+/* Estilo para a imagem do logo */
+.logo-img {
+  width: 150px; /* Largura da imagem */
+  height: 150px; /* Altura da imagem */
+  object-fit: contain; /* Mantém a proporção da imagem */
+  margin: 10px auto; /* Centraliza a imagem e adiciona espaço ao redor */
+  display: block; /* Exibe a imagem como bloco */
+}
+
+/* Estilo para o nome do logo */
+.logo-nome {
+  text-align: center; /* Centraliza o texto */
+  color: white; /* Cor do texto */
+  font-size: 14px; /* Tamanho da fonte */
+  margin-bottom: 10px; /* Espaço abaixo */
+}
+
+/* Estilo para o submenu */
+.submenu {
+  display: none; /* Submenu oculto inicialmente */
+  list-style: none; /* Remove os marcadores da lista */
+  padding-left: 20px; /* Espaçamento à esquerda do submenu */
+}
+
+/* Estilo para o toggle do submenu */
 .toggle {
-    display: block;
-    cursor: pointer;
-    padding: 10px 15px;
-    color: #2d2d2d;
-    text-decoration: none;
-    font-weight: bold;
+  display: block; /* Exibe o toggle como um bloco */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  padding: 10px 15px; /* Espaçamento interno */
+  color: #2d2d2d; /* Cor do texto */
+  text-decoration: none; /* Remove o sublinhado */
+  font-weight: bold; /* Torna o texto em negrito */
 }
 
+/* Estilo do toggle ao passar o mouse */
 .toggle:hover {
-    text-decoration: none; /* Garante que não haverá sublinhado */
-    background-color: transparent;
-    color: white; /* A cor do texto permanece branca */
+  text-decoration: none; /* Garante que não haja sublinhado */
+  background-color: transparent; /* Mantém o fundo transparente */
+  color: white; /* Mantém o texto branco ao passar o mouse */
 }
 
+/* Estilo dos links no submenu */
 .submenu li a {
-    text-decoration: none;
-    color: #ffffff;
-    padding: 8px 15px;
-    display: block;
+  text-decoration: none; /* Remove o sublinhado */
+  color: #ffffff; /* Cor do texto branco */
+  padding: 8px 15px; /* Espaçamento interno dos links */
+  display: block; /* Exibe o link como bloco */
 }
 
 .submenu li a:hover {
-    text-decoration: none; /* Garante que não haverá sublinhado */
-    background-color: transparent;
-    color: white; /* A cor do texto permanece branca */
+  text-decoration: none; /* Garante que não haverá sublinhado */
+  background-color: transparent;
+  color: white; /* A cor do texto permanece branca */
 }
 .sidebar a {
   text-decoration: none !important; /* Remove sublinhado de todos os links da sidebar */
@@ -781,25 +838,6 @@ p, .texto-justificado, .descricao-principal {
   text-decoration: none !important; /* Garante que não sublinhe no hover também */
   background-color: transparent; /* Sem fundo ao passar o mouse */
   color: white; /* Mantém branco ao passar o mouse */
-}
-
-/* Responsividade da Sidebar */
-@media (max-width: 1200px) {
-  .sidebar {
-    width: 280px !important; /* Menor largura para telas médias */
-  }
-}
-
-@media (max-width: 992px) {
-  .sidebar {
-    width: 280px !important; /* Menor largura para telas menores */
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    width: 280px !important; /* Ajuste ainda menor para tablets */
-  }
 }
 
 @media (max-width: 576px) {
@@ -816,63 +854,63 @@ p, .texto-justificado, .descricao-principal {
 
 /* Estilo da aba (popup) */
 .cart-dropdown {
-  display: none; /* Inicialmente oculta */
-  position: absolute;
-  right: 0;
-  top: 40px;
-  background-color: #f0efef;
-  border: 1px solid #ccc;
-  padding: 15px;
-  width: 200px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  z-index: 100;
-  text-align: center;
-  border-radius: 8px;
+  display: none; /* Inicialmente oculta, será exibida apenas quando a classe 'show' for adicionada */
+  position: absolute; /* A posição é absoluta, em relação ao elemento pai ou à tela */
+  right: 0; /* Alinha a aba à direita do elemento pai */
+  top: 40px; /* Define a distância do topo do elemento pai */
+  background-color: #f0efef; /* Cor de fundo cinza claro para a aba */
+  border: 1px solid #ccc; /* Borda cinza clara ao redor da aba */
+  padding: 15px; /* Espaçamento interno ao redor do conteúdo da aba */
+  width: 200px; /* Largura fixa de 200px */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra suave para dar profundidade */
+  z-index: 100; /* Garante que a aba fique acima de outros elementos na página */
+  text-align: center; /* Alinha o texto dentro da aba ao centro */
+  border-radius: 8px; /* Bordas arredondadas para um visual mais suave */
 }
 
 .cart-dropdown.show {
   display: block; /* Exibe a aba quando a classe 'show' é adicionada */
 }
 
-.cart-dropdown button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: #728f7f;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.cart-dropdown {
+  margin-top: 10px; /* Adiciona margem no topo do dropdown */
+  padding: 8px 12px; /* Define o preenchimento interno (espaçamento) do dropdown */
+  background-color: #728f7f; /* Define a cor de fundo do dropdown */
+  color: white; /* Define a cor do texto dentro do dropdown */
+  border: none; /* Remove a borda do dropdown */
+  border-radius: 5px; /* Define bordas arredondadas */
+  cursor: pointer; /* Altera o cursor para um ponteiro quando passar sobre o elemento */
 }
 
 .cart-dropdown button:hover {
-  background-color: #728f7f;
+  background-color: #728f7f; /* Mantém a mesma cor de fundo quando o botão é hover */
 }
 
 .pagina-produtos {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  margin: 0 auto;
-  padding: 20px;
-  max-width: 1200px; /* Largura máxima ajustada */
+  display: flex; /* Usa o modelo de layout flexbox para organizar os elementos */
+  flex-direction: column; /* Organiza os itens na direção de coluna */
+  align-items: center; /* Centraliza os itens no eixo transversal */
+  justify-content: center; /* Centraliza os itens no eixo principal */
+  text-align: center; /* Alinha o texto no centro */
+  margin: 0 auto; /* Centraliza a página horizontalmente */
+  padding: 20px; /* Define o preenchimento interno da página */
+  max-width: 1200px; /* Limita a largura da página para um máximo de 1200px */
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+  display: flex; /* Define que o elemento main usa o layout flexbox */
+  flex-direction: column; /* Organiza os itens em coluna dentro de main */
+  align-items: center; /* Centraliza os itens no eixo transversal */
+  justify-content: center; /* Centraliza os itens no eixo principal */
+  text-align: center; /* Alinha o texto dentro de main no centro */
+  padding: 20px; /* Define o preenchimento interno de main */
 }
 
 /* Garante que o conteúdo não ultrapasse o contêiner */
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box; /* Inclui o padding e a borda nas dimensões do elemento */
 }
 
 
@@ -889,176 +927,123 @@ main {
 
 /* Estilo do produto */
 .produto-item {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  width: 250px;
-  text-align: center;
-  padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden; /* Garante que o conteúdo não ultrapasse */
+  background-color: #f9f9f9; /* Cor de fundo do item de produto */
+  border: 1px solid #ddd; /* Borda do item de produto com cor cinza claro */
+  border-radius: 20px; /* Bordas arredondadas com raio de 20px */
+  width: 250px; /* Largura fixa de 250px para cada item de produto */
+  text-align: center; /* Alinha o texto no centro */
+  padding: 15px; /* Espaçamento interno de 15px */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave ao redor do item */
+  transition: all 0.3s ease; /* Transição suave em todas as propriedades em 0.3 segundos */
+  display: flex; /* Usa o modelo flexbox */
+  flex-direction: column; /* Organiza os elementos na direção de coluna */
+  justify-content: space-between; /* Distribui o espaço entre os elementos */
+  overflow: hidden; /* Garante que o conteúdo não ultrapasse os limites do item */
 }
 
 /* Efeito ao passar o mouse */
 .produto-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Move o item 5px para cima ao passar o mouse */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra ao passar o mouse */
 }
 
 /* Imagem do produto */
 .produto-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
-  margin-bottom: 10px;
+  width: 100%; /* A imagem ocupa toda a largura do item */
+  height: auto; /* A altura é ajustada automaticamente para manter a proporção */
+  border-radius: 4px; /* Bordas arredondadas de 4px na imagem */
+  margin-bottom: 10px; /* Adiciona espaço abaixo da imagem */
 }
 
 /* Título e descrição */
 .produto-item h2 {
-  margin: 8px 0;
-  font-size: 1.2rem;
-  color: #333;
-  word-wrap: break-word; /* Quebra palavras longas */
+  margin: 8px 0; /* Espaçamento de 8px acima e abaixo do título */
+  font-size: 1.2rem; /* Tamanho da fonte para o título */
+  color: #333; /* Cor do texto do título */
+  word-wrap: break-word; /* Quebra palavras longas para evitar transbordamento */
 }
 
 .produto-item p {
-  font-size: 0.95rem;
-  color: #666;
-  word-wrap: break-word; /* Evita estouro de palavras */
+  font-size: 0.95rem; /* Tamanho da fonte para a descrição */
+  color: #666; /* Cor do texto da descrição */
+  word-wrap: break-word; /* Quebra palavras longas para evitar transbordamento */
 }
 
 /* Botões */
 .produto-item button {
-  background-color: #91cf9f;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px;
-  transition: background-color 0.3s ease;
-  width: 100%; /* Botão ocupa toda a largura */
+  background-color: #91cf9f; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Remove a borda do botão */
+  padding: 8px 12px; /* Adiciona 8px de preenchimento na parte superior e inferior, e 12px nas laterais */
+  border-radius: 5px; /* Bordas arredondadas de 5px no botão */
+  cursor: pointer; /* Cursor de mãozinha ao passar sobre o botão */
+  margin: 5px; /* Espaçamento de 5px entre os botões */
+  transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+  width: 100%; /* O botão ocupa toda a largura disponível */
 }
 
 /* Botões */
 .produto-item a, .produto-item button {
-  background-color: #91cf9f;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 5px 0;
-  transition: background-color 0.3s ease;
-  text-decoration: none; /* Remove sublinhado do link */
-  display: block;
-  width: 100%; /* Garante que o botão ocupe toda a largura */
+  background-color: #91cf9f; /* Cor de fundo para links e botões */
+  color: white; /* Cor do texto para links e botões */
+  border: none; /* Remove a borda do botão/link */
+  padding: 8px 12px; /* Adiciona 8px de preenchimento na parte superior e inferior, e 12px nas laterais */
+  border-radius: 5px; /* Bordas arredondadas de 5px */
+  cursor: pointer; /* Cursor de mãozinha ao passar sobre o link ou botão */
+  margin: 5px 0; /* Espaçamento de 5px acima e abaixo */
+  transition: background-color 0.3s ease; /* Transição suave na mudança de cor de fundo */
+  text-decoration: none; /* Remove o sublinhado do link */
+  display: block; /* Faz o link se comportar como um bloco */
+  width: 100%; /* Garante que o botão/link ocupe toda a largura disponível */
 }
 
 .produto-item button:hover {
-  background-color: #218838;
-}
-
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-  .produtos-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .produto-item {
-    width: 90%; /* Ocupa quase toda a largura da tela */
-    margin: 10px 0;
-  }
-
-  .produto-item button {
-    width: 100%; /* Botões totalmente responsivos */
-  }
-}
-
-.produto-item button:hover {
-  background-color: #218838;
-}
-
-/* Responsividade para dispositivos móveis */
-@media (max-width: 768px) {
-  .produtos-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .produto-item {
-    width: 90%; /* Ocupa quase toda a largura da tela */
-    margin: 10px 0;
-  }
-
-  .produto-item button {
-    width: 100%; /* Botões totalmente responsivos */
-  }
+  background-color: #218838; /* Cor de fundo mais escura quando o botão é hover */
 }
 
 /* Adicionando uma regra global para garantir que a página ocupe 100% da altura */
 html, body {
-  height: 100%;
+  height: 100%; /* Define a altura das tags html e body para 100% */
   margin: 0; /* Remove as margens padrão */
   padding: 0; /* Remove os preenchimentos padrões */
 }
 
 #content {
   min-height: 100vh; /* Garante que o conteúdo ocupe 100% da altura da tela */
-  padding: 20px;
-  box-sizing: border-box; /* Inclui o padding no cálculo da altura */
+  padding: 20px; /* Adiciona 20px de preenchimento ao conteúdo */
+  box-sizing: border-box; /* Inclui o preenchimento no cálculo da altura do elemento */
 }
 
 /* Estilo para a página "Sobre Mim" */
 .sobre-mim {
-  width: 100%; /* Página ocupa toda a largura */
-  min-height: 100vh; /* Garantir que ocupe toda a altura da tela */
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f9f9f9;
+  width: 100%; /* A página ocupa toda a largura */
+  min-height: 100vh; /* Garante que a página ocupe toda a altura da tela */
+  padding: 20px; /* Adiciona 20px de preenchimento na página */
+  box-sizing: border-box; /* Inclui o preenchimento no cálculo da altura da página */
+  background-color: #f9f9f9; /* Cor de fundo suave para a página */
 }
 
 .sobre-mim h1 {
-  text-align: center;
-  color: #728f7f;
+  text-align: center; /* Alinha o título ao centro */
+  color: #728f7f; /* Cor do título */
 }
 
 .sobre-mim .perfil {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 5px solid #728f7f;
-  margin: 20px auto;
-  background-size: cover;
-  background-position: center;
+  width: 200px; /* Define a largura da imagem de perfil */
+  height: 200px; /* Define a altura da imagem de perfil */
+  border-radius: 50%; /* Faz a imagem ficar circular */
+  border: 5px solid #728f7f; /* Borda arredondada de 5px com a cor verde */
+  margin: 20px auto; /* Centraliza a imagem e adiciona espaço em volta */
+  background-size: cover; /* Faz a imagem ocupar toda a área do elemento */
+  background-position: center; /* Centraliza a imagem dentro do elemento */
 }
 
 /* Adicionando um pouco de espaçamento aos textos */
 .sobre-mim p {
-  text-align: left;
-  margin-bottom: 20px; /* Espaço entre os parágrafos */
+  text-align: left; /* Alinha os parágrafos à esquerda */
+  margin-bottom: 20px; /* Adiciona 20px de espaço abaixo de cada parágrafo */
 }
 
 .sobre-mim h3 {
-  color: #728f7f;
-}
-
-/* Estilos específicos de mídia para dispositivos */
-@media (max-width: 768px) {  /* Para dispositivos com largura de até 768px (tablets e celulares) */
-  .topbar {
-    padding: 10px 10px; /* Menor espaçamento nas laterais da topbar */
-  }
-
-  .search-box input {
-    width: 80%; /* Aumenta o tamanho da barra de pesquisa */
-  }
-
-  .topbar .auth-button button {
-    padding: 6px 8px; /* Menor tamanho do botão de login/cadastro */
-  }
+  color: #728f7f; /* Cor do subtítulo */
 }
