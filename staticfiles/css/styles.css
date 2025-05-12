@@ -263,10 +263,18 @@ body {
 
 /* Links da Subtopbar */
 .subtopbar a {
-  text-decoration: none; /* Remove o sublinhado dos links */
-  color: #333; /* Cor do texto: cinza escuro */
-  font-weight: 500; /* Peso da fonte: 500 (semibold) */
-  font-size: 18px; /* Tamanho da fonte: 18px */
+  display: flex;              /* Usa flexbox para alinhar o link e o ícone */
+  align-items: center;        /* Alinha o texto e ícone verticalmente */
+  color: white;               /* Cor do texto */
+  text-decoration: none;      /* Remove o sublinhado */
+  font-size: 16px;            /* Tamanho da fonte */
+  margin-right: 20px;         /* Espaço entre os links */
+}
+
+.subtopbar a .icon {
+  margin-right: 8px;          /* Espaço entre o ícone e o texto do link */
+  font-size: 20px;            /* Tamanho do ícone */
+  color: white;               /* Cor do ícone */
 }
 
 /* Cores de hover (efeito ao passar o mouse) */
@@ -308,19 +316,18 @@ body {
 /* Botões padrão e dropdown */
 .subtopbar-links a,
 .dropbtn {
-  display: flex;   /* Exibe o conteúdo em linha (ícone + texto) */
-  align-items: center;  /* Alinha verticalmente ícone e texto ao centro */
-  gap: 7px; /* Espaço entre o ícone e o texto */
-  color: black;  /* Cor do texto */
-  padding: 12px 24px;  /* Espaçamento interno (vertical 10px, horizontal 16px) */
-  font-size: 14px;  /* Tamanho da fonte do texto */
-  font-weight: bold;  /* Deixa o texto em negrito */
-  text-decoration: none;  /* Remove sublinhado de links */
-  border: none;   /* Remove a borda padrão do botão */
-  border-radius: 4px;  /* Arredonda os cantos do botão */
-  cursor: pointer; /* Muda o cursor para "mãozinha" ao passar por cima */
-  transition: background-color 0.3s ease,  /* Animação suave da cor de fundo ao passar o mouse */
-              transform 0.2s ease;         /* Animação de leve elevação ao passar o mouse */
+  display: flex;              /* Alinha ícone e texto na horizontal */
+  align-items: center;        /* Alinhamento vertical central */
+  gap: 7px;                   /* Espaçamento entre ícone e texto */
+  color: black;               /* Cor do texto */
+  padding: 12px 24px;         /* Espaçamento interno */
+  font-size: 14px;            /* Tamanho da fonte */
+  font-weight: bold;          /* Texto em negrito */
+  text-decoration: none;      /* Remove sublinhado */
+  border: none;               /* Remove borda padrão */
+  border-radius: 4px;         /* Cantos arredondados */
+  cursor: pointer;            /* Cursor tipo mãozinha */
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 /* Hover moderno */
@@ -614,7 +621,7 @@ body {
     width: 280px !important; /* Menor largura para telas menores */
   }
 
-   .topbar {
+  .topbar {
     padding: 10px 10px; /* Menor espaçamento nas laterais da topbar */
   }
 
@@ -703,13 +710,25 @@ body {
     transform: rotate(45deg) translate(-5px, -6px); /* Rotaciona a terceira barra em 45 graus para formar a outra parte do "X". */
   }
 
-   .sidebar {
+  .sidebar {
     width: 280px !important; /* Menor largura para telas médias */
   }
 
+   .subtopbar-links {
+    justify-content: center; /* Centraliza os links em telas grandes */
+  }
+
+  .subtopbar-menu li a {
+    font-size: 18px;         /* Aumenta o tamanho da fonte */
+    gap: 10px;               /* Aumenta o espaço entre ícone e texto */
+  }
+
+  .subtopbar {
+    gap: 20px;               /* Aumenta o espaço entre os itens na subtopbar */
+  }
 }
 
-  /* Estilização padrão para todos os títulos das páginas */
+/* Estilização padrão para todos os títulos das páginas */
 h1, h2, h3, .titulo-principal, .subtitulo, .subsubtitulo {
   color: #728f7f; /* Verde padrão */
   font-weight: bold;
