@@ -98,9 +98,11 @@ body {
   max-width: 1920px;  /* Limite máximo de largura */
   overflow: hidden;
   position: relative;
+  width: 400%; /* Ajuste para 100% x número de slides */
 }
 
 .slides {
+  width: 100vw; /* Cada imagem ocupa 100% da largura da tela */
   display: flex;                         /* Define um contêiner flexível para alinhar os elementos filhos em linha. */
   transition: transform 0.5s ease-in-out; /* Suaviza a transformação (como movimentação ou rotação) com duração de 0,5 segundos. */
 }
@@ -112,7 +114,7 @@ body {
 
 .banner img.custom-size {
   width: 100%; /* Defina a largura da imagem */
-  height: 300px; /* Altere a altura conforme necessário */
+  height: 450px; /* Altere a altura conforme necessário */
 }
 
 .botao-banner {
