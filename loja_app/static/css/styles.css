@@ -93,12 +93,13 @@ body {
 }
 
 .banner-rotativo {
-  width: 100%;        /* Largura total da tela */
   height: 450px;      /* Altura fixa para desktop */
   max-width: 1920px;  /* Limite máximo de largura */
   overflow: hidden;
   position: relative;
-  width: 400%; /* Ajuste para 100% x número de slides */
+  display: flex;       /* Para alinhar os slides lado a lado */
+  width: 100%;         /* Largura fixa para o container */
+  transition: transform 0.5s ease;  /* Animação suave ao trocar de slide */
 }
 
 .slides {
@@ -108,13 +109,14 @@ body {
 }
 
 .slide img {
-  width: 100%;       /* A imagem ocupa toda a largura do slide. */
-  height: 100%;      /* A imagem ocupa toda a altura do slide. */
+  width: 100vw; /* Cada imagem ocupa 100% da largura da tela */
+  height: 100%; /* A imagem ocupa toda a altura do slide. */
+  object-fit: cover;  /* Mantém a proporção sem distorcer */
 }
 
 .banner img.custom-size {
   width: 100%; /* Defina a largura da imagem */
-  height: 450px; /* Altere a altura conforme necessário */
+  height: 480px; /* Altere a altura conforme necessário */
 }
 
 .botao-banner {
