@@ -96,25 +96,23 @@ body {
   width: 100%;        /* Largura total da tela */
   height: 450px;      /* Altura fixa para desktop */
   max-width: 1920px;  /* Limite máximo de largura */
-  object-fit: cover;  /* Garante o preenchimento sem distorção */
+  overflow: hidden;
+  position: relative;
 }
 
 .slides {
   display: flex;                         /* Define um contêiner flexível para alinhar os elementos filhos em linha. */
   transition: transform 0.5s ease-in-out; /* Suaviza a transformação (como movimentação ou rotação) com duração de 0,5 segundos. */
-  width: 400%;                           /* Define a largura do contêiner como 400% (útil para carrosséis com 4 imagens). */
-  height: 100%;                          /* Faz o contêiner ocupar toda a altura do elemento pai. */
-}
-
-.slide {
-  flex: 1 0 100%;  /* Permite que cada slide ocupe 100% da largura do contêiner flexível. */
-  height: 100%;    /* Garante que o slide ocupe toda a altura disponível. */
 }
 
 .slide img {
   width: 100%;       /* A imagem ocupa toda a largura do slide. */
   height: 100%;      /* A imagem ocupa toda a altura do slide. */
-  object-fit: cover; /* Ajusta a imagem para cobrir todo o espaço, cortando se necessário. */
+}
+
+.banner img.custom-size {
+  width: 100%; /* Defina a largura da imagem */
+  height: 300px; /* Altere a altura conforme necessário */
 }
 
 .botao-banner {
