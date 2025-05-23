@@ -1073,3 +1073,19 @@ html, body {
 .sobre-mim h3 {
   color: #728f7f; /* Cor do subtítulo */
 }
+
+.formulario-google {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente, se quiser */
+    margin: 20px 0;
+}
+
+.formulario-google iframe {
+    width: 80%;       /* Ajuste como quiser: 50%, 70%, 100%... */
+    max-width: 800px; /* Limite máximo de largura */
+    height: 600px;    /* Ajuste a altura conforme preferir */
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* (opcional) sombra leve */
+    border-radius: 8px; /* (opcional) bordas arredondadas */
+}
