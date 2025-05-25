@@ -1094,19 +1094,3 @@ html, body {
     border-radius: 8px; /* (opcional) bordas arredondadas */
 }
 
-.imagem {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.imagem-canetinha {
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
-@media (min-width: 1024px) {
-  .imagem-canetinha {
-    width: 800px; /* maior no desktop */
-  }
-}
