@@ -574,6 +574,10 @@ body {
     width: 100%; /* Botões totalmente responsivos */
   }
 
+   .auth-button {
+    display: none !important;
+  }
+
 }
 
 /* Para telas entre 768px e 1024px (tablets) */
@@ -1099,4 +1103,10 @@ html, body {
   width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+@media (min-width: 1024px) {
+  .imagem-canetinha {
+    width: 800px; /* maior no desktop */
+  }
 }
