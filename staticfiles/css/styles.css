@@ -180,6 +180,22 @@ body {
   100% { transform: translateX(0%); }   /* Retorna para o slide inicial (0%). */
 }
 
+.botao-noticias {
+    display: inline-block;
+    background-color: #2e7d32; /* verde escuro */
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.botao-noticias:hover {
+    background-color: #1b5e20; /* verde ainda mais escuro no hover */
+}
+
 /* Topbar */
 .topbar {
   background-color: #728f7f;   /* Cor verde suave para o fundo da topbar. */
@@ -1103,6 +1119,25 @@ html, body {
   width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tabela-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* melhora a rolagem no iOS */
+  margin: 1em 0;
+}
+
+.tabela-medicamentos {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px; /* define uma largura mínima para forçar o scroll no mobile */
+}
+
+.conteudo-centralizado {
+  max-width: 800px; /* ajuste conforme o seu layout */
+  margin: 0 auto;
+  padding: 0 1em;
+  text-align: left; /* garante que o texto fique alinhado à esquerda */
 }
 
 @media (min-width: 1024px) {
