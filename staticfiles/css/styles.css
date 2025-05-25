@@ -180,22 +180,6 @@ body {
   100% { transform: translateX(0%); }   /* Retorna para o slide inicial (0%). */
 }
 
-.botao-noticias {
-    display: inline-block;
-    background-color: #2e7d32; /* verde escuro */
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-}
-
-.botao-noticias:hover {
-    background-color: #1b5e20; /* verde ainda mais escuro no hover */
-}
-
 /* Topbar */
 .topbar {
   background-color: #728f7f;   /* Cor verde suave para o fundo da topbar. */
@@ -1110,38 +1094,37 @@ html, body {
     border-radius: 8px; /* (opcional) bordas arredondadas */
 }
 
+.botao-noticias {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #728f7f; /* Cor desejada */
+  color: #ffffff; /* Cor do texto - branco */
+  text-decoration: none;
+  border-radius: 8px; /* Bordas arredondadas */
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-noticias:hover {
+  background-color: #5e7466; /* Tom mais escuro no hover */
+  transform: scale(1.05); /* Efeito de leve aumento ao passar o mouse */
+}
+
 .imagem {
-  text-align: center;
-  margin-top: 20px;
+  text-align: center; /* Centraliza qualquer conteúdo dentro da div */
+  margin: 20px 0;     /* Espaçamento vertical opcional */
 }
 
 .imagem-canetinha {
-  width: 300px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  display: inline-block; /* Necessário quando usa text-align: center */
+  border-radius: 12px;   /* Cantos arredondados */
+  max-width: 100%;       /* Responsividade */
+  height: auto;          /* Mantém a proporção da imagem */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* (opcional) sombra suave */
 }
 
-.tabela-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* melhora a rolagem no iOS */
-  margin: 1em 0;
-}
-
-.tabela-medicamentos {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 600px; /* define uma largura mínima para forçar o scroll no mobile */
-}
-
-.conteudo-centralizado {
-  max-width: 800px; /* ajuste conforme o seu layout */
-  margin: 0 auto;
-  padding: 0 1em;
-  text-align: left; /* garante que o texto fique alinhado à esquerda */
-}
-
-@media (min-width: 1024px) {
-  .imagem-canetinha {
-    width: 800px; /* maior no desktop */
-  }
+.descricao-principal {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: justify;
 }

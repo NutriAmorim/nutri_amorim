@@ -1094,3 +1094,37 @@ html, body {
     border-radius: 8px; /* (opcional) bordas arredondadas */
 }
 
+.botao-noticias {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #728f7f; /* Cor desejada */
+  color: #ffffff; /* Cor do texto - branco */
+  text-decoration: none;
+  border-radius: 8px; /* Bordas arredondadas */
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-noticias:hover {
+  background-color: #5e7466; /* Tom mais escuro no hover */
+  transform: scale(1.05); /* Efeito de leve aumento ao passar o mouse */
+}
+
+.imagem {
+  text-align: center; /* Centraliza qualquer conteúdo dentro da div */
+  margin: 20px 0;     /* Espaçamento vertical opcional */
+}
+
+.imagem-canetinha {
+  display: inline-block; /* Necessário quando usa text-align: center */
+  border-radius: 12px;   /* Cantos arredondados */
+  max-width: 100%;       /* Responsividade */
+  height: auto;          /* Mantém a proporção da imagem */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* (opcional) sombra suave */
+}
+
+.descricao-principal {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: justify;
+}
