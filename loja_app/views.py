@@ -51,6 +51,11 @@ def alimentos_funcionais(request):
     return render(request, 'loja_app/alimentos_funcionais.html')
 
 
+# Saúde
+def saude(request):
+    return render(request, 'loja_app/saude.html')
+
+
 # Objetivos
 def massa_magra(request):
     return render(request, 'loja_app/massa_magra.html')
