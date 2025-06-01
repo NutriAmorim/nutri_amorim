@@ -574,16 +574,22 @@ body {
     width: 100%; /* Botões totalmente responsivos */
   }
 
-   .auth-button {
+  .auth-button {
     display: none !important;
   }
 
   .doenca {
-  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
-  margin: 0 auto;        /* Centraliza horizontalmente */
-  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
-  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
-}
+    max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
+    margin-left: 40px;    /* Margem à esquerda no desktop */
+    padding: 20px;         /* Espaçamento interno para não colar nas bordas */
+    margin-right: auto;   /* Mantém fluído à direita */
+    text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
+  }
+
+  .card-receita {
+    margin-left: 0;       /* Opcional: se quiser que as receitas fiquem alinhadas à esquerda */
+    margin-right: auto;
+  }
 
 }
 
@@ -747,13 +753,6 @@ body {
   .subtopbar {
     gap: 20px;               /* Aumenta o espaço entre os itens na subtopbar */
   }
-
-  .doenca {
-  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
-  margin: 0 auto;        /* Centraliza horizontalmente */
-  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
-  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
-}
 
 }
 
@@ -1146,20 +1145,28 @@ html, body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* (opcional) sombra suave */
 }
 
-.descricao-principal {
-    margin-left: 10px;
-    margin-right: 10px;
-    text-align: justify;
+.titulo-doenca {
+    text-align: center;   /* Centraliza o texto */
+    margin: 40px 0;       /* Espaço maior acima e abaixo */
+}
+
+.doenca {
+    width: 100%;
+    max-width: 800px;      /* Define uma largura máxima */
+    margin: 0 auto;        /* Centraliza horizontalmente no mobile */
+    padding: 20px;         /* Espaçamento interno */
+    text-align: justify;   /* Texto justificado */
 }
 
 .card-receita {
-    background-color: #e6f9ec; /* Verde suave */
-    border-radius: 15px;       /* Bordas arredondadas */
-    padding: 20px;             /* Espaçamento interno */
-    margin: 20px 0;            /* Espaçamento externo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    max-width: 600px;          /* Largura máxima opcional */
-    margin-left: auto;         /* Centraliza horizontalmente */
+    background-color: #f7f309 !important; /* Verde suave */
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
     margin-right: auto;
+    color: #333;
 }
-

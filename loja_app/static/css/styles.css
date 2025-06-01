@@ -1159,12 +1159,14 @@ html, body {
 }
 
 .card-receita {
-    background-color: #7eb490!important;  /* Verde suave */
-    border-radius: 15px;                  /* Bordas arredondadas */
-    padding: 20px;                        /* Espaçamento interno */
-    margin: 20px 0;                       /* Espaçamento externo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
-    max-width: 600px;                     /* Largura máxima */
-    margin-left: auto;                    /* Centraliza horizontalmente */
+    background-color: #f7f309 !important; /* Verde suave */
+    text-align: center;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
     margin-right: auto;
+    color: #333;
 }
