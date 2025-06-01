@@ -578,6 +578,13 @@ body {
     display: none !important;
   }
 
+  .doenca {
+  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
+  margin: 0 auto;        /* Centraliza horizontalmente */
+  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
+  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
+}
+
 }
 
 /* Para telas entre 768px e 1024px (tablets) */
@@ -1127,4 +1134,11 @@ html, body {
     margin-left: 10px;
     margin-right: 10px;
     text-align: justify;
+}
+
+.doenca {
+  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
+  margin: 0 auto;        /* Centraliza horizontalmente */
+  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
+  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
 }
