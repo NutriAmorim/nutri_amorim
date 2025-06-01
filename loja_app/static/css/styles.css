@@ -646,6 +646,14 @@ body {
     padding: 6px 8px; /* Menor tamanho do botão de login/cadastro */
   }
 
+  .doenca {
+  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
+  margin: 0 auto;        /* Centraliza horizontalmente */
+  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
+  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
+}
+
+
 }
 
 /* Para telas maiores que 1024px (desktops) */
@@ -739,6 +747,14 @@ body {
   .subtopbar {
     gap: 20px;               /* Aumenta o espaço entre os itens na subtopbar */
   }
+
+  .doenca {
+  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
+  margin: 0 auto;        /* Centraliza horizontalmente */
+  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
+  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
+}
+
 }
 
 /* Estilização padrão para todos os títulos das páginas */
@@ -1136,9 +1152,14 @@ html, body {
     text-align: justify;
 }
 
-.doenca {
-  max-width: 800px;      /* Define uma largura máxima para não ficar esticado demais */
-  margin: 0 auto;        /* Centraliza horizontalmente */
-  padding: 20px;         /* Espaçamento interno para não colar nas bordas */
-  text-align: justify;   /* Deixa o texto justificado (opcional, pode remover) */
+.card-receita {
+    background-color: #e6f9ec; /* Verde suave */
+    border-radius: 15px;       /* Bordas arredondadas */
+    padding: 20px;             /* Espaçamento interno */
+    margin: 20px 0;            /* Espaçamento externo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    max-width: 600px;          /* Largura máxima opcional */
+    margin-left: auto;         /* Centraliza horizontalmente */
+    margin-right: auto;
 }
+
