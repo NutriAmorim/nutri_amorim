@@ -1159,14 +1159,13 @@ html, body {
 }
 
 .card-receita {
-    background-color: #a5e9a5 !important; /* Verde suave */
-    text-align: center;
+    background-color: #9bc59b !important; /* Verde suave */
+    text-align: left; /* Alinha o texto à esquerda */
     border-radius: 15px;
     padding: 20px;
-    margin: 20px 0;
+    margin: 20px auto; /* Centraliza horizontalmente */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    border: 3px solid #2e7d32; /* Borda verde escura */
     color: #333;
 }
