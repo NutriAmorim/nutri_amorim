@@ -119,6 +119,7 @@
         <img src="{% static 'img/imagem_nutri.png' %}" alt="Logo Nutri Amorim" class="logo-img">
       </div>
       <ul>
+
         <li class="sidebar-auth">
           {% if user.is_authenticated %}
             <a href="{% url 'logout' %}"><button>Sair</button></a>
@@ -127,9 +128,10 @@
           {% endif %}
         </li>
         <li><a href="{% url 'home' %}" class="inicio-link">Início</a></li>
+
       <!-- As outras abas seguem aqui -->
         <li>
-          <a class="toggle">Ofertas Naturais</a>
+          <a class="toggle">Ofertas</a>
           <ul class="submenu">
             <li><a href="{% url 'produtos' %}">Produtos</a></li>
             <li><a href="{% url 'carrinho' %}">Carrinho</a></li>
@@ -137,46 +139,13 @@
           </ul>
         </li>
 
-        <li>
-        <a class="toggle">Performance Esportiva</a>
-        <ul class="submenu">
-            <li><a href="{% url 'nutricao_para_atletas' %}"> Nutrição para Atletas</a></li>
-            <li><a href="{% url 'suplementacao_esportiva' %}"> Suplementação Esportiva</a></li>
-            <li><a href="{% url 'protocolo_de_treino' %}"> Protocolo de Treino</a></li>
-            <li><a href="{% url 'recuperacao_muscular' %}"> Recuperação Muscular</a></li>
-          </ul>
-        </li>
-
-        <li>
-        <a class="toggle">Nutrição Funcional</a>
-        <ul class="submenu">
-          <li><a href="{% url 'alimentacao_alcalina' %}"> Alimentação Alcalina</a></li>
-          <li><a href="{% url 'fitoterapia' %}"> Fitoterapia</a></li>
-          <li><a href="{% url 'protocolos_antiinflamatorios' %}"> Protocolos Anti-inflamatórios</a></li>
-          <li><a href="{% url 'alimentos_funcionais' %}"> Alimentos Funcionais</a></li>
-        </ul>
-      </li>
-
       <li><a href="{% url 'saude' %}"> Saúde</a></li>
-    
-      <li>
-        <a class="toggle">Objetivos</a>
-        <ul class="submenu">
-          <li><a href="{% url 'massa_magra' %}"> Massa Magra</a></li>
-          <li><a href="{% url 'definicao_muscular' %}"> Definição Muscular</a></li>
-          <li><a href="{% url 'emagrecimento_saudavel' %}"> Emagrecimento Saudável</a></li>
-          <li><a href="{% url 'energia_disposicao' %}"> Energia e Disposição</a></li>
-        </ul>
-      </li>
-    
+        
       <li>
         <a class="toggle">Receitas Medicinais</a>
         <ul class="submenu">
           <li><a href="{% url 'informativo' %}"> Informativo</a></li>
           <li><a href="{% url 'entenda_doencas_e_causas' %}"> Entenda Doenças e Causas</a></li>
-          <li><a href="{% url 'guia_de_ervas_medicinais' %}"> Guia de Ervas</a></li>
-          <li><a href="{% url 'doencas_comuns_e_solucoes_naturais' %}"> Doenças e Soluções</a></li>
-          <li><a href="{% url 'receitas_para_imunidade' %}"> Imunidade Natural</a></li>
         </ul>
       </li>
     
