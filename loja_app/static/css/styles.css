@@ -1159,13 +1159,18 @@ html, body {
 }
 
 .card-receita {
-    background-color: #c9dac9 !important; /* Verde suave */
+    background-color: #ffffff; /* Fundo branco */
     text-align: left; /* Alinha o texto à esquerda */
-    border-radius: 15px;
+    border-radius: 0 15px 15px 0; /* Arredonda apenas os cantos direitos */
     padding: 20px;
     margin: 20px auto; /* Centraliza horizontalmente */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
-    border: 3px solid #45946f; /* Borda verde escura */
+    border-left: 5px solid #70a78d; /* Borda verde escura apenas à esquerda */
     color: #333;
+}
+
+.card-receita:hover {
+    transform: scale(1.03); /* Aumenta levemente */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Um pouco mais de sombra no hover */
 }
