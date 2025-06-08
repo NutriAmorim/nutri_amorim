@@ -5,98 +5,16 @@
 
 {% block content %}
 
-<div class="banner-rotativo">
-  <div class="slides">
-    <div class="slide ativo">
-      <img src="{% static 'img/capa_banner_acessorios.jpg' %}" alt="Banner 1">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/capa_banner_receitas.jpg' %}" alt="Banner 2">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/capa_banner_suplementos.jpg' %}" alt="Banner 3">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/banner_nutri1.png' %}" alt="Banner 4">
-    </div>
-  </div>
-</div>
-
-<div class="controle-banner">
-  <button class="botao-banner botao-anterior">&#10094;</button>
-  <button class="botao-banner botao-proximo">&#10095;</button>
-
-  <!-- Indicadores -->
-  <div class="indicadores">
-    <span class="indicador ativo"></span>
-    <span class="indicador"></span>
-    <span class="indicador"></span>
-    <span class="indicador"></span>
-  </div>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    let slideIndex = 0;
-    const slides = document.querySelector('.slides');
-    const indicators = document.querySelectorAll('.indicador');
-    const totalSlides = document.querySelectorAll('.slide').length;
-
-    function showSlide(index) {
-      if (index >= totalSlides) slideIndex = 0;
-      if (index < 0) slideIndex = totalSlides - 1;
-      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-      indicators.forEach((dot, i) => {
-        dot.classList.toggle('ativo', i === slideIndex);
-      });
-    }
-
-    function setupEventListeners() {
-      const botaoProximo = document.querySelector('.botao-proximo');
-      const botaoAnterior = document.querySelector('.botao-anterior');
-
-      // Verificar se os botões existem antes de adicionar o EventListener
-      if (botaoProximo) {
-        botaoProximo.addEventListener('click', () => {
-          slideIndex++;
-          showSlide(slideIndex);
-        });
-      }
-
-      if (botaoAnterior) {
-        botaoAnterior.addEventListener('click', () => {
-          slideIndex--;
-          showSlide(slideIndex);
-        });
-      }
-
-      indicators.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-          slideIndex = i;
-          showSlide(slideIndex);
-        });
-      });
-
-      // Auto-slide (troca a cada 5 segundos)
-      setInterval(() => {
-        slideIndex++;
-        showSlide(slideIndex);
-      }, 5000);
-    }
-
-    // Garantir que os botões estejam prontos antes de configurar os eventos
-    setupEventListeners();
-
-    // Iniciar na primeira imagem
-    showSlide(slideIndex);
-  });
-</script>
-<br>
 <h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
 <p class="descricao-principal">Confira os principais artigos sobre nutrição, suplementos, remedios e produtos naturais.</p>
 <br>
 <h1 class="titulo-principal"> Projeto Alimente-se </h1>
-  <p class="descricao-principal">No dia 07/06, celebramos o Dia Mundial da Segurança dos Alimentos, e para contribuir com uma sociedade mais consciente e sustentável, propomos um novo desafio: reduzir o desperdício e aprimorar o aproveitamento dos alimentos. @nutricao_ead_unicesumar</p>
+  <p class="descricao-principal">No dia 07/06, celebramos o Dia Mundial da Segurança dos Alimentos, e para contribuir com uma sociedade mais consciente e sustentável, propomos um novo desafio: reduzir o desperdício e aprimorar o aproveitamento dos alimentos.</p>
+  <p>
+    <a href="https://instagram.com/nutricao_ead_unicesumar" target="_blank" rel="noopener noreferrer">
+    @nutricao_ead_unicesumar
+  </a>
+</p>
 <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
   <p style="padding:0;margin:0">
     <iframe src="https://padlet.com/embed/22plsvk9z6aumb2g" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe>
@@ -106,13 +24,13 @@
       <img src="https://padlet.net/embeds/made_with_padlet_2022.png" width="114" height="28" alt="Criado com o Padlet">
     </a>
   </div>
-</div>
 
 <p>
   <a href="https://padlet.com/nutricaoeadunicesumarlives/aproveitamento-integral-dos-alimentos-22plsvk9z6aumb2g" target="_blank">
     👉 Clique aqui e poste sua receita
   </a>
 </p>
+</div>
 
 <div class="imagem-section">
   <h1 class="titulo-noticias">Notícias</h1>
