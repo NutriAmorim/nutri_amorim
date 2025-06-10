@@ -56,6 +56,11 @@ def saude(request):
     return render(request, 'loja_app/saude.html')
 
 
+# Projetos
+def projetos(request):
+    return render(request, 'loja_app/projetos.html')
+
+
 # Objetivos
 def massa_magra(request):
     return render(request, 'loja_app/massa_magra.html')

@@ -216,5 +216,6 @@ urlpatterns = [
     path('omega_3/', views.omega_3, name='omega_3'),
     path('creatinas/', views.creatinas, name='Creatinas'),
     path('saude/', views.saude, name='saude'),
+    path('projetos/', views.projetos, name='projetos'),
 ]
 
