@@ -446,7 +446,7 @@ def chatbot_view(request):
         if "ola" in texto or "oi" in texto:
             resposta = "Olá! Seja bem-vindo ao Nutri Amorim 😊"
         elif "produto" in texto or "vender" in texto:
-            resposta = "Vendemos suplementos, produtos naturais e muito mais! Visite nossa página de produtos."
+            resposta = "Vendemos suplementos, produtos naturais, roupas, acessórios e muito mais! Visite nossa página de produtos."
         elif "horario" in texto or "funciona" in texto or "atendimento" in texto:
             resposta = "Nosso horário de atendimento é de segunda a sexta, das 8h às 18h."
         elif "nutricionista" in texto:
