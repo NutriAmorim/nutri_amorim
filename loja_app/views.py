@@ -6,6 +6,11 @@ from django.shortcuts import get_object_or_404
 from babel.numbers import format_currency
 from .models import Produto
 from decimal import Decimal
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from nltk.chat.util import Chat, reflections
+import json
+import unicodedata
 
 
 # Página inicial
@@ -421,3 +426,41 @@ def combos(request):
 def omega_3(request):
     # Lógica da view aqui
     return render(request, 'loja_app/omega3.html')
+
+def remover_acentos(texto):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(c) != 'Mn'
+    )
+
+@csrf_exempt
+def chatbot_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        message = data.get("message", "")
+        
+        # Padroniza: minúsculo e sem acentos
+        texto = remover_acentos(message.lower())
+
+        # Regras simples de resposta
+        if "ola" in texto or "oi" in texto:
+            resposta = "Olá! Seja bem-vindo ao Nutri Amorim 😊"
+        elif "produto" in texto or "vender" in texto:
+            resposta = "Vendemos suplementos, produtos naturais e muito mais! Visite nossa página de produtos."
+        elif "horario" in texto or "funciona" in texto or "atendimento" in texto:
+            resposta = "Nosso horário de atendimento é de segunda a sexta, das 8h às 18h."
+        elif "nutricionista" in texto:
+            resposta = "Sim, temos atendimentos com nutricionista. Você pode agendar pela aba Consultas."
+        elif "obrigado" in texto or "valeu" in texto:
+            resposta = "De nada! Qualquer dúvida estou por aqui. 🌿"
+        elif "tchau" in texto or "ate mais" in texto:
+            resposta = "Até logo! Cuide bem da sua saúde! 🌱"
+        else:
+            resposta = (
+                "Ainda estou aprendendo! Você pode visitar o menu lateral ou me perguntar sobre produtos, horários, "
+                "consultas ou dúvidas comuns."
+            )
+
+        return JsonResponse({"response": resposta})
+
+    return JsonResponse({"response": "Método não suportado."})
