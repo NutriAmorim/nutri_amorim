@@ -1,6 +1,47 @@
 {% extends 'loja_app/base.html' %}
 {% load static %}
 
+<!-- Chatbot Interface -->
+<div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; width: 300px; border: 1px solid #ccc; border-radius: 10px; background: white; z-index: 1000;">
+  <div style="background-color: #4CAF50; padding: 10px; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
+    Chat Nutri Amorim 🤖
+  </div>
+  <div id="chat-log" style="padding: 10px; height: 200px; overflow-y: auto; font-size: 14px;"></div>
+  <div style="display: flex;">
+    <input type="text" id="user-input" placeholder="Digite sua pergunta..." style="flex: 1; padding: 5px; border: none;">
+<button onclick="sendMessage()" 
+    style="padding: 10px 20px; background-color: #4CAF50; color: white; border: none; font-size: 16px; font-weight: bold; border-radius: 5px;">
+    Enviar
+</button>
+  </div>
+</div>
+
+<script>
+  async function sendMessage() {
+    const userInput = document.getElementById('user-input');
+    const chatLog = document.getElementById('chat-log');
+    const message = userInput.value.trim();
+
+    if (!message) return;
+
+    chatLog.innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
+    userInput.value = '';
+
+    const response = await fetch('/chatbot/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': '{{ csrf_token }}'
+      },
+      body: JSON.stringify({ message })
+    });
+
+    const data = await response.json();
+    chatLog.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+</script>
+
 {% block title %}Página Inicial{% endblock %}
 
 {% block content %}

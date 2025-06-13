@@ -217,5 +217,6 @@ urlpatterns = [
     path('creatinas/', views.creatinas, name='Creatinas'),
     path('saude/', views.saude, name='saude'),
     path('projetos/', views.projetos, name='projetos'),
+    path('', views.home, name='home'),  # sua página inicial
+    path('chatbot/', views.chatbot_view, name='chatbot'),
 ]
-
