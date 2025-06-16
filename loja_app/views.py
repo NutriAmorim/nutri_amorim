@@ -291,7 +291,7 @@ def produtos(request):
     ]
     return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
 
-
+@login_required(login_url='login')  # Redireciona para a página de login se o usuário não estiver autenticado
 def finalizar_compra(request):
     try:
         # Tentamos buscar o pedido do usuário no banco de dados
@@ -440,6 +440,17 @@ def chatbot_view(request):
         message = data.get("message", "")
         
         # Padroniza: minúsculo e sem acentos
+def remover_acentos(texto):
+    # Normaliza e remove os acentos do texto
+    nfkd = unicodedata.normalize('NFKD', texto)
+    return ''.join([c for c in nfkd if not unicodedata.combining(c)])
+
+@csrf_exempt
+def chatbot_view(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        message = data.get("message", "")
+        
         texto = remover_acentos(message.lower())
 
         # Regras simples de resposta
@@ -464,3 +475,47 @@ def chatbot_view(request):
         return JsonResponse({"response": resposta})
 
     return JsonResponse({"response": "Método não suportado."})
+
+def avaliacao_receitas_med_view(request):
+    resultado = None
+    idade = ''
+    imc = ''
+    pressao = ''
+    atividade = ''
+
+    if request.method == 'POST':
+        idade = request.POST.get('idade', '')
+        imc = request.POST.get('imc', '')
+        pressao = request.POST.get('pressao', '')
+        atividade = request.POST.get('atividade', '')
+
+        try:
+            idade_int = int(idade)
+            imc_float = float(imc)
+            pressao_int = int(pressao)
+            atividade_int = int(atividade)
+
+            risco = 0
+            if idade_int > 60:
+                risco += 1
+            if imc_float > 30:
+                risco += 1
+            if pressao_int:
+                risco += 1
+            if not atividade_int:
+                risco += 1
+
+            if risco >= 2:
+                resultado = "Alto risco nutricional. Procure um profissional!"
+            else:
+                resultado = "Baixo risco nutricional. Continue com bons hábitos!"
+        except:
+            resultado = "Erro ao processar os dados. Verifique os campos."
+
+    return render(request, 'avaliacao_receitas_med.html', {
+        'resultado': resultado,
+        'idade': idade,
+        'imc': imc,
+        'pressao': pressao,
+        'atividade': atividade,
+    })

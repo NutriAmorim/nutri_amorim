@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Avaliação Nutricional + Receitas Medicinais</h2>
+
+<form method="post">
+  {% csrf_token %}
+  <label>Idade:</label><input type="number" name="idade" value="{{ idade|default:'' }}"><br>
+  <label>IMC:</label><input type="number" step="0.1" name="imc" value="{{ imc|default:'' }}"><br>
+  <label>Pressão Alta?</label>
+  <select name="pressao">
+    <option value="1" {% if pressao == '1' %}selected{% endif %}>Sim</option>
+    <option value="0" {% if pressao == '0' %}selected{% endif %}>Não</option>
+  </select><br>
+  <label>Atividade Física Regular?</label>
+  <select name="atividade">
+    <option value="0" {% if atividade == '0' %}selected{% endif %}>Não</option>
+    <option value="1" {% if atividade == '1' %}selected{% endif %}>Sim</option>
+  </select><br>
+  <button type="submit">Avaliar Risco</button>
+</form>
+
+<!-- Resultado da Avaliação + Recomendações -->
+{% if resultado %}
+  <p><strong>Resultado:</strong> {{ resultado }}</p>
+
+  {% if "Alto risco" in resultado %}
+    <p>🔎 Leia mais em: <a href="{% url 'entenda_doencas_e_causas' %}">Entenda Doenças e Causas</a></p>
+    <p>📘 Veja o <a href="{% url 'informativo' %}">Informativo</a></p>
+    <p>💊 Acesse também a seção <a href="{% url 'saude' %}">Saúde</a></p>
+  {% else %}
+    <p>🍎 Veja nossas <a href="{% url 'receitas_para_imunidade' %}">Receitas Saudáveis</a></p>
+  {% endif %}
+{% endif %}
+{% endblock %}
