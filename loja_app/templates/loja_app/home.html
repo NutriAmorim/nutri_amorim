@@ -1,53 +1,95 @@
 {% extends 'loja_app/base.html' %}
 {% load static %}
-
-<!-- Chatbot Interface -->
+{% block title %}Página Inicial{% endblock %}
+ {% block chatbot %}
+<!-- Chatbot flutuante no canto inferior direito -->
 <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; width: 300px; border: 1px solid #728f7f; border-radius: 10px; background: white; z-index: 1000;">
+  
+  <!-- Cabeçalho verde -->
   <div style="background-color: #728f7f; padding: 10px; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-    Chat Nutri Amorim 🤖
+    Sou IAmorim Chat do Nutri Amorim 🤖
   </div>
+
+  <!-- Área de mensagens -->
   <div id="chat-log" style="padding: 10px; height: 200px; overflow-y: auto; font-size: 14px;"></div>
+
+  <!-- Campo de digitação + botão de envio -->
   <div style="display: flex;">
-    <input type="text" id="user-input" placeholder="Digite sua pergunta..." style="flex: 1; padding: 5px; border: none;">
-<button onclick="sendMessage()" 
-    style="padding: 10px 20px; background-color: #728f7f; color: white; border: none; font-size: 16px; font-weight: bold; border-radius: 5px;">
-    Enviar
-</button>
+    <input 
+      type="text" 
+      id="user-input" 
+      placeholder="Digite sua pergunta..." 
+      style="flex: 1; padding: 5px; border: none;"
+    >
+
+    <!-- Botão SVG de envio -->
+    <button onclick="sendMessage()" aria-label="Enviar mensagem" style="background: none; border: none; cursor: pointer; padding: 5px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 535.5 535.5">
+        <path fill="#728f7f" d="M0 497.25L535.5 267.75 0 38.25 0 216.75 382.5 267.75 0 318.75z"/>
+      </svg>
+    </button>
   </div>
 </div>
 
+<!-- SCRIPT DO CHAT -->
 <script>
+  // Quando a página carregar, foca no campo de digitação
+  window.onload = () => {
+    document.getElementById('user-input').focus();
+  };
+
+  // Enviar a mensagem com Enter
+  document.getElementById('user-input').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  // Função para enviar a mensagem
   async function sendMessage() {
     const userInput = document.getElementById('user-input');
     const chatLog = document.getElementById('chat-log');
-    const message = userInput.value.trim();
+    const message = userInput.value.trim(); // Remove espaços
 
-    if (!message) return;
+    if (!message) return; // Se estiver vazio, não envia
 
+    // Mostra a mensagem do usuário
     chatLog.innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
-    userInput.value = '';
+    userInput.value = ''; // Limpa o campo
+    chatLog.scrollTop = chatLog.scrollHeight; // Rola para o final
 
-    const response = await fetch('/chatbot/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': '{{ csrf_token }}'
-      },
-      body: JSON.stringify({ message })
-    });
+    // Envia a mensagem para o servidor Django
+    try {
+      const response = await fetch('/chatbot/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': '{{ csrf_token }}' // Token CSRF obrigatório no Django
+        },
+        body: JSON.stringify({ message })
+      });
 
-    const data = await response.json();
-    chatLog.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
-    chatLog.scrollTop = chatLog.scrollHeight;
+      if (!response.ok) {
+        throw new Error(`Erro ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      // Exibe a resposta do bot
+      chatLog.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+    } catch (error) {
+      // Se der erro na conexão com o servidor
+      chatLog.innerHTML += `<p style="color:red;"><strong>Erro:</strong> Falha na conexão com o servidor.</p>`;
+    }
   }
 </script>
-
-{% block title %}Página Inicial{% endblock %}
+{% endblock %}
 
 {% block content %}
 
 <h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
 <p class="descricao-principal">Confira os principais artigos sobre nutrição, suplementos, remedios e produtos naturais.</p>
+<div class="centralizador">
 <ul>
     <li>Arrecadação de Alimentos Para Instituições Sociais</li>
     <li>Projeto de Saúde e Bem-Estar</li>
@@ -55,6 +97,7 @@
     <li>Saúde e bem-estar</li>
     <li>Redução das desigualdades</li>
 </ul>
+</div>
 
 <div class="imagem-section">
   <h1 class="titulo-noticias">Projeto Alimentação Solidária Doação de Alimentos Para Instituições Sociais</h1>
@@ -62,22 +105,6 @@
   
 <p><strong>Arrecadação de Alimentos</strong></p>
 <p>Estamos fazendo uma arrecadação para ajudar famílias carentes que estão cadastradas no programa social da Campanha da Fraternidade Auta de Souza uma das obras da Irradiação Espirita Cristã</p>
- <div class="banner-rotativo">
-  <div class="slides">
-    <div class="slide ativo">
-      <img src="{% static 'img/Alimentação solidária_Auta_de_souza.png' %}" alt="Banner 1">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/capa_banner_receitas.jpg' %}" alt="Banner 2">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/capa_banner_suplementos.jpg' %}" alt="Banner 3">
-    </div>
-    <div class="slide">
-      <img src="{% static 'img/banner_nutri1.png' %}" alt="Banner 4">
-    </div>
-  </div>
-</div>
 
 <div class="imagem">
     <img src="{% static 'img/Alimentação solidária_Auta_de_souza.png' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
@@ -98,9 +125,11 @@
   <p class="descricao-principal">No dia 07/06, celebramos o Dia Mundial da Segurança dos Alimentos, e para contribuir com uma sociedade mais consciente e sustentável, propomos um novo desafio: reduzir o desperdício e aprimorar o aproveitamento dos alimentos.</p>
   <p>
     <a href="https://instagram.com/nutricao_ead_unicesumar" target="_blank" rel="noopener noreferrer">
-    @nutricao_ead_unicesumar
+    <div class="centralizador">
+      @nutricao_ead_unicesumar
   </a>
 </p>
+</div>
 
 <div class="container">
 <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">

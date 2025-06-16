@@ -158,6 +158,7 @@
         <ul class="submenu">
           <li><a href="{% url 'agendamento_online' %}">📅 Agendamento Online</a></li>
           <li><a href="{% url 'avaliacao_fisica' %}">📏 Avaliação Física</a></li>
+          <li><a href="{% url 'avaliacao_receitas_med' %}">📏 Avaliação Receitas Medicinais</a></li>
           <li><a href="{% url 'planos_alimentares' %}">📋 Planos Alimentares</a></li>
         </ul>
       </li>
@@ -285,9 +286,6 @@ function sendMessage() {
         sidebar.classList.remove('show');
         menuIcon.classList.remove('open');
       } else { // Para telas grandes (desktops)
-        // Para desktops, a sidebar pode ser fixada, sem necessidade de animação
-        sidebar.classList.add('show');
-        menuIcon.classList.add('open');
       }
     }
 

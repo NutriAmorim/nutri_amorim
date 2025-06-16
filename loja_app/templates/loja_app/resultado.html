@@ -1,0 +1,12 @@
+<!-- templates/resultado.html -->
+<h2>Resultado da Avaliação</h2>
+
+{% if risco == 1 %}
+  <p>⚠️ Risco identificado de diabetes tipo 2.</p>
+  <p>Probabilidade estimada: {{ probabilidade }}%</p>
+{% else %}
+  <p>✅ Sem risco significativo de diabetes.</p>
+  <p>Probabilidade estimada: {{ probabilidade }}%</p>
+{% endif %}
+
+<a href="{% url 'avaliacao' %}">Voltar para avaliação</a>
