@@ -404,7 +404,7 @@ body {
   height: calc(100vh - 60px);    /* A altura da sidebar será 100% da altura da tela, menos 60px. */
   position: fixed;              /* A sidebar será posicionada de forma fixa na tela. */
   top: -100vh;                  /* Inicialmente a sidebar ficará fora da tela. */
-  left: -280px;                 /* Inicialmente a sidebar ficará fora da tela (esquerda). */
+  left: 60px;                 /* Inicialmente a sidebar ficará fora da tela (esquerda). */
   transition: top 0.3s ease;    /* Adiciona uma transição suave ao movimento da sidebar. */
   z-index: 999;                 /* Coloca a sidebar acima de outros elementos. */
   overflow-y: auto;             /* Permite rolagem vertical se o conteúdo ultrapassar a altura da sidebar. */
@@ -681,7 +681,7 @@ body {
     height: calc(100vh - 60px);
     width: 280px;
     transition: left 0.3s ease; /* Suaviza a animação de entrada */
-    z-index: 2; /* Coloca atrás da topbar inicialmente */
+    z-index: 999; /* Coloca atrás da topbar inicialmente */
   }
 
   /* Exibe o botão da topbar apenas em desktops */
@@ -704,7 +704,7 @@ body {
     margin-left: 0;
   }
 
-   /* Menu hambúrguer */
+  /* Menu hambúrguer */
   .menu-icon {
     display: block; /* Exibe o botão de hambúrguer em telas menores */
     width: 30px;     /* Defina a largura fixa para o botão */
@@ -741,7 +741,7 @@ body {
     width: 280px !important; /* Menor largura para telas médias */
   }
 
-   .subtopbar-links {
+  .subtopbar-links {
     justify-content: center; /* Centraliza os links em telas grandes */
   }
 
@@ -1189,4 +1189,54 @@ html, body {
     position: relative;
     width: 100%;
     background: #F4F4F4;
+}
+
+#chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 90vw;
+    border: 1px solid #728f7f;
+    border-radius: 10px;
+    background: white;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+#chatbot-container > div:first-child {
+    background-color: #728f7f;
+    padding: 10px;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#chat-log {
+    padding: 10px;
+    height: 200px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+#chatbot-container input[type="text"] {
+    flex: 1;
+    padding: 5px;
+    border: none;
+}
+
+#chatbot-container button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.centralizador {
+  max-width: 900px;      /* largura máxima do bloco */
+  margin: 0 auto;        /* centraliza horizontalmente */
+  padding: 0 15px;       /* um pouco de espaçamento interno nas laterais */
+  box-sizing: border-box;/* para o padding não aumentar o tamanho total */
+  text-align: left;      /* mantém o texto alinhado à esquerda */
 }
