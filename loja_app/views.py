@@ -11,7 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 from nltk.chat.util import Chat, reflections
 import json
 import unicodedata
-
+from datetime import datetime
 
 # Página inicial
 def home(request):
@@ -476,46 +476,205 @@ def chatbot_view(request):
 
     return JsonResponse({"response": "Método não suportado."})
 
+from django.shortcuts import render
+from datetime import datetime
+
 def avaliacao_receitas_med_view(request):
     resultado = None
-    idade = ''
+    nome = ''
+    idade = None
     imc = ''
+    risco_doencas = []
+    data_nascimento = ''
+    idade_digitada = ''
+    peso = ''
+    altura = ''
     pressao = ''
     atividade = ''
+    detalhes_resultado = ''
+
+    # Variáveis extras para cálculo avançado
+    peso_desejado = None
+    peso_diferenca = None
+    porcentagem_perda = None
+    tmb = None
+    get = None
+    plano_kcal = None
+    tempo_lento = None
+    tempo_rapido = None
+    sexo = ''
+    doenca = ''
+    medicacao = ''
+    sono = None
+    estresse = None
 
     if request.method == 'POST':
-        idade = request.POST.get('idade', '')
-        imc = request.POST.get('imc', '')
+        nome = request.POST.get('nome', '').strip()
+        data_nascimento = request.POST.get('data_nascimento', '')
+        idade_digitada = request.POST.get('idade', '')
+        peso = request.POST.get('peso', '')
+        altura = request.POST.get('altura', '')
         pressao = request.POST.get('pressao', '')
         atividade = request.POST.get('atividade', '')
+        sexo = request.POST.get('sexo', '')
+        doenca = request.POST.get('doenca', '').strip()
+        medicacao = request.POST.get('medicacao', '').strip()
+        sono_raw = request.POST.get('sono', '')
+        estresse_raw = request.POST.get('estresse', '')
+        peso_desejado_raw = request.POST.get('peso_desejado', '')
 
         try:
-            idade_int = int(idade)
-            imc_float = float(imc)
-            pressao_int = int(pressao)
-            atividade_int = int(atividade)
+            # Calcula idade
+            if data_nascimento:
+                nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d")
+                hoje = datetime.today()
+                idade = hoje.year - nascimento.year - ((hoje.month, hoje.day) < (nascimento.month, nascimento.day))
+            elif idade_digitada:
+                idade = int(idade_digitada)
+            else:
+                idade = None  # Idade não informada
 
+            # Converte dados numéricos
+            peso_float = float(peso)
+            altura_m = float(altura)  # altura em metros
+            peso_desejado = float(peso_desejado_raw) if peso_desejado_raw else None
+            sono = int(sono_raw) if sono_raw else None
+            estresse = int(estresse_raw) if estresse_raw else None
+
+            # Calcula IMC
+            imc_float = round(peso_float / (altura_m ** 2), 1)
+            imc = imc_float
+
+            # Classificação IMC
+            if imc_float < 18.5:
+                classificacao_imc = "Magreza"
+            elif imc_float < 25:
+                classificacao_imc = "Peso normal ✅"
+            elif imc_float < 30:
+                classificacao_imc = "Sobrepeso"
+            elif imc_float < 35:
+                classificacao_imc = "Obesidade grau I"
+            elif imc_float < 40:
+                classificacao_imc = "Obesidade grau II"
+            else:
+                classificacao_imc = "Obesidade grau III"
+
+            # Peso a ganhar/perder e % de perda desejada
+            peso_diferenca = None
+            porcentagem_perda = None
+            if peso_desejado is not None:
+                peso_diferenca = round(peso_desejado - peso_float, 1)  # positivo se ganho, negativo se perda
+                if peso_diferenca < 0:
+                    porcentagem_perda = round(abs(peso_diferenca) / peso_float * 100, 1)
+                else:
+                    porcentagem_perda = 0
+
+            # Cálculo da TMB (Mifflin-St Jeor)
+            if sexo == 'masculino':
+                tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
+            elif sexo == 'feminino':
+                tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
+            else:
+                # Média para sexo outro
+                tmb_masc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
+                tmb_fem = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
+                tmb_calc = (tmb_masc + tmb_fem) / 2
+            tmb = round(tmb_calc, 0)
+
+            # Fator de atividade
+            fator_atividade = 1.55 if atividade == '1' else 1.2
+
+            # GET - gasto energético total
+            get_calc = tmb * fator_atividade
+            get = round(get_calc, 0)
+
+            # Plano alimentar para perda lenta: GET - 500 kcal (ajustável)
+            if peso_diferenca is not None and peso_diferenca < 0:
+                plano_kcal = round(get - 500, 0)
+                # 1 kg gordura = 7700 kcal
+                semanas_lentas = abs(peso_diferenca) * 7700 / 500
+                semanas_rapidas = abs(peso_diferenca) * 7700 / 1000
+                tempo_lento = int(semanas_lentas)
+                tempo_rapido = int(semanas_rapidas)
+            else:
+                plano_kcal = get
+                tempo_lento = None
+                tempo_rapido = None
+
+            # Avaliação de risco
             risco = 0
-            if idade_int > 60:
-                risco += 1
+            risco_doencas.clear()
+            if idade is not None:
+                if idade > 60:
+                    risco += 1
+                    risco_doencas.append("Idade avançada ❌")
+                else:
+                    risco_doencas.append("Idade abaixo de 60 anos ✅")
+            else:
+                risco_doencas.append("Idade não informada")
+
             if imc_float > 30:
                 risco += 1
-            if pressao_int:
-                risco += 1
-            if not atividade_int:
-                risco += 1
+                risco_doencas.append("Obesidade ❌")
+            else:
+                risco_doencas.append("IMC adequado ✅")
 
+            if pressao == '1':
+                risco += 1
+                risco_doencas.append("Hipertensão ❌")
+            else:
+                risco_doencas.append("Pressão arterial normal ✅")
+
+            if atividade == '0':
+                risco += 1
+                risco_doencas.append("Sedentarismo ❌")
+            else:
+                risco_doencas.append("Pratica atividade física ✅")
+
+            # Resultado final baseado no risco
             if risco >= 2:
                 resultado = "Alto risco nutricional. Procure um profissional!"
             else:
                 resultado = "Baixo risco nutricional. Continue com bons hábitos!"
-        except:
+
+            # Montar detalhes para o resultado (html safe)
+            detalhes_resultado = (
+                f"🧮 Classificação do IMC ({imc_float}): <strong>{classificacao_imc}</strong><br><br>"
+                f"🩺 Classificação de Risco Nutricional:<br>"
+            )
+            for item in risco_doencas:
+                detalhes_resultado += f"{item}<br>"
+            detalhes_resultado += f"<br>🟢 Resultado: {resultado}"
+
+        except Exception as e:
             resultado = "Erro ao processar os dados. Verifique os campos."
+            detalhes_resultado = f"Detalhes do erro: {e}"
 
     return render(request, 'avaliacao_receitas_med.html', {
-        'resultado': resultado,
+        'nome': nome,
+        'data_nascimento': data_nascimento,
         'idade': idade,
-        'imc': imc,
+        'idade_digitada': idade_digitada,
+        'peso': peso,
+        'altura': altura,
+        'peso_desejado': peso_desejado,
         'pressao': pressao,
         'atividade': atividade,
+        'sexo': sexo,
+        'doenca': doenca,
+        'medicacao': medicacao,
+        'sono': sono,
+        'estresse': estresse,
+        'imc': imc,
+        'classificacao': classificacao_imc if 'classificacao_imc' in locals() else '',
+        'peso_diferenca': peso_diferenca,
+        'porcentagem_perda': porcentagem_perda,
+        'tmb': tmb,
+        'get': get,
+        'plano_kcal': plano_kcal,
+        'tempo_lento': tempo_lento,
+        'tempo_rapido': tempo_rapido,
+        'resultado': resultado,
+        'risco_doencas': risco_doencas,
+        'detalhes_resultado': detalhes_resultado,
     })
