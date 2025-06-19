@@ -73,5 +73,5 @@ urlpatterns = [
     path('saude/', views.saude, name='saude'),
     path('projetos/', views.projetos, name='projetos'),
     path('chatbot/', views.chatbot_view, name='chatbot'),
-    path('avaliacao-receitas-med/', views.avaliacao_receitas_med_view, name='avaliacao_receitas_med')
+    path('avaliacao-receitas-med/', views.avaliacao_receitas_med_view, name='avaliacao_receitas_med'),
 ]
