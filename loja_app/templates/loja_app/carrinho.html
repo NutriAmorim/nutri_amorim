@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+<div class="centralizador">
     {% if carrinho_items %}
         <div id="carrinho-cheio" class="carrinho">
             <table>
@@ -38,7 +39,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-
+    
             <div class="total-carrinho">
                 <p><strong>Total:</strong> R$ <span id="total-carrinho">{{ total }}</span></p>
             </div>
@@ -91,6 +92,7 @@
             .catch(error => console.error('Erro ao atualizar carrinho:', error));
         }
     </script>
+</div>
 {% endblock %}
 
 {% block extra_css %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="centralizador">
 <h2>Avaliação Nutricional + Receitas Medicinais</h2>
 
 <form method="post">
@@ -32,4 +33,5 @@
     <p>🍎 Veja nossas <a href="{% url 'receitas_para_imunidade' %}">Receitas Saudáveis</a></p>
   {% endif %}
 {% endif %}
+</div>
 {% endblock %}

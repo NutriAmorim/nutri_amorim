@@ -1,20 +1,28 @@
 {% extends 'base.html' %}  {# Este arquivo herda o layout base definido no base.html #}
 
 {% block content %}  {# Início do bloco de conteúdo que será inserido no template base #}
+<div class="centralizador">
   <h1 style="text-align: center; margin-bottom: 40px;">Receitas Medicinais E-books</h1>
 
-  <!-- BLOCO 1 - PDF: Abcesso - Definição e Causas -->
-  <div style="margin-bottom: 40px;">
-    <h3 style="color: #5FA052; text-align: center;">Abcesso - Definição e Causas</h3>
-    
-    <!-- Mostra o PDF na tela com margens personalizadas -->
-    <div style="padding-left: 2cm; padding-right: 1.5cm;">
-      <embed src="/static/pdf/Abcesso-Definicao-e-Causas.pdf"
-             width="100%"
-             height="500px"
-             type="application/pdf"
-             style="margin-bottom: 20px; display: block;">
-    </div>
+<!-- BLOCO 1 - PDF: Abcesso - Definição e Causas -->
+<div style="margin-bottom: 40px;">
+  <h3 style="color: #5FA052; text-align: center;">Abcesso - Definição e Causas</h3>
+
+  <!-- Capa da receita -->
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="/static/img/capa_abcesso_definicoes_e_causas.png" 
+         alt="Capa do E-book Abcesso"
+         style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Mostra o PDF na tela com margens personalizadas -->
+  <div style="padding-left: 2cm; padding-right: 1.5cm;">
+    <embed src="/static/pdf/Abcesso-Definicao-e-Causas.pdf"
+           width="100%"
+           height="500px"
+           type="application/pdf"
+           style="margin-bottom: 20px; display: block;">
+</div>
     
     <!-- Botão de Download -->
     <div style="text-align: center;">
@@ -61,10 +69,11 @@
       </button>
     </div>
   </div>
+</div>
 {% endblock %}  {# Fim do bloco de conteúdo #}
 
 {% block extra_styles %}
-  <style>
+<style>
 /* Estilo para o botão de download */
 .btn-download {
   display: inline-block;             /* Mostra o botão em linha com outros elementos */
@@ -90,5 +99,5 @@
 h3 {
   margin-bottom: 20px;  /* Espaço abaixo dos títulos */
 }
- </style>
+</style>
 {% endblock %}
