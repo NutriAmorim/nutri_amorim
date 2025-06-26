@@ -12,6 +12,23 @@ from nltk.chat.util import Chat, reflections
 import json
 import unicodedata
 from datetime import datetime
+import stripe
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
+
+def criar_pagamento(request):
+    # Cria o PaymentIntent
+    intent = stripe.PaymentIntent.create(
+        amount=5000,  # R$ 50,00 (valor em centavos)
+        currency='brl',
+        payment_method_types=['card', 'pix'],  # Aceita cartão e Pix
+    )
+
+    return render(request, 'pagamentos/pagamento.html', {
+        'client_secret': intent.client_secret,
+        'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY
+    })
 
 # Página inicial
 def home(request):
@@ -507,6 +524,7 @@ def avaliacao_receitas_med_view(request):
     medicacao = ''
     sono = None
     estresse = None
+    percent_gc = None
 
     if request.method == 'POST':
         nome = request.POST.get('nome', '').strip()
@@ -569,13 +587,22 @@ def avaliacao_receitas_med_view(request):
                 else:
                     porcentagem_perda = 0
 
+            # Sexo numérico para %GC
+            if sexo == 'masculino':
+                sexo_num = 1
+            else:
+                sexo_num = 0
+
+            # Cálculo do %GC (Percentual de Gordura Corporal)
+            if idade is not None:
+                percent_gc = round((1.2 * imc_float) + (0.23 * idade) - (10.8 * sexo_num) - 5.4, 1)
+
             # Cálculo da TMB (Mifflin-St Jeor)
             if sexo == 'masculino':
                 tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
             elif sexo == 'feminino':
                 tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
             else:
-                # Média para sexo outro
                 tmb_masc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
                 tmb_fem = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
                 tmb_calc = (tmb_masc + tmb_fem) / 2
@@ -631,7 +658,6 @@ def avaliacao_receitas_med_view(request):
             else:
                 risco_doencas.append("Pratica atividade física ✅")
 
-            # Resultado final baseado no risco
             if risco >= 2:
                 resultado = "Alto risco nutricional. Procure um profissional!"
             else:
@@ -677,4 +703,5 @@ def avaliacao_receitas_med_view(request):
         'resultado': resultado,
         'risco_doencas': risco_doencas,
         'detalhes_resultado': detalhes_resultado,
+        'percent_gc': percent_gc,
     })

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from .views import criar_pagamento
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -74,4 +75,5 @@ urlpatterns = [
     path('projetos/', views.projetos, name='projetos'),
     path('chatbot/', views.chatbot_view, name='chatbot'),
     path('avaliacao-receitas-med/', views.avaliacao_receitas_med_view, name='avaliacao_receitas_med'),
+    path('', criar_pagamento, name='criar_pagamento'),
 ]

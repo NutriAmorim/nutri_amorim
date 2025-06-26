@@ -67,6 +67,7 @@
     <p><strong>Plano Alimentar:</strong> {{ plano_kcal }} kcal/dia</p>
     <p><strong>Estimativa de tempo (lenta):</strong> {{ tempo_lento }} semanas</p>
     <p><strong>Estimativa de tempo (rápida):</strong> {{ tempo_rapido }} semanas</p>
+    <p><strong>% de Gordura Corporal (estimado):</strong> {{ percent_gc }}%</p>
 
     {% if "Alto risco" in resultado %}
       <p>🔎 Leia mais em: <a href="{% url 'entenda_doencas_e_causas' %}">Entenda Doenças e Causas</a></p>
