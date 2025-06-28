@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <title>Pagamento</title>
-  <script src="https://js.stripe.com/v3/"></script>
-</head>
-<body>
-  <h2>Pagar R$ 50,00</h2>
-  <form id="payment-form">
-    <div id="payment-element"></div>
-    <button id="submit">Pagar</button>
-    <div id="mensagem"></div>
-  </form>
+<html>
+  <head>
+    <title>Finalizar Compra</title>
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
 
-  <script>
-    const stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
-    const options = { clientSecret: "{{ client_secret }}" };
-    const elements = stripe.elements(options);
-    const paymentElement = elements.create('payment');
-    paymentElement.mount('#payment-element');
+    <h3>Produto Nutri Amorim - R$50,00</h3>
+    <button id="checkout-button">Finalizar Compra</button>
 
-    const form = document.getElementById('payment-form');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const { error } = await stripe.confirmPayment({
-        elements,
-        confirmParams: {
-          return_url: window.location.href,  // Redireciona para a mesma página
-        },
+    <script>
+      const stripe = Stripe('SUA_PUBLISHABLE_KEY');
+
+      document.getElementById('checkout-button').addEventListener('click', () => {
+        fetch('/create-checkout-session', { method: 'POST' })
+          .then(res => res.json())
+          .then(data => {
+            return stripe.redirectToCheckout({ sessionId: data.id });
+          })
+          .catch(err => console.error(err));
       });
-      if (error) {
-        document.getElementById('mensagem').innerText = error.message;
-      }
-    });
-  </script>
-</body>
+    </script>
+
+  </body>
 </html>

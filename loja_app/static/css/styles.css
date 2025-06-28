@@ -80,16 +80,13 @@
 
 /* Estilos para o corpo da página */
 body {
-  font-family: Arial, sans-serif; /* Define a fonte do corpo da página como Arial, com uma alternativa sans-serif */
-  margin: 0; /* Remove a margem padrão do navegador, evitando espaços desnecessários ao redor da página */
-  padding: 0; /* Remove o padding padrão, garantindo que não haja espaços extras ao redor do conteúdo */
-  box-sizing: border-box; /* Faz com que padding e bordas sejam incluídos nas dimensões totais dos elementos */
-  display: block; /* Garante que o corpo da página seja tratado como um bloco */
-  justify-content: center; /* Centraliza os itens no eixo horizontal */
-  align-items: center; /* Centraliza os itens no eixo vertical (usado quando o body é flex container) */
-  min-height: 100vh; /* Define a altura mínima da página como 100% da altura da janela de visualização (viewport) */
-  background-color: #f4f4f4; /* Define a cor de fundo da página como um cinza claro */
-  overflow-x: hidden; /* Remove a rolagem horizontal da página */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
 }
 
 .banner-rotativo {
@@ -335,8 +332,34 @@ body {
 /* Hover moderno */
 .subtopbar-links a:hover,
 .dropbtn:hover {
-  background-color: whitesmoke; /* Muda a cor de fundo para "whitesmoke" quando o botão ou link é hovered. */
+  background-color: rgb(122, 150, 139); /* Muda a cor de fundo para "whitesmoke" quando o botão ou link é hovered. */
   transform: scale(1.03);        /* Aplica um efeito de escala, aumentando o tamanho do item em 3% ao passar o mouse. */
+}
+
+.subsubtopbar {
+  width: 100vw;             /* largura total da viewport */
+  position: relative;
+  left: 0;
+  background-color: #aeceba;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;  /* centraliza horizontalmente o conteúdo */
+  border-bottom: 1px solid #ad9999;
+  box-sizing: border-box;   /* importante para controlar padding/bordas */
+  overflow-x: hidden;       /* evita scroll horizontal */
+}
+
+.avatar-container {
+  display: flex;
+  gap: 20px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #629265;
 }
 
 /* Dropdown */

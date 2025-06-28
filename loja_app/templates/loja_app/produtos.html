@@ -5,6 +5,12 @@
 <main>
     <h1>Produtos Loja Nutri</h1>
 
+    <div class="subtopbar">
+  <a href="/carrinho.html">
+    🛒 <span id="cart-count">0</span> itens
+  </a>
+</div>
+
     <section class="produtos-container">
 
         <article class="produto-item">
@@ -14,7 +20,7 @@
                 <p>Este material aborda os conceitos fundamentais sobre ácidos e álcalis, essenciais para quem trabalha com nutrição e saúde.</p>
                 <p><strong>Preço:</strong> R$ 24,90</p>
                 <a href="{% static 'pdf/Acidos-e-Alcalis-Uma-Introducao.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 24.90)">Adicionar ao Carrinho</button>
+                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
             </div>
         </article>
 
@@ -26,7 +32,7 @@
                 <p>Este guia apresenta orientações sobre alimentação saudável, fundamentais para a promoção da saúde coletiva.</p>
                 <p><strong>Preço:</strong> R$ 39,90</p>
                 <a href="{% static 'pdf/ebook-guia-alimentar-da-populacao-brasileira.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="adicionarAoCarrinho('Guia Alimentar da População Brasileira', 39.90)">Adicionar ao Carrinho</button>
+                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
             </div>
         </article>
 
@@ -38,7 +44,7 @@
                 <p>Conheça as frutas que podem ajudar no combate ao ácido úrico, proporcionando uma alimentação mais saudável e equilibrada.</p>
                 <p><strong>Preço:</strong> R$ 19,90</p>
                 <a href="{% static 'pdf/Frutas-que-Combatem-o-Acido-Urico.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="adicionarAoCarrinho('Frutas que Combatem o Ácido Úrico', 19.90)">Adicionar ao Carrinho</button>
+                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
             </div>
         </article>
 
@@ -49,7 +55,7 @@
                  <p>O abcesso é uma coleção de pus formada devido a infecções ou traumas. Este material apresenta as causas e características dessa condição, auxiliando no entendimento de seu manejo adequado.</p>
                 <p><strong>Preço:</strong> R$ 19,90</p>
                 <a href="{% static 'pdf/Abcesso-Definicao-e-Causas.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="adicionarAoCarrinho('Abcesso - Definição e Causas', 19.90)">Adicionar ao Carrinho</button>
+                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
             </div>
         </article>
 

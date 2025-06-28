@@ -1,100 +1,53 @@
-{% extends 'base.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carrinho</title>
+  <script src="cart.js"></script>
+</head>
+<body>
+  <h2>Seu Carrinho</h2>
+  <div id="cart-items"></div>
 
-{% block content %}
-<div class="centralizador">
-    {% if carrinho_items %}
-        <div id="carrinho-cheio" class="carrinho">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Produto</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Total</th>
-                        <th>Remover</th>
-                    </tr>
-                </thead>
-                <tbody id="itens-carrinho">
-                    {% for item in carrinho_items %}
-                        <tr id="item-{{ item.id }}">
-                            <td>{{ item.produto.nome }}</td>
-                            <td>R$ {{ item.produto.preco }}</td>
-                            <td>
-                                <input 
-                                    type="number" 
-                                    value="{{ item.quantidade }}" 
-                                    min="1" 
-                                    data-item-id="{{ item.id }}" 
-                                    onchange="atualizarCarrinho(this)">
-                            </td>
-                            <td class="total-item">R$ {{ item.total }}</td>
-                            <td>
-                                <form method="POST" action="{% url 'remover_do_carrinho' item.id %}">
-                                    {% csrf_token %}
-                                    <button type="submit">Remover</button>
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-    
-            <div class="total-carrinho">
-                <p><strong>Total:</strong> R$ <span id="total-carrinho">{{ total }}</span></p>
-            </div>
+  <button onclick="checkout()">Finalizar Compra</button>
 
-            <div class="acoes-carrinho">
-                <a href="{% url 'produtos' %}">
-                    <button class="btn-continuar">Continuar Comprando</button>
-                </a>
-                <a href="{% url 'finalizar_compra' %}">
-                    <button class="btn-finalizar">Finalizar Compra</button>
-                </a>
-            </div>
-        </div>
-    {% else %}
-        <div id="carrinho-vazio" class="carrinho">
-            <h2>Seu Carrinho está Vazio</h2>
-            <p>Adicione produtos ao seu carrinho para continuar a compra.</p>
-            <a href="{% url 'produtos' %}">
-                <button>Continuar Comprando</button>
-            </a>
-        </div>
-    {% endif %}
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById('cart-items');
+      container.innerHTML = '';
 
-    <script>
-        function atualizarCarrinho(inputElement) {
-            const carrinhoId = inputElement.getAttribute('data-item-id'); 
-            const novaQuantidade = inputElement.value;
+      cart.forEach(item => {
+        const div = document.createElement('div');
+        div.innerHTML = `
+          ${item.name} - R$${item.price} x ${item.quantity}
+          <button onclick="removeFromCart(${item.id})">Remover</button>
+        `;
+        container.appendChild(div);
+      });
 
-            if (!carrinhoId) {
-                console.error("Erro: carrinhoId não foi encontrado.");
-                return;
-            }
+      updateCartCount();
+    }
 
-            fetch(`/atualizar_quantidade_carrinho/${carrinhoId}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': '{{ csrf_token }}'
-                },
-                body: JSON.stringify({ quantidade: novaQuantidade })
-            })
-            .then(resposta => resposta.json())
-            .then(data => {
-                const totalItemElement = document.querySelector(`#item-${carrinhoId} .total-item`);
-                totalItemElement.textContent = `R$ ${data.total_item.toFixed(2)}`;
-
-                const totalCarrinhoElement = document.getElementById('total-carrinho');
-                totalCarrinhoElement.textContent = `R$ ${data.total_carrinho.toFixed(2)}`;
-            })
-            .catch(error => console.error('Erro ao atualizar carrinho:', error));
+    function removeFromCart(productId) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const index = cart.findIndex(item => item.id === productId);
+      if (index > -1) {
+        if (cart[index].quantity > 1) {
+          cart[index].quantity -= 1;
+        } else {
+          cart.splice(index, 1);
         }
-    </script>
-</div>
-{% endblock %}
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      loadCart();
+    }
 
-{% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}
+    function checkout() {
+      // você irá redirecionar para a view de pagamento do Stripe aqui
+      window.location.href = '/finalizar-compras.html';
+    }
+
+    window.onload = loadCart;
+  </script>
+</body>
+</html>

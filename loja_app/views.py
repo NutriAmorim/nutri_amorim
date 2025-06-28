@@ -18,14 +18,15 @@ from django.conf import settings
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 def criar_pagamento(request):
-    # Cria o PaymentIntent
     intent = stripe.PaymentIntent.create(
-        amount=5000,  # R$ 50,00 (valor em centavos)
+        amount=5000,  # R$ 50,00 (em centavos)
         currency='brl',
-        payment_method_types=['card', 'pix'],  # Aceita cartão e Pix
+        payment_method_types=['card', 'pix'],  # Cartão e Pix
+        description='Compra no site Nutri Amorim',
+        statement_descriptor='NUTRI AMORIM',  # máx. 22 caracteres
     )
 
-    return render(request, 'pagamentos/pagamento.html', {
+    return render(request, 'pagamentos/finalizar_compra.html', {
         'client_secret': intent.client_secret,
         'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY
     })
