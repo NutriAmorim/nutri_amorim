@@ -312,30 +312,28 @@ def produtos(request):
 @login_required(login_url='login')  # Redireciona para a página de login se o usuário não estiver autenticado
 def finalizar_compra(request):
     try:
-        # Tentamos buscar o pedido do usuário no banco de dados
-        pedido = Pedido.objects.get(usuario=request.user, total__isnull=True)  # Garantir que o pedido esteja incompleto
+        # Busca pedido aberto (não finalizado) do usuário
+        pedido = Pedido.objects.get(usuario=request.user, finalizado=False)
     except Pedido.DoesNotExist:
-        # Se não existir, criamos um novo pedido para o usuário
-        pedido = Pedido.objects.create(usuario=request.user, total=Decimal(0))
+        # Cria novo pedido se não existir
+        pedido = Pedido.objects.create(usuario=request.user, finalizado=False, total=Decimal(0))
 
-    # Adiciona os itens do carrinho ao pedido
     carrinho = Carrinho.objects.filter(usuario=request.user)
     total = Decimal(0)
 
     for item in carrinho:
-        # Cria o registro do PedidoProduto
         PedidoProduto.objects.create(
             pedido=pedido,
             produto=item.produto,
             quantidade=item.quantidade
         )
-        total += item.total()  # Soma o valor do item ao total
+        total += item.total()
 
-    # Atualiza o total do pedido
     pedido.total = total
+    pedido.finalizado = True  # Marca o pedido como finalizado
     pedido.save()
 
-    # Limpar o carrinho após a compra
+    # Limpa o carrinho após finalizar o pedido
     carrinho.delete()
 
     return render(request, 'finalizar_compra.html', {'pedido': pedido})
@@ -677,7 +675,7 @@ def avaliacao_receitas_med_view(request):
             resultado = "Erro ao processar os dados. Verifique os campos."
             detalhes_resultado = f"Detalhes do erro: {e}"
 
-    return render(request, 'avaliacao_receitas_med.html', {
+    return render(request, 'loja_app/avaliacao_receitas_med.html', {
         'nome': nome,
         'data_nascimento': data_nascimento,
         'idade': idade,

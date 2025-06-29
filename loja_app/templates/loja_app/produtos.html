@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "loja_app/base.html" %}
 {% load static %}
 
 {% block content %}
@@ -6,12 +6,42 @@
     <h1>Produtos Loja Nutri</h1>
 
     <div class="subtopbar">
-  <a href="/carrinho.html">
-    🛒 <span id="cart-count">0</span> itens
-  </a>
-</div>
+        <a href="/carrinho.html">
+            🛒 <span id="cart-count">0</span> itens
+        </a>
+    </div>
 
     <section class="produtos-container">
+
+        <article class="produto-item">
+            <img src="{% static 'img/malbec_madeira.jpg' %}" alt="malbec madeira" class="produto-imagem">
+            <div class="produto-info">
+                <h2>Malbec Madeira 100ml</h2>
+                <p>Malbac Madeira e uma fragância masculina inesquecivel e ideal para o homem sedutor e marcante.</p>
+                <p><strong>Preço:</strong> R$ 179,89</p>
+                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 179,89)">Adicionar ao carrinho</button>
+            </div>
+        </article>
+
+        <article class="produto-item">
+            <img src="{% static 'img/floratta_red.jpg' %}" alt="floratta red" class="produto-imagem">
+            <div class="produto-info">
+                <h2>Floratta Red 75ml</h2>
+                <p>Florata Red e uma combinação da delicadeza da flor da maça de vermont e a doçura do fruto. Uma fragancia feminina que trasmite atitude e romantismo.</p>
+                <p><strong>Preço:</strong> R$ 124,90</p>
+                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 124.90)">Adicionar ao carrinho</button>
+            </div>
+        </article>
+
+        <article class="produto-item">
+            <img src="{% static 'img/florata_shampo_condicionador_mascar.jpg' %}" alt="florata shampo" class="produto-imagem">
+            <div class="produto-info">
+                <h2>Combo Nutri Rose Eudora</h2>
+                <p>Combo Nutri Rose / Shampo + Condicionador + Mascara</p>
+                <p><strong>Preço:</strong> R$ 139,90</p>
+                <button onclick="adicionarAoCarrinho('Combo Nutri Rose / Shampo + Condicionador + Mascara', 139.90)">Adicionar ao carrinho</button>
+            </div>
+        </article>
 
         <article class="produto-item">
             <img src="{% static 'img/capa_acido_e_alcalis_uma_introducao.jpg' %}" alt="Ácidos e Alcalis - Uma Introdução" class="produto-imagem">
@@ -20,7 +50,18 @@
                 <p>Este material aborda os conceitos fundamentais sobre ácidos e álcalis, essenciais para quem trabalha com nutrição e saúde.</p>
                 <p><strong>Preço:</strong> R$ 24,90</p>
                 <a href="{% static 'pdf/Acidos-e-Alcalis-Uma-Introducao.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
+                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 24.90)">Adicionar ao carrinho</button>
+            </div>
+        </article>
+
+        <article class="produto-item">
+            <img src="{% static 'img/capa_acido_e_alcalis_uma_introducao.jpg' %}" alt="Ácidos e Alcalis - Uma Introdução" class="produto-imagem">
+            <div class="produto-info">
+                <h2>Ácidos e Alcalis - Uma Introdução</h2>
+                <p>Este material aborda os conceitos fundamentais sobre ácidos e álcalis, essenciais para quem trabalha com nutrição e saúde.</p>
+                <p><strong>Preço:</strong> R$ 24,90</p>
+                <a href="{% static 'pdf/Acidos-e-Alcalis-Uma-Introducao.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
+                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 24.90)">Adicionar ao carrinho</button>
             </div>
         </article>
 
@@ -32,10 +73,9 @@
                 <p>Este guia apresenta orientações sobre alimentação saudável, fundamentais para a promoção da saúde coletiva.</p>
                 <p><strong>Preço:</strong> R$ 39,90</p>
                 <a href="{% static 'pdf/ebook-guia-alimentar-da-populacao-brasileira.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
+                <button onclick="adicionarAoCarrinho('Guia Alimentar da População Brasileira', 39.90)">Adicionar ao carrinho</button>
             </div>
         </article>
-
 
         <article class="produto-item">
             <img src="{% static 'img/capa_frutas_que_combatem_o_acido_urico.png' %}" alt="Frutas que Combatem o Ácido Úrico" class="produto-imagem">
@@ -44,7 +84,7 @@
                 <p>Conheça as frutas que podem ajudar no combate ao ácido úrico, proporcionando uma alimentação mais saudável e equilibrada.</p>
                 <p><strong>Preço:</strong> R$ 19,90</p>
                 <a href="{% static 'pdf/Frutas-que-Combatem-o-Acido-Urico.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
+                <button onclick="adicionarAoCarrinho('Frutas que Combatem o Ácido Úrico', 19.90)">Adicionar ao carrinho</button>
             </div>
         </article>
 
@@ -52,19 +92,21 @@
             <img src="{% static 'img/capa_abcesso_definições_e_causas.png' %}" alt="Abcesso - Definição e Causas" class="produto-imagem">
             <div class="produto-info">
                 <h2>Abcesso - Definição e Causas</h2>
-                 <p>O abcesso é uma coleção de pus formada devido a infecções ou traumas. Este material apresenta as causas e características dessa condição, auxiliando no entendimento de seu manejo adequado.</p>
+                <p>O abcesso é uma coleção de pus formada devido a infecções ou traumas. Este material apresenta as causas e características dessa condição, auxiliando no entendimento de seu manejo adequado.</p>
                 <p><strong>Preço:</strong> R$ 19,90</p>
                 <a href="{% static 'pdf/Abcesso-Definicao-e-Causas.pdf' %}" target="_blank"><button>Ver Detalhes</button></a>
-                <button onclick="addToCart(1, 'E-book Saúde', 20.00)">Adicionar ao carrinho</button>
+                <button onclick="adicionarAoCarrinho('Abcesso - Definição e Causas', 19.90)">Adicionar ao carrinho</button>
             </div>
         </article>
-
-
 
     </section>
 
     <script>
+        let cartCount = 0;
+
         function adicionarAoCarrinho(produto, preco) {
+            cartCount++;
+            document.getElementById('cart-count').textContent = cartCount;
             alert(`${produto} foi adicionado ao carrinho! Preço: R$ ${preco.toFixed(2)}`);
         }
     </script>

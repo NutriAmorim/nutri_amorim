@@ -1,7 +1,8 @@
-{% extends 'base.html' %}
+{% extends "loja_app/base.html" %}
 
 {% block content %}
 <div class="sobre-mim">
+    <div class="centralizador">
     <!-- Título centralizado -->
     <h1>Sobre Mim</h1>
 
@@ -20,6 +21,7 @@
     <p>Estamos trabalhando para, no futuro, oferecer atendimentos online, com acesso a questionários personalizados e informações de qualidade, sempre com o objetivo de tornar o cuidado com a saúde acessível a todos.</p>
   
     <p>Nosso compromisso é com a promoção de uma vida mais saudável e equilibrada, auxiliando na prevenção de doenças e no tratamento de condições causadas pela alimentação inadequada. A Nutri Amorim é o seu parceiro na jornada por um bem-estar duradouro e sustentável.</p>
+    </div>
 </div>
 <a href="{% url 'conheca_nosso_trabalho' %}" class="btn btn-success">Conheça Nosso Trabalho</a>
 {% endblock %}
