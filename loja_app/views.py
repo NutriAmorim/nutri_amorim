@@ -11,25 +11,6 @@ from django.views.decorators.csrf import csrf_exempt
 from nltk.chat.util import Chat, reflections
 import json
 import unicodedata
-from datetime import datetime
-import stripe
-from django.conf import settings
-
-stripe.api_key = settings.STRIPE_SECRET_KEY
-
-def criar_pagamento(request):
-    intent = stripe.PaymentIntent.create(
-        amount=5000,  # R$ 50,00 (em centavos)
-        currency='brl',
-        payment_method_types=['card', 'pix'],  # Cartão e Pix
-        description='Compra no site Nutri Amorim',
-        statement_descriptor='NUTRI AMORIM',  # máx. 22 caracteres
-    )
-
-    return render(request, 'pagamentos/finalizar_compra.html', {
-        'client_secret': intent.client_secret,
-        'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY
-    })
 
 # Página inicial
 def home(request):

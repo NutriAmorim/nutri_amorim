@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-from .views import criar_pagamento
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -39,7 +38,6 @@ urlpatterns = [
     path('adicionar_ao_carrinho/<int:produto_id>/', views.adicionar_ao_carrinho, name='adicionar_ao_carrinho'),
     path('carrinho/', views.carrinho, name='carrinho'),
     path('remover_do_carrinho/<int:carrinho_id>/', views.remover_do_carrinho, name='remover_do_carrinho'),
-    path('finalizar_compra/', views.finalizar_compra, name='finalizar_compra'),
     path('produtos/', views.produtos, name='produtos'),
     path('atualizar_quantidade_carrinho/<int:carrinho_id>/', views.atualizar_quantidade_carrinho, name='atualizar_quantidade_carrinho'),
     path('way_protein/', views.way_protein, name='way_protein'),
@@ -75,5 +73,4 @@ urlpatterns = [
     path('projetos/', views.projetos, name='projetos'),
     path('chatbot/', views.chatbot_view, name='chatbot'),
     path('avaliacao-receitas-med/', views.avaliacao_receitas_med_view, name='avaliacao_receitas_med'),
-    path('criar_pagamento/', criar_pagamento, name='criar_pagamento'),
 ]

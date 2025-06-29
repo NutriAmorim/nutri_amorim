@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'loja_app',
     'usuarios',
-    'pagamentos',
 ]
 
 # Middleware
