@@ -19,7 +19,20 @@
                 <h2>Malbec Madeira 100ml</h2>
                 <p>Malbac Madeira e uma fragância masculina inesquecivel e ideal para o homem sedutor e marcante.</p>
                 <p><strong>Preço:</strong> R$ 179,89</p>
-                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 179,89)">Adicionar ao carrinho</button>
+                <!-- Botão que chama a função -->
+                <button onclick="faleComRevendedor('Malbec Madeira 100ml', 179.89)">Fale com Revendedor</button>
+
+                <!-- Função JavaScript -->
+                <script>
+                  function faleComRevendedor(produto, preco) {
+                  const numero = "556297020570";
+                  const msg = `Olá, tenho interesse no produto ${produto} que custa R$ ${preco.toFixed(2).replace('.', ',')}.`;
+                  const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+                  window.open(url, "_blank");
+                 }
+                </script>
+
+                
             </div>
         </article>
 
@@ -29,7 +42,17 @@
                 <h2>Floratta Red 75ml</h2>
                 <p>Florata Red e uma combinação da delicadeza da flor da maça de vermont e a doçura do fruto. Uma fragancia feminina que trasmite atitude e romantismo.</p>
                 <p><strong>Preço:</strong> R$ 124,90</p>
-                <button onclick="adicionarAoCarrinho('Ácidos e Alcalis - Uma Introdução', 124.90)">Adicionar ao carrinho</button>
+                <button onclick="faleComRevendedor('Floratta Red 75ml', 124,90)">Fale com Revendedor</button>
+
+                <!-- Função JavaScript -->
+                <script>
+                  function faleComRevendedor(produto, preco) {
+                  const numero = "556297020570";
+                  const msg = `Olá, tenho interesse no produto ${produto} que custa R$ ${preco.toFixed(2).replace('.', ',')}.`;
+                  const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+                  window.open(url, "_blank");
+                 }
+                </script>
             </div>
         </article>
 
@@ -39,7 +62,17 @@
                 <h2>Combo Nutri Rose Eudora</h2>
                 <p>Combo Nutri Rose / Shampo + Condicionador + Mascara</p>
                 <p><strong>Preço:</strong> R$ 139,90</p>
-                <button onclick="adicionarAoCarrinho('Combo Nutri Rose / Shampo + Condicionador + Mascara', 139.90)">Adicionar ao carrinho</button>
+                <button onclick="faleComRevendedor('Combo Nutri Rose Eudora', 139,90)">Fale com Revendedor</button>
+
+                <!-- Função JavaScript -->
+                <script>
+                  function faleComRevendedor(produto, preco) {
+                  const numero = "556297020570";
+                  const msg = `Olá, tenho interesse no produto ${produto} que custa R$ ${preco.toFixed(2).replace('.', ',')}.`;
+                  const url = `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+                  window.open(url, "_blank");
+                 }
+                </script>
             </div>
         </article>
 

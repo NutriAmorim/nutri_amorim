@@ -614,6 +614,12 @@ body {
     margin-right: auto;
   }
 
+  .subsubtopbar {
+    display: block !important; /* Garante que aparece */
+    position: static; /* Alinha logo abaixo da topbar */
+    width: 100%;
+  }
+
 }
 
 /* Para telas entre 768px e 1024px (tablets) */
