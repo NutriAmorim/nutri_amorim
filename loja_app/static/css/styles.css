@@ -340,7 +340,7 @@ body {
   width: 100vw;
   position: relative;
   left: 0;
-  background-color: #aeceba;
+  background-color: #f4f4f4;
   padding: 10px 0;
   display: flex;
   justify-content: center;
@@ -633,7 +633,7 @@ body {
     top: 100px;                 /* distância abaixo da topbar */
     left: 0;
     width: 100%;
-    background-color: #aeceba; /* para garantir visual */
+    background-color: #f4f4f4; /* para garantir visual */
     z-index: 1000;             /* fica acima do conteúdo */
     padding: 10px 0;
     box-sizing: border-box;
