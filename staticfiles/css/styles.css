@@ -337,21 +337,33 @@ body {
 }
 
 .subsubtopbar {
-  width: 100vw;             /* largura total da viewport */
+  width: 100vw;
   position: relative;
   left: 0;
-  background-color: #aeceba;
+  background-color: #f4f4f4;
   padding: 10px 0;
   display: flex;
-  justify-content: center;  /* centraliza horizontalmente o conteúdo */
+  justify-content: center;
   border-bottom: 1px solid #ad9999;
-  box-sizing: border-box;   /* importante para controlar padding/bordas */
-  overflow-x: hidden;       /* evita scroll horizontal */
+  box-sizing: border-box;
+  overflow-x: auto; /* permite rolar horizontalmente se tiver muitas imagens */
+  gap: 15px;        /* espaço entre os elementos */
 }
 
-.avatar-container {
-  display: flex;
-  gap: 20px;
+.subsubtopbar img {
+  width: 100px;            /* Aumentado */
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #4CAF50;
+  margin: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.subsubtopbar img:hover {
+  transform: scale(1.08);
+  cursor: pointer;
 }
 
 .avatar {
@@ -615,9 +627,24 @@ body {
   }
 
   .subsubtopbar {
-    display: block !important; /* Garante que aparece */
-    position: static; /* Alinha logo abaixo da topbar */
+    display: block !important; /* mostra no mobile */
+    position: relative;            /* fixa no topo da tela */
+    justify-content: center;
+    top: 100px;                 /* distância abaixo da topbar */
+    left: 0;
     width: 100%;
+    background-color: #f4f4f4; /* para garantir visual */
+    z-index: 1000;             /* fica acima do conteúdo */
+    padding: 10px 0;
+    box-sizing: border-box;
+    overflow-x: auto;          /* para scroll horizontal se precisar */
+    white-space: nowrap;       /* mantém as imagens na mesma linha */
+    z-index: 7; /* opcional, não afeta se não for fixado */
+  }
+  
+  .subsubtopbar .avatar {
+    display: inline-block;
+    margin: 0 8px;
   }
 
 }

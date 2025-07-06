@@ -60,3 +60,21 @@ class Endereco(models.Model):
 
     def __str__(self):
         return f'{self.rua}, {self.bairro}, {self.cidade}'
+
+class AvaliacaoNutricional(models.Model):
+    nome = models.CharField(max_length=100)
+    idade = models.PositiveIntegerField()
+    sexo = models.CharField(max_length=10, choices=[('Feminino', 'Feminino'), ('Masculino', 'Masculino')])
+    contato = models.CharField(max_length=100, blank=True)
+    peso_atual = models.DecimalField(max_digits=5, decimal_places=2)
+    altura = models.DecimalField(max_digits=4, decimal_places=2)
+    peso_desejado = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    atividade_fisica = models.BooleanField()
+    doenca = models.TextField(blank=True)
+    medicacao = models.TextField(blank=True)
+    sono = models.PositiveIntegerField()
+    estresse = models.PositiveIntegerField()
+    data_envio = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.nome} ({self.idade} anos)'
