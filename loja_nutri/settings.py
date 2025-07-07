@@ -18,7 +18,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'default_secret_key')
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY")
 
-DEBUG = True
+DEBUG = False
 
 # Hosts permitidos
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.nutriamorim.com.br', 'nutriamorim.com.br']
@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'loja_nutri.urls'
+LOGIN_URL = 'login'  # substitua pelo nome correto da sua URL de login
 
 # Templates
 TEMPLATES = [

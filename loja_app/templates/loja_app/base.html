@@ -108,6 +108,7 @@
   </div>
 </div>
 
+<body class="{% block body_class %}{% endblock %}">
 <div class="subsubtopbar">
   <a href="/produtos#produto-malbec">
     <img src="{% static 'img/Malbec_Desodorante_Colônia_100ml.webp' %}" alt="Malbec Madeira" class="avatar">
@@ -131,6 +132,7 @@
     <img src="{% static 'img/B48130_Malbec_Desodorante_Colônia_5.webp' %}" alt="Kit Floratta" class="avatar">
   </a>
 </div>
+</body>
 
 <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
@@ -153,7 +155,6 @@
           <a class="toggle">Ofertas</a>
           <ul class="submenu">
             <li><a href="{% url 'produtos' %}">Produtos</a></li>
-            <li><a href="{% url 'carrinho' %}">Carrinho</a></li>
           </ul>
         </li>
 
@@ -172,7 +173,6 @@
         <a class="toggle">Pesquisas Científicas</a>
         <ul class="submenu">
           <li><a href="{% url 'comprovacao_cientifica' %}">🔬 Comprovação Científica</a></li>
-          <li><a href="{% url 'remedios_naturais_que_a_ciencia_comprova' %}">🌱 Remédios Naturais</a></li>
         </ul>
       </li>
     

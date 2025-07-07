@@ -1,4 +1,12 @@
 {% load static %}
+{% if messages %}
+  {% for message in messages %}
+    <div class="message alerta-{{ message.tags }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

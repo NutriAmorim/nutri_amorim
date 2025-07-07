@@ -11,6 +11,21 @@ from django.views.decorators.csrf import csrf_exempt
 from nltk.chat.util import Chat, reflections
 import json
 import unicodedata
+from django.shortcuts import redirect
+from functools import wraps
+from django.contrib import messages
+from django.conf import settings
+
+def login_required_with_message(login_url='login'):
+    def decorator(view_func):
+        @wraps(view_func)
+        def wrapper(request, *args, **kwargs):
+            if not request.user.is_authenticated:
+                messages.error(request, "Desculpe, não foi possível acessar esta página. Faça o login e tente novamente.")
+                return redirect(login_url)
+            return view_func(request, *args, **kwargs)
+        return wrapper
+    return decorator
 
 # Página inicial
 def home(request):
@@ -101,15 +116,15 @@ def pesquisa_2(request):
 
 
 # Consultas
-@login_required
+@login_required_with_message(login_url='login')
 def agendamento_online(request):
     return render(request, 'loja_app/agendamento_online.html')
 
-@login_required
+@login_required_with_message(login_url='login')
 def avaliacao_fisica(request):
     return render(request, 'loja_app/avaliacao_fisica.html')
 
-@login_required
+@login_required_with_message(login_url='login')
 def planos_alimentares(request):
     return render(request, 'loja_app/planos_alimentares.html')
 
@@ -134,7 +149,7 @@ def normas_e_regulamento(request):
 def conheca_nosso_trabalho(request):
     return render(request, 'loja_app/conheca_nosso_trabalho.html')
 
-@login_required
+@login_required_with_message
 def sobre_mim(request):
     return render(request, 'loja_app/sobre_mim.html')
 
@@ -187,7 +202,7 @@ def produtos_naturais(request):
     return render(request, 'loja_app/produtos_naturais.html')
 
 
-@login_required
+@login_required_with_message(login_url='login')
 def adicionar_ao_carrinho(request, produto_id):
     # Obtenha o carrinho da sessão (se não houver, inicie como um dicionário vazio)
     carrinho = request.session.get('carrinho', {})
@@ -205,7 +220,7 @@ def adicionar_ao_carrinho(request, produto_id):
     # Redirecione para a página do carrinho
     return redirect('carrinho')
 
-@login_required
+@login_required_with_message
 def carrinho(request):
     # Pegando o carrinho da sessão
     carrinho = request.session.get('carrinho', {})
@@ -229,7 +244,8 @@ def carrinho(request):
         produtos = None  # Quando o carrinho estiver vazio, você pode retornar None ou uma lista vazia
 
     return render(request, 'loja_app/carrinho.html', {'produtos': produtos, 'total': total})
-@login_required
+
+@login_required_with_message(login_url='login')
 def remover_do_carrinho(request, carrinho_id):
     carrinho = Carrinho.objects.get(id=carrinho_id)
     carrinho.delete()
@@ -290,7 +306,7 @@ def produtos(request):
     ]
     return render(request, 'loja_app/produtos.html', {'ebooks': ebooks})
 
-@login_required(login_url='login')  # Redireciona para a página de login se o usuário não estiver autenticado
+@login_required_with_message(login_url='login')  # Redireciona para a página de login se o usuário não estiver autenticado
 def finalizar_compra(request):
     try:
         # Busca pedido aberto (não finalizado) do usuário
