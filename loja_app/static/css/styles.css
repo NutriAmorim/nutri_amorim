@@ -1286,7 +1286,7 @@ html, body {
     padding: 10px;
     height: 200px;
     overflow-y: auto;
-    font-size: 30px;
+    font-size: 15px;
 }
 
 #chatbot-container input[type="text"] {
