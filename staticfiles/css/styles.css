@@ -19,7 +19,7 @@
 /* Seções de conteúdo */
 .imagem-section {
   text-align: center; /* Centraliza o conteúdo de texto dentro do elemento. */
-  padding: 20px;      /* Adiciona um espaço interno (acolchoamento) de 20 pixels ao redor do conteúdo. */
+  padding: 10px;      /* Adiciona um espaço interno (acolchoamento) de 20 pixels ao redor do conteúdo. */
 }
 
 /* Subtítulos */
@@ -181,11 +181,10 @@ body {
 .topbar {
   background-color: #728f7f;   /* Cor verde suave para o fundo da topbar. */
   color: white;                /* Cor do texto da topbar (branco). */
-  padding: 10px 20px;          /* Espaçamento interno (10px em cima/embaixo, 20px nas laterais). */
   display: flex;               /* Usa flexbox para alinhar os itens dentro da topbar. */
   align-items: center;         /* Alinha os itens verticalmente no centro. */
   justify-content: space-between; /* Espaço igual entre os itens (logo e outros componentes). */
-  height: 100px;                /* Define a altura da topbar como 80px. */
+  height: 120px;                /* Define a altura da topbar como 80px. */
   position: fixed;             /* Fixa a topbar no topo da tela. */
   top: 0;                      /* Posiciona a topbar no topo da página. */
   left: 0;                     /* Alinha a topbar ao lado esquerdo. */
@@ -237,7 +236,7 @@ body {
 
 /* Subtopbar principal */
 .subtopbar {
-  background-color: #dae6df;  /* Cor de fundo da subtopbar */
+  background-color: #728f7f;  /* Cor de fundo da subtopbar */
   height: 90px;  /* Altura fixa de 60px */
   width: 100%;  /* Largura ocupa toda a largura da página */
   display: flex;  /* Utiliza o layout flexbox para organizar os itens */
@@ -337,17 +336,17 @@ body {
 }
 
 .subsubtopbar {
-  width: 100vw;
-  position: relative;
-  left: 0;
-  background-color: #f4f4f4;
-  padding: 10px 0;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #ad9999;
-  box-sizing: border-box;
-  overflow-x: auto; /* permite rolar horizontalmente se tiver muitas imagens */
-  gap: 15px;        /* espaço entre os elementos */
+  width: 100vw;             /* Define a largura para ocupar 100% da largura da viewport (tela inteira) */
+  position: relative;       /* Permite posicionar o elemento em relação à sua posição normal (para ajustes futuros se necessário) */
+  left: 0;                  /* Posiciona o elemento alinhado ao lado esquerdo (com base no position) */
+  background-color: #f4f4f4; /* Define a cor de fundo em um tom claro de cinza */
+  padding: 10px 0;          /* Espaçamento interno de 10px no topo e embaixo, e 0 nas laterais */
+  display: flex;            /* Ativa o flexbox para organizar os elementos filhos em linha */
+  justify-content: center;  /* Centraliza os itens filhos horizontalmente dentro da barra */
+  border-bottom: 1px solid #ad9999; /* Adiciona uma borda fina na parte inferior com cor cinza clara */
+  box-sizing: border-box;   /* Inclui padding e borda na largura e altura totais do elemento */
+  overflow-x: auto;         /* Permite que o conteúdo ultrapasse horizontalmente e crie uma barra de rolagem se necessário */
+  gap: 15px;                /* Espaçamento horizontal fixo de 15px entre os itens filhos */
 }
 
 .subsubtopbar img {
@@ -522,6 +521,24 @@ body {
     background-color: whitesmoke; /* Exemplo de mudança para dispositivos móveis */
   }
 
+  .titulo-principal {
+    padding-top: 50px; /* Ajuste conforme a altura combinada da topbar + subsubtopbar */
+    text-align: center; /* (opcional) centralizar o título */
+  }
+
+    .titulo-principal2 {
+    padding-top: 10px; /* Ajuste conforme a altura real da topbar */
+    text-align: center;
+  }
+
+  .topbar {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Mantém ela acima de tudo */
+  }
+
   /* Remove margens e padding da .container */
   .container {
     width: 100%;  /* Ocupa 100% da largura da tela */
@@ -626,14 +643,14 @@ body {
     margin-right: auto;
   }
 
-  .subsubtopbar {
+  body.pagina-home .subsubtopbar {
     display: block !important; /* mostra no mobile */
     position: relative;            /* fixa no topo da tela */
     justify-content: center;
-    top: 100px;                 /* distância abaixo da topbar */
+    top: 120px;                 /* distância abaixo da topbar */
     left: 0;
     width: 100%;
-    background-color: #f4f4f4; /* para garantir visual */
+    background-color: #728f7f; /* para garantir visual */
     z-index: 1000;             /* fica acima do conteúdo */
     padding: 10px 0;
     box-sizing: border-box;
@@ -1295,4 +1312,19 @@ html, body {
   padding: 0 15px;       /* um pouco de espaçamento interno nas laterais */
   box-sizing: border-box;/* para o padding não aumentar o tamanho total */
   text-align: left;      /* mantém o texto alinhado à esquerda */
+}
+
+.alerta {
+  padding: 12px;
+  border-radius: 6px;
+  margin: 15px auto;
+  width: 90%;
+  text-align: center;
+  font-weight: 600;
+}
+
+.alerta-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
 }

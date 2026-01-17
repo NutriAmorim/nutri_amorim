@@ -1122,10 +1122,6 @@ main {
   width: 100%; /* Garante que o botão/link ocupe toda a largura disponível */
 }
 
-.produto-item button:hover {
-  background-color: #218838; /* Cor de fundo mais escura quando o botão é hover */
-}
-
 /* Adicionando uma regra global para garantir que a página ocupe 100% da altura */
 html, body {
   height: 100%; /* Define a altura das tags html e body para 100% */
@@ -1290,7 +1286,7 @@ html, body {
     padding: 10px;
     height: 200px;
     overflow-y: auto;
-    font-size: 14px;
+    font-size: 30px;
 }
 
 #chatbot-container input[type="text"] {
@@ -1304,6 +1300,21 @@ html, body {
     border: none;
     cursor: pointer;
     padding: 5px;
+}
+
+#chat-toggle {
+    font-size: 40px;       /* tamanho do emoji */
+    width: 60px;           /* largura do botão */
+    height: 60px;          /* altura do botão */
+    border-radius: 50%;    /* botão arredondado */
+    background-color: #728f7f;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
 }
 
 .centralizador {

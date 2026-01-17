@@ -1,27 +1,21 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .models import Carrinho, Pedido, PedidoProduto
-from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from babel.numbers import format_currency
-from .models import Produto
 from decimal import Decimal
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from nltk.chat.util import Chat, reflections
-import json
-import unicodedata
-from django.shortcuts import redirect
-from functools import wraps
+from datetime import datetime
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.conf import settings
+from functools import wraps
+from .models import Produto, Carrinho, Pedido, PedidoProduto
+from .chatbot import chatbot_view
+from django.shortcuts import render
 
 def login_required_with_message(login_url='login'):
     def decorator(view_func):
         @wraps(view_func)
         def wrapper(request, *args, **kwargs):
             if not request.user.is_authenticated:
-                messages.error(request, "Desculpe, não foi possível acessar esta página. Faça o login e tente novamente.")
+                messages.error(
+                    request,
+                    "Desculpe, não foi possível acessar esta página. Faça o login e tente novamente."
+                )
                 return redirect(login_url)
             return view_func(request, *args, **kwargs)
         return wrapper
@@ -334,25 +328,6 @@ def finalizar_compra(request):
     carrinho.delete()
 
     return render(request, 'finalizar_compra.html', {'pedido': pedido})
-
-def atualizar_quantidade_carrinho(request, carrinho_id):
-    if request.is_ajax() and request.method == 'POST':
-        nova_quantidade = int(request.POST.get('quantidade'))
-        carrinho_item = get_object_or_404(Carrinho, id=carrinho_id)
-        carrinho_item.quantidade = nova_quantidade
-        carrinho_item.save()
-
-        total_item = carrinho_item.produto.preco * carrinho_item.quantidade
-        carrinho_total = sum(item.produto.preco * item.quantidade for item in Carrinho.objects.filter(usuario=request.user))
-
-        # Formata os valores como moeda brasileira
-        total_item_formatado = format_currency(total_item, 'BRL', locale='pt_BR')
-        carrinho_total_formatado = format_currency(carrinho_total, 'BRL', locale='pt_BR')
-
-        return JsonResponse({
-            'total_item': total_item_formatado,
-            'total_carrinho': carrinho_total_formatado
-        })
     
 def way_protein(request):
     return render(request, 'loja_app/way_protein.html')
@@ -440,264 +415,5 @@ def omega_3(request):
     # Lógica da view aqui
     return render(request, 'loja_app/omega3.html')
 
-def remover_acentos(texto):
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', texto)
-        if unicodedata.category(c) != 'Mn'
-    )
-
-@csrf_exempt
-def chatbot_view(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        message = data.get("message", "")
-        
-        # Padroniza: minúsculo e sem acentos
-def remover_acentos(texto):
-    # Normaliza e remove os acentos do texto
-    nfkd = unicodedata.normalize('NFKD', texto)
-    return ''.join([c for c in nfkd if not unicodedata.combining(c)])
-
-@csrf_exempt
-def chatbot_view(request):
-    if request.method == "POST":
-        data = json.loads(request.body)
-        message = data.get("message", "")
-        
-        texto = remover_acentos(message.lower())
-
-        # Regras simples de resposta
-        if "ola" in texto or "oi" in texto:
-            resposta = "Olá! Seja bem-vindo ao Nutri Amorim 😊"
-        elif "produto" in texto or "vender" in texto:
-            resposta = "Vendemos suplementos, produtos naturais, roupas, acessórios e muito mais! Visite nossa página de produtos."
-        elif "horario" in texto or "funciona" in texto or "atendimento" in texto:
-            resposta = "Nosso horário de atendimento é de segunda a sexta, das 8h às 18h."
-        elif "nutricionista" in texto:
-            resposta = "Sim, temos atendimentos com nutricionista. Você pode agendar pela aba Consultas."
-        elif "obrigado" in texto or "valeu" in texto:
-            resposta = "De nada! Qualquer dúvida estou por aqui. 🌿"
-        elif "tchau" in texto or "ate mais" in texto:
-            resposta = "Até logo! Cuide bem da sua saúde! 🌱"
-        else:
-            resposta = (
-                "Ainda estou aprendendo! Você pode visitar o menu lateral ou me perguntar sobre produtos, horários, "
-                "consultas ou dúvidas comuns."
-            )
-
-        return JsonResponse({"response": resposta})
-
-    return JsonResponse({"response": "Método não suportado."})
-
-from django.shortcuts import render
-from datetime import datetime
-
 def avaliacao_receitas_med_view(request):
-    resultado = None
-    nome = ''
-    idade = None
-    imc = ''
-    risco_doencas = []
-    data_nascimento = ''
-    idade_digitada = ''
-    peso = ''
-    altura = ''
-    pressao = ''
-    atividade = ''
-    detalhes_resultado = ''
-
-    # Variáveis extras para cálculo avançado
-    peso_desejado = None
-    peso_diferenca = None
-    porcentagem_perda = None
-    tmb = None
-    get = None
-    plano_kcal = None
-    tempo_lento = None
-    tempo_rapido = None
-    sexo = ''
-    doenca = ''
-    medicacao = ''
-    sono = None
-    estresse = None
-    percent_gc = None
-
-    if request.method == 'POST':
-        nome = request.POST.get('nome', '').strip()
-        data_nascimento = request.POST.get('data_nascimento', '')
-        idade_digitada = request.POST.get('idade', '')
-        peso = request.POST.get('peso', '')
-        altura = request.POST.get('altura', '')
-        pressao = request.POST.get('pressao', '')
-        atividade = request.POST.get('atividade', '')
-        sexo = request.POST.get('sexo', '')
-        doenca = request.POST.get('doenca', '').strip()
-        medicacao = request.POST.get('medicacao', '').strip()
-        sono_raw = request.POST.get('sono', '')
-        estresse_raw = request.POST.get('estresse', '')
-        peso_desejado_raw = request.POST.get('peso_desejado', '')
-
-        try:
-            # Calcula idade
-            if data_nascimento:
-                nascimento = datetime.strptime(data_nascimento, "%Y-%m-%d")
-                hoje = datetime.today()
-                idade = hoje.year - nascimento.year - ((hoje.month, hoje.day) < (nascimento.month, nascimento.day))
-            elif idade_digitada:
-                idade = int(idade_digitada)
-            else:
-                idade = None  # Idade não informada
-
-            # Converte dados numéricos
-            peso_float = float(peso)
-            altura_m = float(altura)  # altura em metros
-            peso_desejado = float(peso_desejado_raw) if peso_desejado_raw else None
-            sono = int(sono_raw) if sono_raw else None
-            estresse = int(estresse_raw) if estresse_raw else None
-
-            # Calcula IMC
-            imc_float = round(peso_float / (altura_m ** 2), 1)
-            imc = imc_float
-
-            # Classificação IMC
-            if imc_float < 18.5:
-                classificacao_imc = "Magreza"
-            elif imc_float < 25:
-                classificacao_imc = "Peso normal ✅"
-            elif imc_float < 30:
-                classificacao_imc = "Sobrepeso"
-            elif imc_float < 35:
-                classificacao_imc = "Obesidade grau I"
-            elif imc_float < 40:
-                classificacao_imc = "Obesidade grau II"
-            else:
-                classificacao_imc = "Obesidade grau III"
-
-            # Peso a ganhar/perder e % de perda desejada
-            peso_diferenca = None
-            porcentagem_perda = None
-            if peso_desejado is not None:
-                peso_diferenca = round(peso_desejado - peso_float, 1)  # positivo se ganho, negativo se perda
-                if peso_diferenca < 0:
-                    porcentagem_perda = round(abs(peso_diferenca) / peso_float * 100, 1)
-                else:
-                    porcentagem_perda = 0
-
-            # Sexo numérico para %GC
-            if sexo == 'masculino':
-                sexo_num = 1
-            else:
-                sexo_num = 0
-
-            # Cálculo do %GC (Percentual de Gordura Corporal)
-            if idade is not None:
-                percent_gc = round((1.2 * imc_float) + (0.23 * idade) - (10.8 * sexo_num) - 5.4, 1)
-
-            # Cálculo da TMB (Mifflin-St Jeor)
-            if sexo == 'masculino':
-                tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
-            elif sexo == 'feminino':
-                tmb_calc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
-            else:
-                tmb_masc = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade + 5
-                tmb_fem = 10 * peso_float + 6.25 * (altura_m * 100) - 5 * idade - 161
-                tmb_calc = (tmb_masc + tmb_fem) / 2
-            tmb = round(tmb_calc, 0)
-
-            # Fator de atividade
-            fator_atividade = 1.55 if atividade == '1' else 1.2
-
-            # GET - gasto energético total
-            get_calc = tmb * fator_atividade
-            get = round(get_calc, 0)
-
-            # Plano alimentar para perda lenta: GET - 500 kcal (ajustável)
-            if peso_diferenca is not None and peso_diferenca < 0:
-                plano_kcal = round(get - 500, 0)
-                # 1 kg gordura = 7700 kcal
-                semanas_lentas = abs(peso_diferenca) * 7700 / 500
-                semanas_rapidas = abs(peso_diferenca) * 7700 / 1000
-                tempo_lento = int(semanas_lentas)
-                tempo_rapido = int(semanas_rapidas)
-            else:
-                plano_kcal = get
-                tempo_lento = None
-                tempo_rapido = None
-
-            # Avaliação de risco
-            risco = 0
-            risco_doencas.clear()
-            if idade is not None:
-                if idade > 60:
-                    risco += 1
-                    risco_doencas.append("Idade avançada ❌")
-                else:
-                    risco_doencas.append("Idade abaixo de 60 anos ✅")
-            else:
-                risco_doencas.append("Idade não informada")
-
-            if imc_float > 30:
-                risco += 1
-                risco_doencas.append("Obesidade ❌")
-            else:
-                risco_doencas.append("IMC adequado ✅")
-
-            if pressao == '1':
-                risco += 1
-                risco_doencas.append("Hipertensão ❌")
-            else:
-                risco_doencas.append("Pressão arterial normal ✅")
-
-            if atividade == '0':
-                risco += 1
-                risco_doencas.append("Sedentarismo ❌")
-            else:
-                risco_doencas.append("Pratica atividade física ✅")
-
-            if risco >= 2:
-                resultado = "Alto risco nutricional. Procure um profissional!"
-            else:
-                resultado = "Baixo risco nutricional. Continue com bons hábitos!"
-
-            # Montar detalhes para o resultado (html safe)
-            detalhes_resultado = (
-                f"🧮 Classificação do IMC ({imc_float}): <strong>{classificacao_imc}</strong><br><br>"
-                f"🩺 Classificação de Risco Nutricional:<br>"
-            )
-            for item in risco_doencas:
-                detalhes_resultado += f"{item}<br>"
-            detalhes_resultado += f"<br>🟢 Resultado: {resultado}"
-
-        except Exception as e:
-            resultado = "Erro ao processar os dados. Verifique os campos."
-            detalhes_resultado = f"Detalhes do erro: {e}"
-
-    return render(request, 'loja_app/avaliacao_receitas_med.html', {
-        'nome': nome,
-        'data_nascimento': data_nascimento,
-        'idade': idade,
-        'idade_digitada': idade_digitada,
-        'peso': peso,
-        'altura': altura,
-        'peso_desejado': peso_desejado,
-        'pressao': pressao,
-        'atividade': atividade,
-        'sexo': sexo,
-        'doenca': doenca,
-        'medicacao': medicacao,
-        'sono': sono,
-        'estresse': estresse,
-        'imc': imc,
-        'classificacao': classificacao_imc if 'classificacao_imc' in locals() else '',
-        'peso_diferenca': peso_diferenca,
-        'porcentagem_perda': porcentagem_perda,
-        'tmb': tmb,
-        'get': get,
-        'plano_kcal': plano_kcal,
-        'tempo_lento': tempo_lento,
-        'tempo_rapido': tempo_rapido,
-        'resultado': resultado,
-        'risco_doencas': risco_doencas,
-        'detalhes_resultado': detalhes_resultado,
-        'percent_gc': percent_gc,
-    })
+    return render(request, 'avaliacao_receitas_med.html')

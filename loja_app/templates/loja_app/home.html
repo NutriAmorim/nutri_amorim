@@ -1,241 +1,107 @@
 {% extends 'loja_app/base.html' %}
 {% load static %}
+
 {% block title %}Página Inicial{% endblock %}
-{% block chatbot %}
 {% block body_class %}pagina-home{% endblock %}
-
-<!-- Chatbot flutuante no canto inferior direito -->
-<div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; width: 300px; border: 1px solid #728f7f; border-radius: 10px; background: white; z-index: 1000;">
-  
-  <!-- Cabeçalho verde -->
-  <div style="background-color: #728f7f; padding: 10px; color: white; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-    Sou IAmorim Chat do Nutri Amorim 🤖
-  </div>
-
-  <!-- Área de mensagens -->
-  <div id="chat-log" style="padding: 10px; height: 200px; overflow-y: auto; font-size: 14px;"></div>
-
-  <!-- Campo de digitação + botão de envio -->
-  <div style="display: flex;">
-    <input 
-      type="text" 
-      id="user-input" 
-      placeholder="Digite sua pergunta..." 
-      style="flex: 1; padding: 5px; border: none;"
-    >
-
-    <!-- Botão SVG de envio -->
-    <button onclick="sendMessage()" aria-label="Enviar mensagem" style="background: none; border: none; cursor: pointer; padding: 5px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 535.5 535.5">
-        <path fill="#728f7f" d="M0 497.25L535.5 267.75 0 38.25 0 216.75 382.5 267.75 0 318.75z"/>
-      </svg>
-    </button>
-  </div>
-</div>
-
-<!-- SCRIPT DO CHAT -->
-<script>
-  // Quando a página carregar, foca no campo de digitação
-  window.onload = () => {
-    document.getElementById('user-input').focus();
-  };
-
-  // Enviar a mensagem com Enter
-  document.getElementById('user-input').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') sendMessage();
-  });
-
-  // Função para enviar a mensagem
-  async function sendMessage() {
-    const userInput = document.getElementById('user-input');
-    const chatLog = document.getElementById('chat-log');
-    const message = userInput.value.trim(); // Remove espaços
-
-    if (!message) return; // Se estiver vazio, não envia
-
-    // Mostra a mensagem do usuário
-    chatLog.innerHTML += `<p><strong>Você:</strong> ${message}</p>`;
-    userInput.value = ''; // Limpa o campo
-    chatLog.scrollTop = chatLog.scrollHeight; // Rola para o final
-
-    // Envia a mensagem para o servidor Django
-    try {
-      const response = await fetch('/chatbot/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': '{{ csrf_token }}' // Token CSRF obrigatório no Django
-        },
-        body: JSON.stringify({ message })
-      });
-
-      if (!response.ok) {
-        throw new Error(`Erro ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      // Exibe a resposta do bot
-      chatLog.innerHTML += `<p><strong>Bot:</strong> ${data.response}</p>`;
-      chatLog.scrollTop = chatLog.scrollHeight;
-
-    } catch (error) {
-      // Se der erro na conexão com o servidor
-      chatLog.innerHTML += `<p style="color:red;"><strong>Erro:</strong> Falha na conexão com o servidor.</p>`;
-    }
-  }
-</script>
-{% endblock %}
 
 {% block content %}
 
 <h1 class="titulo-principal">Bem-vindo ao Nutri Amorim</h1>
-<p class="descricao-principal">Confira os principais artigos sobre nutrição, suplementos, remedios e produtos naturais.</p>
-<div class="centralizador">
-<ul>
-    <li>Arrecadação de Alimentos Para Instituições Sociais</li>
-    <li>Campanha do Agasalho</li>
-    <li>Fome zero e agricultura sustentável</li>
-    <li>Saúde e bem-estar</li>
-</ul>
-</div>
-
-<div class="imagem-section">
-  <h1 class="titulo-noticias">Projeto Alimentação Solidária Doação de Alimentos Para Instituições Sociais e Campanha do Agasalho</h1>
-  <p class="descricao-principal">Data de Início 09/06/2025
-  <p class="descricao-principal">Data de Início 13/06/2025
-  
-<p><strong>Arrecadação de Alimentos</strong></p>
-<p>Estamos fazendo uma arrecadação para ajudar famílias carentes que estão cadastradas no programa social da Campanha da Fraternidade Auta de Souza uma das obras da Irradiação Espirita Cristã, para doar Alimentos e Agasalhos entre e contato: (62)997020570</p>
-<a href="https://wa.me/556297020570"
-       target="_blank"
-       style="background-color: #25D366; color: white; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold;">
-      <i class="fab fa-whatsapp"></i> WhatsApp
-    </a>
-
-<div class="imagem">
-    <img src="{% static 'img/CAMPANHA DO AGASALHO E ALIMENTAÇÃO SOLIDÁRIA - Obras sociais da Irradiação espirita cristã - Copia.png' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
-  </div>
-  <a href="https://www.nutriamorim.com.br/projetos/" class="botao-noticias">Clique aqui e confira todas informações</a>
-</div>
-
 <div class="imagem-section">
   <h1 class="titulo-noticias">Notícias</h1>
-  <p class="descricao-principal">Adeus noites mal dormidas: pesquisa revela que comer kiwi antes de dormir pode ajudar a pegar no sono mais rápido.</p>
+  <p class="descricao-principal">
+    Adeus noites mal dormidas: pesquisa revela que comer kiwi antes de dormir pode ajudar a pegar no sono mais rápido.
+  </p>
+
   <div class="imagem">
-    <img src="{% static 'img/foto_kiwi.jpg' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
+    <img src="{% static 'img/foto_kiwi.jpg' %}" alt="Kiwi" class="imagem-canetinha">
   </div>
+
   <a href="/saude/" class="botao-noticias">Clique aqui e confira todas informações</a>
 </div>
 
-<h1 class="titulo-principal"> Projeto Alimente-se </h1>
-  <p class="descricao-principal">No dia 07/06, celebramos o Dia Mundial da Segurança dos Alimentos, e para contribuir com uma sociedade mais consciente e sustentável, propomos um novo desafio: reduzir o desperdício e aprimorar o aproveitamento dos alimentos.</p>
-  <p>
-    <a href="https://instagram.com/nutricao_ead_unicesumar" target="_blank" rel="noopener noreferrer">
-    <div class="centralizador">
-      @nutricao_ead_unicesumar
-  </a>
+<h1 class="titulo-principal">Projeto Alimente-se</h1>
+<p class="descricao-principal">
+  No dia 07/06, celebramos o Dia Mundial da Segurança dos Alimentos e propomos reduzir o desperdício e melhorar o
+  aproveitamento dos alimentos.
 </p>
+
+<div class="centralizador">
+  <a href="https://instagram.com/nutricao_ead_unicesumar" target="_blank" rel="noopener noreferrer">
+    @nutricao_ead_unicesumar
+  </a>
 </div>
 
 <div class="container">
-<div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);border-radius:2px;box-sizing:border-box;overflow:hidden;position:relative;width:100%;background:#F4F4F4">
-  <p style="padding:0;margin:0">
-    <iframe src="https://padlet.com/embed/22plsvk9z6aumb2g" frameborder="0" allow="camera;microphone;geolocation;display-capture;clipboard-write" style="width:100%;height:608px;display:block;padding:0;margin:0"></iframe>
-  </p>
-  <div style="display:flex;align-items:center;justify-content:end;margin:0;height:28px">
-    <a href="https://padlet.com?ref=embed" target="_blank" style="text-decoration:none">
-      <img src="https://padlet.net/embeds/made_with_padlet_2022.png" width="114" height="28" alt="Criado com o Padlet">
-    </a>
-  </div>
+  <div class="padlet-embed" style="border:1px solid rgba(0,0,0,0.1);background:#F4F4F4">
+    <iframe src="https://padlet.com/embed/22plsvk9z6aumb2g"
+            frameborder="0"
+            style="width:100%;height:608px"></iframe>
 
-<p>
-  <a href="https://padlet.com/nutricaoeadunicesumarlives/aproveitamento-integral-dos-alimentos-22plsvk9z6aumb2g" target="_blank">
-    👉 Clique aqui e poste sua receita
-  </a>
-</p>
-</div>
+    <p>
+      <a href="https://padlet.com/nutricaoeadunicesumarlives/aproveitamento-integral-dos-alimentos-22plsvk9z6aumb2g"
+         target="_blank">
+        👉 Clique aqui e poste sua receita
+      </a>
+    </p>
+  </div>
 </div>
 
 <div class="imagem-section">
-  <h1 class="titulo-noticias">Notícias</h1>
-  <p class="descricao-principal">Mounjaro: como funciona novo remédio com efeito superior ao Ozempic aprovado pela Anvisa.</p>
+  <h1 class="titulo-noticias">Mounjaro</h1>
+  <p class="descricao-principal">
+    Como funciona o novo remédio com efeito superior ao Ozempic aprovado pela Anvisa.
+  </p>
+
   <div class="imagem">
-    <img src="{% static 'img/mounjaro1.webp' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
+    <img src="{% static 'img/mounjaro1.webp' %}" alt="Mounjaro" class="imagem-canetinha">
   </div>
+
   <a href="/saude/" class="botao-noticias">Clique aqui e confira todas informações</a>
 </div>
 
 <div class="imagem-section">
   <h1 class="titulo-noticias">Novidades</h1>
-  <p class="descricao-principal">Conheça nossa comunidade dedicada a compartilhar receitas medicinais e dicas de cozinha.</p>
-  <div class="imagem">
-    <img src="{% static 'img/imagem_globoverde.jpg' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
-  </div>
-  <a href="https://chat.whatsapp.com/IQ1AJ7i2MpV3jPCJALkomf" class="botao-noticias">Clique aqui e confira todas informações</a>
-</div>
+  <p class="descricao-principal">
+    Conheça nossa comunidade dedicada a compartilhar receitas medicinais e dicas de cozinha.
+  </p>
 
-<div class="imagem-section">
-  <h1 class="titulo-noticias">Novas matérias Gripe e Tosse</h1>
-  <p class="descricao-principal">Receitas decção para combater gripe, tosse e com efeitos em outras doenças e sintomas.</p>
   <div class="imagem">
-    <img src="{% static 'img/novidades_pagina.png' %}" alt="Imagem de uma canetinha" class="imagem-canetinha" />
+    <img src="{% static 'img/imagem_globoverde.jpg' %}" alt="Comunidade" class="imagem-canetinha">
   </div>
-  <a href="https://www.nutriamorim.com.br/entenda_doencas_e_causas" class="botao-noticias">Clique aqui e confira todas informações</a>
+
+  <a href="https://chat.whatsapp.com/IQ1AJ7i2MpV3jPCJALkomf" class="botao-noticias">
+    Clique aqui e confira todas informações
+  </a>
 </div>
 
 <div class="imagens-container">
-  
-  <!-- Seção Dieta Alcalina -->
+
   <div class="imagem-section">
     <h2 class="subtitulo">Dieta Alcalina</h2>
-    <img src="{% static 'img/dieta_alcalina_IA.png' %}" alt="Dieta Alcalina" class="imagem-grande" />
+    <img src="{% static 'img/dieta_alcalina_IA.png' %}" class="imagem-grande">
     <p class="texto-justificado">
-      A Nutrição Alcalina baseia-se na ideia de que uma alimentação rica em alimentos alcalinizantes, como frutas, vegetais e legumes, pode contribuir para o equilíbrio do pH corporal, promovendo saúde e bem-estar...
-    </p>
-
-    <h3 class="subsubtitulo">Alimentos Alcalinizantes e Acidificantes</h3>
-    <p class="texto-justificado">
-      Os alimentos considerados alcalinizantes incluem frutas, vegetais, legumes e oleaginosas...
-    </p>
-
-    <h3 class="subsubtitulo">Benefícios Potenciais</h3>
-    <p class="texto-justificado">
-      A Nutrição Alcalina pode trazer benefícios como a redução de inflamações, melhora na saúde óssea...
+      A Nutrição Alcalina baseia-se em alimentos alcalinizantes como frutas, vegetais e legumes,
+      promovendo equilíbrio do pH corporal.
     </p>
   </div>
 
-  <!-- Seção Nutrição Esportiva -->
   <div class="imagem-section">
     <h2 class="subtitulo">Nutrição Esportiva</h2>
-    <img src="{% static 'img/nutricao_esportiva2_IA.png' %}" alt="Nutrição Esportiva" class="imagem-grande" />
-    <p class="destaque">Objetivo da Nutrição Esportiva</p>
+    <img src="{% static 'img/nutricao_esportiva2_IA.png' %}" class="imagem-grande">
     <p class="texto-justificado">
-      A Nutrição Esportiva tem como objetivo potencializar o desempenho físico, otimizar a recuperação muscular...
-    </p>
-
-    <h3 class="subsubtitulo">Alimentos Essenciais para o Desempenho</h3>
-    <p class="texto-justificado">
-      Para alcançar resultados excepcionais, a dieta de um atleta ou modelo deve ser composta por alimentos que favoreçam a construção muscular...
-    </p>
-
-    <h3 class="subsubtitulo">Benefícios da Nutrição Esportiva</h3>
-    <p class="texto-justificado">
-      A Nutrição Esportiva contribui significativamente para a melhoria do desempenho atlético...
+      A Nutrição Esportiva potencializa o desempenho físico e melhora a recuperação muscular.
     </p>
   </div>
 
-  <!-- Seção Nutrição Funcional -->
   <div class="imagem-section">
     <h2 class="subtitulo">Nutrição Funcional</h2>
-    <img src="{% static 'img/nutricao_funcional1_IA.png' %}" alt="Nutrição Funcional" class="imagem-grande" />
+    <img src="{% static 'img/nutricao_funcional1_IA.png' %}" class="imagem-grande">
     <p class="texto-justificado">
-      A <strong>Nutrição Funcional</strong> é uma abordagem da alimentação que visa promover o equilíbrio do organismo e prevenir doenças...
-    </p>
-    <p class="texto-justificado">
-      Com o uso de alimentos funcionais, que são ricos em compostos bioativos, é possível promover a saúde de forma preventiva e eficaz...
+      A Nutrição Funcional promove o equilíbrio do organismo e previne doenças por meio da alimentação.
     </p>
   </div>
+
 </div>
 
 {% endblock %}
